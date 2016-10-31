@@ -1,0 +1,122 @@
+---
+published: true
+layout: post
+title: PHP排序方式总结
+category: program
+tags: 
+  - cpp
+time: 2016.02.4 14:22:00
+excerpt:最常用的四种排序方式:冒泡排序、选择排序、插入排序、快速排序的封装过程
+
+---
+<p>最常用的四种排序方式:冒泡排序、选择排序、插入排序、快速排序的封装过程</p>
+<h3>一、冒泡排序</h3>
+<code>
+//定义一个数组
+      $array=array(1,43,54,62,21,66,32,78,36,76,39);
+      //打印出数组用于和排序后对比
+      print_r($array);
+      echo "<br/>";
+      //封装好一个方法,便于调取
+      function bubbleSort($arr)
+      {
+      //获取数组单位数量,用于之后循环对比
+      $len=count($arr);
+      //该层循环控制 需要冒泡的轮数
+      for($i=1;$i<$len;$i++) {
+      //该层循环用来控制每轮 冒出一个数 需要比较的次数
+      for($k=0;$k<$len-$i;$k++)
+      {
+      //第一个数和下一个数对比
+       if($arr[$k]>$arr[$k+1])
+          {
+              //如果第二个数大于第一个数,就替换两个数的位置,
+             $tmp=$arr[$k+1];
+              $arr[$k+1]=$arr[$k];
+              $arr[$k]=$tmp;
+          }
+      }
+      }
+      return  $arr;
+      }
+      print_r(bubbleSort($array));
+      </code>
+<h3>二、选择排序</h3>
+<code>
+$array=array(32,43,54,62,21,66,32,78,36,76,39);
+print_r($array);
+echo "<br/>";
+
+function selectSort($arr){
+//双重循环完成，外层控制轮数，内层控制比较次数
+     $len=count($arr);
+      for($i=0;$i<$len-1;$i++){
+       //先假设最小的值的位置
+       $p = $i;
+          for($j=$i+1;$j<$len;$j++){
+            //$arr[$p] 是当前已知的最小值
+            if($arr[$p] > $arr[$j]) {
+                 //比较，发现更小的,记录下最小值的位置；并且在下次比较时采用已知的最小值进行比较。
+                 $p =$j;
+            }
+           }
+//已经确定了当前的最小值的位置，保存到$p中。如果发现最小值的位置与当前假设的位置$i不同，则位置互换即可。
+    if($p!=$i){
+            $tmp =$arr[$p];
+            $arr[$p]=$arr[$i];
+            $arr[$i]=$tmp;
+         }
+}
+//返回最终结果
+return $arr;
+}
+print_r(selectSort($array));
+</code>
+<h3>三、插入排序</h3>
+<code>
+$array=array(32,43,54,62,21,66,32,78,36,76,39);
+print_r($array);
+echo "<br/>";
+function insertSort($arr) {
+    $len=count($arr);
+      for($i=1; $i<$len; $i++){         $tmp =$arr[$i];
+         //内层循环控制，比较并插入
+         for($j=$i-1;$j>=0;$j--) {
+         if($tmp < $arr[$j]) {
+                //发现插入的元素要小，交换位置，将后边的元素与前面的元素互换
+                $arr[$j+1] = $arr[$j];
+             $arr[$j] = $tmp;
+         } else {
+                //如果碰到不需要移动的元素，由于是已经排序好是数组，则前面的就不需要再次比较了。
+                break;
+         }
+         }
+      }
+ return $arr;
+}
+print_r(insertSort($array));
+</code>
+<h3>四、快速排序</h3>
+<code>
+$array=array(32,43,54,62,21,66,32,78,36,76,39);
+print_r($array);
+echo "<br/>";
+function insertSort($arr) {
+    $len=count($arr);
+      for($i=1; $i<$len; $i++){         $tmp =$arr[$i];
+         //内层循环控制，比较并插入
+         for($j=$i-1;$j>=0;$j--) {
+         if($tmp < $arr[$j]) {
+                //发现插入的元素要小，交换位置，将后边的元素与前面的元素互换
+                $arr[$j+1] = $arr[$j];
+             $arr[$j] = $tmp;
+         } else {
+                //如果碰到不需要移动的元素，由于是已经排序好是数组，则前面的就不需要再次比较了。
+                break;
+         }
+         }
+      }
+ return $arr;
+}
+print_r(insertSort($array));
+</code>
