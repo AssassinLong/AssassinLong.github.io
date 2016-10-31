@@ -3,7 +3,7 @@ title: 程序化&人生
 email: 1099587627@qq.com
 description: Source of me.
 localurl: "" # the subpath of your site, e.g. /blog/
-url: http://sunxiaobiu.github.io # the base hostname & protocol for your site
+url: https://assassinlong.github.io # the base hostname & protocol for your site
 me-img: "/img/HeadPicture.png"
 
 twitter_username:
@@ -16,8 +16,8 @@ permalink: /:categories/:year/:month/:day/:title
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 # highlighter: pygments
 
-assets: http://sunxiaobiu.github.io/assets
-baseurl: http://sunxiaobiu.github.io
+assets: https://assassinlong.github.io/assets
+baseurl: https://assassinlong.github.io
 
 # pagination
 paginate: 10
@@ -89,7 +89,7 @@ author:
   tsina: 9d4bc461     ## e.g. 2176287895  Your weibo ID,It will be used in share button.
   douban: 74961542    ## e.g. wuchong1014 or your id for https://www.douban.com/people/wuchong1014
   zhihu: sunxiaobiu     ## e.g. jark  for http://www.zhihu.com/people/jark
-  email: sunxiaobiu@gmail.com     ## e.g. imjark@gmail.com
+  email: 1099587627@qq.com     ## e.g. imjark@gmail.com
   twitter:    ## e.g. jarkwu for https://twitter.com/jarkwu
   github: sunxiaobiu    ## e.g. wuchong for https://github.com/wuchong
   facebook: xiaobiu.sun  ## e.g. imjark for https://facebook.com/imjark
