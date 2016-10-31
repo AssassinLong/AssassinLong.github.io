@@ -7,7 +7,7 @@
     
     
     
-    <title>程序化&人生</title>
+    <title>PHP排序方式总结 | 程序化&人生</title>
     
 
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
@@ -22,12 +22,12 @@
     
     <meta property="og:type" content="website">
     
-    <meta property="og:title" content="">
-    <meta property="og:url" content="https://assassinlong.github.io/categories/">
+    <meta property="og:title" content="PHP排序方式总结">
+    <meta property="og:url" content="https://assassinlong.github.io/program/2015/09/22/PHP%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F">
     <meta property="og:site_name" content="程序化&人生">
     <meta property="og:description" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="">
+    <meta name="twitter:title" content="PHP排序方式总结">
     <meta name="twitter:description" content="page.description">
     <meta name="twitter:creator" content="@">
     <link rel="publisher" href="">
@@ -84,307 +84,224 @@
 </div>
     </header>
     <div id="container">
-      <!--
-<%
-var title = '';
-var icon = '';
-if (page.category){
-  title = page.category;
-  icon = 'category';
-};
-if (page.tag){
-  title = page.tag;
-  icon = 'tag';
-};
-if (page.archive){
-  icon = 'archive';
-  if (page.year) title = page.year+  (page.month ? '/' + page.month : '');
-  else title = __('archive_a');
-};
-%>
--->
+      
 
 
-
-
-
-
-
-<div class="archive-title" >
-  <h2 class="-icon"><span class='archive-folder'></span></h2>
+<div id="main" class="post" itemscope itemprop="blogPost">
   
+	<article itemprop="articleBody"> 
+	<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="https://assassinlong.github.io/program/2015/09/22/PHP%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F" title="PHP排序方式总结" itemprop="url">PHP排序方式总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://assassinlong.github.io/about" title="assassinlong" target="_blank" itemprop="author">assassinlong</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-22 00:00:00 +0800" itemprop="datePublished"> 发表于 2015-09-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article toc-content">
+		
+			<!--<%- toc(item.content) %>-->
+		
+		</div>
+		
+		<p>最常用的四种排序方式:冒泡排序、选择排序、插入排序、快速排序的封装过程</p>
+<h3>一、冒泡排序</h3>
+<p><code>
+//定义一个数组
+      $array=array(1,43,54,62,21,66,32,78,36,76,39);
+      //打印出数组用于和排序后对比
+      print_r($array);
+      echo "<br />";
+      //封装好一个方法,便于调取
+      function bubbleSort($arr)
+      {
+      //获取数组单位数量,用于之后循环对比
+      $len=count($arr);
+      //该层循环控制 需要冒泡的轮数
+      for($i=1;$i&lt;$len;$i++) {
+      //该层循环用来控制每轮 冒出一个数 需要比较的次数
+      for($k=0;$k&lt;$len-$i;$k++)
+      {
+      //第一个数和下一个数对比
+       if($arr[$k]&gt;$arr[$k+1])
+          {
+              //如果第二个数大于第一个数,就替换两个数的位置,
+             $tmp=$arr[$k+1];
+              $arr[$k+1]=$arr[$k];
+              $arr[$k]=$tmp;
+          }
+      }
+      }
+      return  $arr;
+      }
+      print_r(bubbleSort($array));
+      </code></p>
+<h3>二、选择排序</h3>
+<p><code>
+$array=array(32,43,54,62,21,66,32,78,36,76,39);
+print_r($array);
+echo "<br />";</code></p>
+
+<p>function selectSort($arr){
+//双重循环完成，外层控制轮数，内层控制比较次数
+     $len=count($arr);
+      for($i=0;$i&lt;$len-1;$i++){
+       //先假设最小的值的位置
+       $p = $i;
+          for($j=$i+1;$j&lt;$len;$j++){
+            //$arr[$p] 是当前已知的最小值
+            if($arr[$p] &gt; $arr[$j]) {
+                 //比较，发现更小的,记录下最小值的位置；并且在下次比较时采用已知的最小值进行比较。
+                 $p =$j;
+            }
+           }
+//已经确定了当前的最小值的位置，保存到$p中。如果发现最小值的位置与当前假设的位置$i不同，则位置互换即可。
+    if($p!=$i){
+            $tmp =$arr[$p];
+            $arr[$p]=$arr[$i];
+            $arr[$i]=$tmp;
+         }
+}
+//返回最终结果
+return $arr;
+}
+print_r(selectSort($array));
+&lt;/code&gt;</p>
+<h3>三、插入排序</h3>
+<p><code>
+$array=array(32,43,54,62,21,66,32,78,36,76,39);
+print_r($array);
+echo "<br />";
+function insertSort($arr) {
+    $len=count($arr);
+      for($i=1; $i&lt;$len; $i++){         $tmp =$arr[$i];
+         //内层循环控制，比较并插入
+         for($j=$i-1;$j&gt;=0;$j--) {
+         if($tmp &lt; $arr[$j]) {
+                //发现插入的元素要小，交换位置，将后边的元素与前面的元素互换
+                $arr[$j+1] = $arr[$j];
+             $arr[$j] = $tmp;
+         } else {
+                //如果碰到不需要移动的元素，由于是已经排序好是数组，则前面的就不需要再次比较了。
+                break;
+         }
+         }
+      }
+ return $arr;
+}
+print_r(insertSort($array));
+</code></p>
+<h3>四、快速排序</h3>
+<p><code>
+$array=array(32,43,54,62,21,66,32,78,36,76,39);
+print_r($array);
+echo "<br />";
+function insertSort($arr) {
+    $len=count($arr);
+      for($i=1; $i&lt;$len; $i++){         $tmp =$arr[$i];
+         //内层循环控制，比较并插入
+         for($j=$i-1;$j&gt;=0;$j--) {
+         if($tmp &lt; $arr[$j]) {
+                //发现插入的元素要小，交换位置，将后边的元素与前面的元素互换
+                $arr[$j+1] = $arr[$j];
+             $arr[$j] = $tmp;
+         } else {
+                //如果碰到不需要移动的元素，由于是已经排序好是数组，则前面的就不需要再次比较了。
+                break;
+         }
+         }
+      }
+ return $arr;
+}
+print_r(insertSort($array));
+</code></p>
   
- 
+	</div>
+	<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <!--
+  <%- list_categories(item.categories, {
+      show_count: false,
+      class: 'article-category',
+      style: 'none',
+      separator: '►'
+  }) %>
+  -->
   
- 
+  <a class="article-category-link" href="https://assassinlong.github.io/categories/#program">program</a>
+  
 </div>
-<div id="main" class="archive-part clearfix">
-  <div id="archive-page">
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/java/2016/03/15/JAVA%E4%B8%AD-%E5%BC%BA%E5%BC%95%E7%94%A8-%E8%BD%AF%E5%BC%95%E7%94%A8-%E5%BC%B1%E5%BC%95%E7%94%A8-%E8%99%9A%E5%BC%95%E7%94%A8-%E6%A6%82%E5%BF%B5%E6%AF%94%E8%BE%83" title="JAVA中「强引用，软引用，弱引用，虚引用」概念比较" itemprop="url">
-  
-
-    <time datetime="2016-03-15 00:00:00 +0800" itemprop="datePublished">2016 年 03 月</time>
-
-
-    <h1 itemprop="name">JAVA中「强引用，软引用，弱引用，虚引用」概念比较</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/java/2016/02/22/%E9%82%A3%E4%BA%9B%E5%B9%B4%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91" title="那些年踩过的坑——持续更新中..." itemprop="url">
-  
-
-    <time datetime="2016-02-22 00:00:00 +0800" itemprop="datePublished">2016 年 02 月</time>
-
-
-    <h1 itemprop="name">那些年踩过的坑——持续更新中...</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/java/2016/02/21/JAVA-%E6%8A%BD%E8%B1%A1%E7%B1%BBVS%E6%8E%A5%E5%8F%A3" title="JAVA：抽象类VS接口" itemprop="url">
-  
-
-    <time datetime="2016-02-21 00:00:00 +0800" itemprop="datePublished">2016 年 02 月</time>
-
-
-    <h1 itemprop="name">JAVA：抽象类VS接口</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/2016/02/06/Happy-New-Year" title="Happy New Year" itemprop="url">
-  
-
-    <time datetime="2016-02-06 00:00:00 +0800" itemprop="datePublished">2016 年 02 月</time>
-
-
-    <h1 itemprop="name">Happy New Year</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/embedded/2015/10/26/contiki-cygwin" title="在 Cygwin 上编译 Contiki" itemprop="url">
-  
-
-    <time datetime="2015-10-26 00:00:00 +0800" itemprop="datePublished">2015 年 10 月</time>
-
-
-    <h1 itemprop="name">在 Cygwin 上编译 Contiki</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/daily/2015/10/11/jekyll-editor-tutorial" title="Jekyll Editor 使用入门" itemprop="url">
-  
-
-    <time datetime="2015-10-11 00:00:00 +0800" itemprop="datePublished">2015 年 10 月</time>
-
-
-    <h1 itemprop="name">Jekyll Editor 使用入门</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/daily/2015/10/11/jekyll-editor-online" title="Jekyll Editor 应用上线" itemprop="url">
-  
-
-    <time datetime="2015-10-11 00:00:00 +0800" itemprop="datePublished">2015 年 10 月</time>
-
 
-    <h1 itemprop="name">Jekyll Editor 应用上线</h1>
 
-  </a>
-</section>
+  <div class="article-tags">
+  <!--
+  <% var tags = [];
+    item.tags.forEach(function(tag){
+      tags.push('<a href="' + config.root + tag.path + '">' + tag.name + '</a>');
+    }); %>-->
+  <span></span> <!--<%- tags.join('') %>-->
   
   
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/daily/2015/10/09/tool-for-jekyll-blog" title="写 Jekyll 博客工具" itemprop="url">
-  
-
-    <time datetime="2015-10-09 00:00:00 +0800" itemprop="datePublished">2015 年 10 月</time>
-
-
-    <h1 itemprop="name">写 Jekyll 博客工具</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/network/2015/09/23/tcp-keepalive-timer" title="TCP 之保活计时器" itemprop="url">
-  
-
-    <time datetime="2015-09-23 00:00:00 +0800" itemprop="datePublished">2015 年 09 月</time>
-
-
-    <h1 itemprop="name">TCP 之保活计时器</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/program/2015/09/23/data-structure-alignmen" title="字节对齐" itemprop="url">
-  
-
-    <time datetime="2015-09-23 00:00:00 +0800" itemprop="datePublished">2015 年 09 月</time>
-
-
-    <h1 itemprop="name">字节对齐</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/program/2015/09/23/bit-endian-little-endian-bit-field" title="位域的大小端问题" itemprop="url">
-  
-
-    <time datetime="2015-09-23 00:00:00 +0800" itemprop="datePublished">2015 年 09 月</time>
-
-
-    <h1 itemprop="name">位域的大小端问题</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/network/2015/09/22/difference-between-tcp-vs-udp-protocol" title="TCP 和 UDP 的区别" itemprop="url">
-  
-
-    <time datetime="2015-09-22 00:00:00 +0800" itemprop="datePublished">2015 年 09 月</time>
-
-
-    <h1 itemprop="name">TCP 和 UDP 的区别</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/program/2015/09/22/PHP%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F" title="PHP排序方式总结" itemprop="url">
-  
-
-    <time datetime="2015-09-22 00:00:00 +0800" itemprop="datePublished">2015 年 09 月</time>
-
-
-    <h1 itemprop="name">PHP排序方式总结</h1>
-
-  </a>
-</section>
-  
-  
-  
-  
-<section class="post" itemscope itemprop="blogPost">
-
-
-  
-    <a href="https://assassinlong.github.io/jekyll/2015/09/21/tools-for-jekyll" title="写 Jekyll 博客的正确姿势" itemprop="url">
-  
-
-    <time datetime="2015-09-21 00:00:00 +0800" itemprop="datePublished">2015 年 09 月</time>
-
-
-    <h1 itemprop="name">写 Jekyll 博客的正确姿势</h1>
-
-  </a>
-</section>
+  <a href="https://assassinlong.github.io/tags/#cpp">cpp</a>
   
-<!--
-<% if (page.total > 1){ %>
-  <nav id="page-nav" class="clearfix archive-nav">
-    <%- paginator({
-      prev_text: '<span></span>Prev',
-      next_text: 'Next<span></span>'
-    }) %>
-  </nav>
-<% } %>
--->
   </div>
+
 </div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://assassinlong.github.io/program/2015/09/22/PHP%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F" data-title="PHP排序方式总结 | 程序化&人生" data-tsina="9d4bc461" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>   
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/jekyll/2015/09/21/tools-for-jekyll" title="写 Jekyll 博客的正确姿势">
+  <strong>上一篇：</strong><br/>
+  <span>
+  写 Jekyll 博客的正确姿势</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/network/2015/09/22/difference-between-tcp-vs-udp-protocol"  title="TCP 和 UDP 的区别">
+ <strong>下一篇：</strong><br/> 
+ <span>TCP 和 UDP 的区别
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
 
       
       
