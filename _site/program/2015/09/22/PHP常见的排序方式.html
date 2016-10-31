@@ -114,12 +114,11 @@
 		
 		<p>最常用的四种排序方式:冒泡排序、选择排序、插入排序、快速排序的封装过程</p>
 <h3>一、冒泡排序</h3>
-<p><code>
-//定义一个数组
+<p>//定义一个数组
       $array=array(1,43,54,62,21,66,32,78,36,76,39);
       //打印出数组用于和排序后对比
       print_r($array);
-      echo "<br />";
+      echo “<br />”;
       //封装好一个方法,便于调取
       function bubbleSort($arr)
       {
@@ -142,15 +141,12 @@
       }
       return  $arr;
       }
-      print_r(bubbleSort($array));
-      </code></p>
+      print_r(bubbleSort($array));</p>
 <h3>二、选择排序</h3>
-<p><code>
-$array=array(32,43,54,62,21,66,32,78,36,76,39);
+<p>$array=array(32,43,54,62,21,66,32,78,36,76,39);
 print_r($array);
-echo "<br />";</code></p>
-
-<p>function selectSort($arr){
+echo “<br />”;
+function selectSort($arr){
 //双重循环完成，外层控制轮数，内层控制比较次数
      $len=count($arr);
       for($i=0;$i&lt;$len-1;$i++){
@@ -173,18 +169,17 @@ echo "<br />";</code></p>
 //返回最终结果
 return $arr;
 }
-print_r(selectSort($array));
-&lt;/code&gt;</p>
+print_r(selectSort($array));</p>
 <h3>三、插入排序</h3>
-<p><code>
-$array=array(32,43,54,62,21,66,32,78,36,76,39);
+
+<p>$array=array(32,43,54,62,21,66,32,78,36,76,39);
 print_r($array);
-echo "<br />";
+echo “<br />”;
 function insertSort($arr) {
     $len=count($arr);
       for($i=1; $i&lt;$len; $i++){         $tmp =$arr[$i];
          //内层循环控制，比较并插入
-         for($j=$i-1;$j&gt;=0;$j--) {
+         for($j=$i-1;$j&gt;=0;$j–) {
          if($tmp &lt; $arr[$j]) {
                 //发现插入的元素要小，交换位置，将后边的元素与前面的元素互换
                 $arr[$j+1] = $arr[$j];
@@ -197,18 +192,17 @@ function insertSort($arr) {
       }
  return $arr;
 }
-print_r(insertSort($array));
-</code></p>
+print_r(insertSort($array));</p>
 <h3>四、快速排序</h3>
-<p><code>
-$array=array(32,43,54,62,21,66,32,78,36,76,39);
+
+<p>$array=array(32,43,54,62,21,66,32,78,36,76,39);
 print_r($array);
-echo "<br />";
+echo “<br />”;
 function insertSort($arr) {
     $len=count($arr);
       for($i=1; $i&lt;$len; $i++){         $tmp =$arr[$i];
          //内层循环控制，比较并插入
-         for($j=$i-1;$j&gt;=0;$j--) {
+         for($j=$i-1;$j&gt;=0;$j–) {
          if($tmp &lt; $arr[$j]) {
                 //发现插入的元素要小，交换位置，将后边的元素与前面的元素互换
                 $arr[$j+1] = $arr[$j];
@@ -221,8 +215,7 @@ function insertSort($arr) {
       }
  return $arr;
 }
-print_r(insertSort($array));
-</code></p>
+print_r(insertSort($array));</p>
   
 	</div>
 	<footer class="article-footer clearfix">
@@ -338,7 +331,11 @@ print_r(insertSort($array));
 		  
 		
 		  
-			<li><a href="https://assassinlong.github.io/categories/#JAVA" title="JAVA">JAVA<sup>3</sup></a></li>
+			<li><a href="https://assassinlong.github.io/categories/#JS" title="JS">JS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="https://assassinlong.github.io/categories/#JAVA" title="JAVA">JAVA<sup>2</sup></a></li>
 		  
 		
 		</ul>
@@ -387,7 +384,11 @@ print_r(insertSort($array));
 			
 		
 			
-				<li><a href="https://assassinlong.github.io/tags/#JAVA" title="JAVA">JAVA<sup>3</sup></a></li>
+				<li><a href="https://assassinlong.github.io/tags/#JS" title="JS">JS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="https://assassinlong.github.io/tags/#JAVA" title="JAVA">JAVA<sup>2</sup></a></li>
 			
 		
 			

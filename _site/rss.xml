@@ -5,8 +5,8 @@
         <description>程序化&amp;人生 - assassinlong</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Mon, 31 Oct 2016 20:49:56 +0800</lastBuildDate>
-        <pubDate>Mon, 31 Oct 2016 20:49:56 +0800</pubDate>
+        <lastBuildDate>Mon, 31 Oct 2016 21:19:07 +0800</lastBuildDate>
+        <pubDate>Mon, 31 Oct 2016 21:19:07 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -141,49 +141,154 @@
         </item>
 
         <item>
-                <title>JAVA：抽象类VS接口</title>
-                <description>&lt;p&gt;JAVA中抽象类和接口的区别比较，以及它们各自的用途。&lt;/p&gt;
+                <title>JavaScript</title>
+                <description>&lt;h3&gt;javascript简介&lt;/h3&gt;
 
-&lt;!--more--&gt;
-&lt;p&gt;### 1.JAVA抽象类:
-抽象类除了不能实例化以外，跟普通类没有任何区别。在《JAVA编程思想》一书中，将抽象类定义为“包含抽象方法的类”。&lt;/p&gt;
+&lt;p&gt;JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，
+广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。在1995年时，由Netscape公司
+的Brendan Eich，在网景导航者浏览器上首次设计实现而成。因为Netscape与Sun合作，Netscape管理层希望它外观看起来像Java，因此取名为JavaScript。
+但实际上它的语法风格与Self及Scheme较为接近。为了取得技术优势，微软推出了JScript，CEnvi推出ScriptEase，与JavaScript同样可在浏览器上运行。
+为了统一规格，因为JavaScript兼容于ECMA标准，因此也称为ECMAScript。&lt;/p&gt;
 
-&lt;h3 id=&quot;java&quot;&gt;2.JAVA接口:&lt;/h3&gt;
-&lt;p&gt;接口，英文称作interface，是对事物最高层次的抽象，用来供别人调用的方法或者函数。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;基本特点&lt;/p&gt;
 
-&lt;h2 id=&quot;java-1&quot;&gt;JAVA抽象类和接口的主要区别如下图:&lt;/h2&gt;
+    &lt;p&gt;JavaScript是一种属于网络的脚本语言,已经被广泛用于Web应用开发,常用来为网页添加各式各样的动态功能,为用户提供更流畅美观的浏览效果。通常JavaScript脚本是通过嵌入在HTML中来实现自身的功能的。
+  1.是一种解释性脚本语言（代码不进行预编译）。
+  2.主要用来向HTML（标准通用标记语言下的一个应用）页面添加交互行为。
+  3.可以直接嵌入HTML页面，但写成单独的js文件有利于结构和行为的分离。
+  4.跨平台特性，在绝大多数浏览器的支持下，可以在多种平台下运行（如Windows、Linux、Mac、Android、iOS等）。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;日常用途&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sunxiaobiu.github.io/img/20160221P1.jpg&quot; alt=&quot;cmd-markdown-logo&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;1.嵌入动态文本于HTML页面。
+  2.对浏览器事件做出响应。
+  3.读写HTML元素。
+  4.在数据被提交到服务器之前验证数据。
+  5.检测访客的浏览器信息。
+  6.控制cookies，包括创建和修改等。
+  7.基于Node.js技术进行服务器端编程。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h3 id=&quot;section&quot;&gt;什么时候使用抽象类和接口&lt;/h3&gt;
-&lt;p&gt;首先，我们要先弄清楚抽象类和接口之间的关系：
-&amp;gt; * 类对事物的抽象，定义了事物的属性和行为。
-&amp;gt; * 抽象类是不完全的类，具有抽象方法。
-&amp;gt; * 接口则比类的抽象层次更高。&lt;/p&gt;
+&lt;h3 id=&quot;javascript-1&quot;&gt;javascript语法&lt;/h3&gt;
 
-&lt;p&gt;所以，我们可以这样理解它们之间的关系：&lt;strong&gt;类是对事物的抽象，抽象类是对类的抽象，接口是对抽象类的抽象&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;运算符：有7类运算符，分别为：
+    &lt;ul&gt;
+      &lt;li&gt;赋值运算符（=，+=，-=，*=，/=，%=，«=,»=,&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;=,&amp;amp;=);&lt;/li&gt;
+      &lt;li&gt;算术运算符（+, -,*,/,%,++,–);&lt;/li&gt;
+      &lt;li&gt;比较运算符（&amp;gt;,&amp;lt;,&amp;lt;=,&amp;gt;=,=,!=);&lt;/li&gt;
+      &lt;li&gt;逻辑运算符（&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;,&amp;amp;&amp;amp;,!);&lt;/li&gt;
+      &lt;li&gt;条件运算符（?:);&lt;/li&gt;
+      &lt;li&gt;位运算符（&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;, &amp;amp; , « ,»,~,^);&lt;/li&gt;
+      &lt;li&gt;字符串运算符（+).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;表达式：有4类表达式，分别为：
+    &lt;ul&gt;
+      &lt;li&gt;赋值表达式，&lt;/li&gt;
+      &lt;li&gt;算术表达式，&lt;/li&gt;
+      &lt;li&gt;布尔表达式，&lt;/li&gt;
+      &lt;li&gt;字符串表达式。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;变量：变量有以下类型：
+    &lt;ul&gt;
+      &lt;li&gt;object(对象）,&lt;/li&gt;
+      &lt;li&gt;array(数组）,&lt;/li&gt;
+      &lt;li&gt;number(数），&lt;/li&gt;
+      &lt;li&gt;boolean(布尔值）,&lt;/li&gt;
+      &lt;li&gt;null(空值)，&lt;/li&gt;
+      &lt;li&gt;undefined(没有定义和赋值的变量），&lt;/li&gt;
+      &lt;li&gt;string(字符串）。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;在设计类的时候，首先考虑用接口抽象出类的特性，当你发现某些方法可以复用的时候，可以使用抽象类来复用代码。简单说，&lt;strong&gt;接口用于抽象事物的特性，抽象类用于代码复用。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;变量定义用var关键字。&lt;/p&gt;
+
+&lt;h3 id=&quot;javascript-2&quot;&gt;javascript使用方法&lt;/h3&gt;
+
+&lt;p&gt;通过&lt;script&gt;&lt;/script&gt;可以装饰js脚本嵌入到网页中，如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &amp;lt;script language=&quot;javascript&quot;&amp;gt;
+ document.write(&quot;这是JavaScript&quot;);
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
-                <link>/java/2016/02/21/JAVA-%E6%8A%BD%E8%B1%A1%E7%B1%BBVS%E6%8E%A5%E5%8F%A3</link>
-                <guid>/java/2016/02/21/JAVA：抽象类VS接口</guid>
-                <pubDate>Sun, 21 Feb 2016 00:00:00 +0800</pubDate>
+                <link>/js/2016/02/11/JavaScript</link>
+                <guid>/js/2016/02/11/JavaScript</guid>
+                <pubDate>Thu, 11 Feb 2016 00:00:00 +0800</pubDate>
         </item>
 
         <item>
                 <title>Happy New Year</title>
-                <description>&lt;div style=&quot;margin:20px 0 0 20px&quot;&gt;
+                <description>&lt;h2&gt;cookie机制&lt;/h2&gt;
+&lt;p&gt;Cookies是服务器在本地机器上存储的小段文本并随每一个请求发送至同一个服务器。IETF RFC 2965 HTTP State Management Mechanism 是通用cookie规范。网络服务器用HTTP头向客户端发送cookies，在客户终端，浏览器解析这些cookies并将它们保存为一个本地文件，它会自动将同一服务器的任何请求缚上这些cookies 。&lt;/p&gt;
 
+&lt;p&gt;具体来说cookie机制采用的是在客户端保持状态的方案。它是在用户端的会话状态的存贮机制，他需要用户打开客户端的cookie支持。cookie的作用就是为了解决HTTP协议无状态的缺陷所作的努力。
+正统的cookie分发是通过扩展HTTP协议来实现的，服务器通过在HTTP的响应头中加上一行特殊的指示以提示浏览器按照指示生成相应的cookie。然而纯粹的客户端脚本如JavaScript也可以生成cookie。而cookie的使用是由浏览器按照一定的原则在后台自动发送给服务器的。浏览器检查所有存储的cookie，如果某个cookie所声明的作用范围大于等于将要请求的资源所在的位置，则把该cookie附在请求资源的HTTP请求头上发送给服务器。&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;cookie的内容主要包括：名字，值，过期时间，路径和域。路径与域一起构成cookie的作用范围。若不设置过期时间，则表示这个cookie的生命期为浏览器会话期间，关闭浏览器窗口，cookie就消失。这种生命期为浏览器会话期的cookie被称为会话cookie。会话cookie一般不存储在硬盘上而是保存在内存里，当然这种行为并不是规范规定的。若设置了过期时间，浏览器就会把cookie保存到硬盘上，关闭后再次打开浏览器，这些cookie仍然有效直到超过设定的过期时间。存储在硬盘上的cookie可以在不同的浏览器进程间共享，比如两个IE窗口。而对于保存在内存里的cookie，不同的浏览器有不同的处理方式。&lt;/p&gt;
 
-&lt;input type=&quot;button&quot; value=&quot;test&quot; /&gt;
-&lt;/div&gt;
+&lt;p&gt;而session机制采用的是一种在服务器端保持状态的解决方案。同时我们也看到，由于采用服务器端保持状态的方案在客户端也需要保存一个标识，所以session机制可能需要借助于cookie机制来达到保存标识的目的。而session提供了方便管理全局变量的方式 。&lt;/p&gt;
 
+&lt;p&gt;session是针对每一个用户的，变量的值保存在服务器上，用一个sessionID来区分是哪个用户session变量,这个值是通过用户的浏览器在访问的时候返回给服务器，当客户禁用cookie时，这个值也可能设置为由get来返回给服务器。&lt;/p&gt;
+
+&lt;p&gt;就安全性来说：当你访问一个使用session 的站点，同时在自己机子上建立一个cookie，建议在服务器端的session机制更安全些，因为它不会任意读取客户存储的信息。&lt;/p&gt;
+
+&lt;h2&gt;session机制&lt;/h2&gt;
+&lt;p&gt;session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。&lt;/p&gt;
+
+&lt;p&gt;当程序需要为某个客户端的请求创建一个session时，服务器首先检查这个客户端的请求里是否已包含了一个session标识（称为session id），如果已包含则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来使用（检索不到，会新建一个），如果客户端请求不包含session id，则为此客户端创建一个session并且生成一个与此session相关联的session id，session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个session id将被在本次响应中返回给客户端保存。&lt;/p&gt;
+
+&lt;p&gt;保存这个session id的方式可以采用cookie，这样在交互过程中浏览器可以自动的按照规则把这个标识发挥给服务器。一般这个cookie的名字都是类似于SEEESIONID。但cookie可以被人为的禁止，则必须有其他机制以便在cookie被禁止时仍然能够把session id传递回服务器。
+经常被使用的一种技术叫做URL重写，就是把session id直接附加在URL路径的后面。还有一种技术叫做表单隐藏字段。就是服务器会自动修改表单，添加一个隐藏字段，以便在表单提交时能够把session id传递回服务器。&lt;/p&gt;
+
+&lt;p&gt;Cookie与Session都能够进行会话跟踪，但是完成的原理不太一样。普通状况下二者均能够满足需求，但有时分不能够运用Cookie，有时分不能够运用Session。下面经过比拟阐明二者的特性以及适用的场所。&lt;/p&gt;
+
+&lt;h4&gt;1 .存取方式的不同&lt;/h4&gt;
+
+&lt;p&gt;Cookie中只能保管ASCII字符串，假如需求存取Unicode字符或者二进制数据，需求先进行编码。Cookie中也不能直接存取Java对象。若要存储略微复杂的信息，运用Cookie是比拟艰难的。
+而Session中能够存取任何类型的数据，包括而不限于String、Integer、List、Map等。Session中也能够直接保管Java Bean乃至任何Java类，对象等，运用起来十分便当。能够把Session看做是一个Java容器类。&lt;/p&gt;
+
+&lt;h4&gt;2 .隐私策略的不同&lt;/h4&gt;
+
+&lt;p&gt;Cookie存储在客户端阅读器中，对客户端是可见的，客户端的一些程序可能会窥探、复制以至修正Cookie中的内容。而Session存储在服务器上，对客户端是透明的，不存在敏感信息泄露的风险。
+假如选用Cookie，比较好的方法是，敏感的信息如账号密码等尽量不要写到Cookie中。最好是像Google、Baidu那样将Cookie信息加密，提交到服务器后再进行解密，保证Cookie中的信息只要本人能读得懂。而假如选择Session就省事多了，反正是放在服务器上，Session里任何隐私都能够有效的保护。&lt;/p&gt;
+
+&lt;h4&gt;3.有效期上的不同&lt;/h4&gt;
+
+&lt;p&gt;使用过Google的人都晓得，假如登录过Google，则Google的登录信息长期有效。用户不用每次访问都重新登录，Google会持久地记载该用户的登录信息。要到达这种效果，运用Cookie会是比较好的选择。只需要设置Cookie的过期时间属性为一个很大很大的数字。&lt;/p&gt;
+
+&lt;p&gt;由于Session依赖于名为JSESSIONID的Cookie，而Cookie JSESSIONID的过期时间默许为–1，只需关闭了阅读器该Session就会失效，因而Session不能完成信息永世有效的效果。运用URL地址重写也不能完成。而且假如设置Session的超时时间过长，服务器累计的Session就会越多，越容易招致内存溢出。&lt;/p&gt;
+
+&lt;h4&gt;4.服务器压力的不同&lt;/h4&gt;
+
+&lt;p&gt;Session是保管在服务器端的，每个用户都会产生一个Session。假如并发访问的用户十分多，会产生十分多的Session，耗费大量的内存。因而像Google、Baidu、Sina这样并发访问量极高的网站，是不太可能运用Session来追踪客户会话的。&lt;/p&gt;
+
+&lt;p&gt;而Cookie保管在客户端，不占用服务器资源。假如并发阅读的用户十分多，Cookie是很好的选择。关于Google、Baidu、Sina来说，Cookie或许是唯一的选择。&lt;/p&gt;
+
+&lt;h4&gt;5 .浏览器支持的不同&lt;/h4&gt;
+
+&lt;p&gt;Cookie是需要客户端浏览器支持的。假如客户端禁用了Cookie，或者不支持Cookie，则会话跟踪会失效。关于WAP上的应用，常规的Cookie就派不上用场了。&lt;/p&gt;
+
+&lt;p&gt;假如客户端浏览器不支持Cookie，需要运用Session以及URL地址重写。需要注意的是一切的用到Session程序的URL都要进行URL地址重写，否则Session会话跟踪还会失效。关于WAP应用来说，Session+URL地址重写或许是它唯一的选择。&lt;/p&gt;
+
+&lt;p&gt;假如客户端支持Cookie，则Cookie既能够设为本浏览器窗口以及子窗口内有效（把过期时间设为–1），也能够设为一切阅读器窗口内有效（把过期时间设为某个大于0的整数）。但Session只能在本阅读器窗口以及其子窗口内有效。假如两个浏览器窗口互不相干，它们将运用两个不同的Session。（IE8下不同窗口Session相干）&lt;/p&gt;
+
+&lt;h4&gt;6.跨域支持上的不同&lt;/h4&gt;
+
+&lt;p&gt;Cookie支持跨域名访问，例如将domain属性设置为“.biaodianfu.com”，则以“.biaodianfu.com”为后缀的一切域名均能够访问该Cookie。跨域名Cookie如今被普遍用在网络中，例如Google、Baidu、Sina等。而Session则不会支持跨域名访问。Session仅在他所在的域名内有效。
+仅运用Cookie或者仅运用Session可能完成不了理想的效果。这时应该尝试一下同时运用Cookie与Session。Cookie与Session的搭配运用在实践项目中会完成很多意想不到的效果。&lt;/p&gt;
 </description>
-                <link>/2016/02/06/Happy-New-Year</link>
-                <guid>/2016/02/06/Happy-New-Year</guid>
-                <pubDate>Sat, 06 Feb 2016 00:00:00 +0800</pubDate>
+                <link>/2016/01/15/session-cookies</link>
+                <guid>/2016/01/15/session-cookies</guid>
+                <pubDate>Fri, 15 Jan 2016 00:00:00 +0800</pubDate>
         </item>
 
         <item>
@@ -668,12 +773,11 @@ C11 C10 C9 C8 C7 C6 C5 C4  B15 B14 B13 B12 C3 C2 C1 C0  B11 B10 B9 B8 B7 B6 B5 B
                 <title>PHP排序方式总结</title>
                 <description>&lt;p&gt;最常用的四种排序方式:冒泡排序、选择排序、插入排序、快速排序的封装过程&lt;/p&gt;
 &lt;h3&gt;一、冒泡排序&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;
-//定义一个数组
+&lt;p&gt;//定义一个数组
       $array=array(1,43,54,62,21,66,32,78,36,76,39);
       //打印出数组用于和排序后对比
       print_r($array);
-      echo &quot;&lt;br /&gt;&quot;;
+      echo “&lt;br /&gt;”;
       //封装好一个方法,便于调取
       function bubbleSort($arr)
       {
@@ -696,15 +800,12 @@ C11 C10 C9 C8 C7 C6 C5 C4  B15 B14 B13 B12 C3 C2 C1 C0  B11 B10 B9 B8 B7 B6 B5 B
       }
       return  $arr;
       }
-      print_r(bubbleSort($array));
-      &lt;/code&gt;&lt;/p&gt;
+      print_r(bubbleSort($array));&lt;/p&gt;
 &lt;h3&gt;二、选择排序&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;
-$array=array(32,43,54,62,21,66,32,78,36,76,39);
+&lt;p&gt;$array=array(32,43,54,62,21,66,32,78,36,76,39);
 print_r($array);
-echo &quot;&lt;br /&gt;&quot;;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;function selectSort($arr){
+echo “&lt;br /&gt;”;
+function selectSort($arr){
 //双重循环完成，外层控制轮数，内层控制比较次数
      $len=count($arr);
       for($i=0;$i&amp;lt;$len-1;$i++){
@@ -727,18 +828,17 @@ echo &quot;&lt;br /&gt;&quot;;&lt;/code&gt;&lt;/p&gt;
 //返回最终结果
 return $arr;
 }
-print_r(selectSort($array));
-&amp;lt;/code&amp;gt;&lt;/p&gt;
+print_r(selectSort($array));&lt;/p&gt;
 &lt;h3&gt;三、插入排序&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;
-$array=array(32,43,54,62,21,66,32,78,36,76,39);
+
+&lt;p&gt;$array=array(32,43,54,62,21,66,32,78,36,76,39);
 print_r($array);
-echo &quot;&lt;br /&gt;&quot;;
+echo “&lt;br /&gt;”;
 function insertSort($arr) {
     $len=count($arr);
       for($i=1; $i&amp;lt;$len; $i++){         $tmp =$arr[$i];
          //内层循环控制，比较并插入
-         for($j=$i-1;$j&amp;gt;=0;$j--) {
+         for($j=$i-1;$j&amp;gt;=0;$j–) {
          if($tmp &amp;lt; $arr[$j]) {
                 //发现插入的元素要小，交换位置，将后边的元素与前面的元素互换
                 $arr[$j+1] = $arr[$j];
@@ -751,18 +851,17 @@ function insertSort($arr) {
       }
  return $arr;
 }
-print_r(insertSort($array));
-&lt;/code&gt;&lt;/p&gt;
+print_r(insertSort($array));&lt;/p&gt;
 &lt;h3&gt;四、快速排序&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;
-$array=array(32,43,54,62,21,66,32,78,36,76,39);
+
+&lt;p&gt;$array=array(32,43,54,62,21,66,32,78,36,76,39);
 print_r($array);
-echo &quot;&lt;br /&gt;&quot;;
+echo “&lt;br /&gt;”;
 function insertSort($arr) {
     $len=count($arr);
       for($i=1; $i&amp;lt;$len; $i++){         $tmp =$arr[$i];
          //内层循环控制，比较并插入
-         for($j=$i-1;$j&amp;gt;=0;$j--) {
+         for($j=$i-1;$j&amp;gt;=0;$j–) {
          if($tmp &amp;lt; $arr[$j]) {
                 //发现插入的元素要小，交换位置，将后边的元素与前面的元素互换
                 $arr[$j+1] = $arr[$j];
@@ -775,8 +874,7 @@ function insertSort($arr) {
       }
  return $arr;
 }
-print_r(insertSort($array));
-&lt;/code&gt;&lt;/p&gt;
+print_r(insertSort($array));&lt;/p&gt;
 </description>
                 <link>/program/2015/09/22/PHP%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F</link>
                 <guid>/program/2015/09/22/PHP常见的排序方式</guid>
