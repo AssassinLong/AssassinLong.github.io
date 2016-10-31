@@ -1,6 +1,6 @@
 # Site settings
-title: sunxiaobiu技术不宅
-email: sunxiaobiu@gmail.com
+title: 程序化&人生
+email: 1099587627@qq.com
 description: Source of me.
 localurl: "" # the subpath of your site, e.g. /blog/
 url: http://sunxiaobiu.github.io # the base hostname & protocol for your site
@@ -14,7 +14,7 @@ github_username: sunxiaobiu
 permalink: /:categories/:year/:month/:day/:title
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-highlighter: pygments
+# highlighter: pygments
 
 assets: http://sunxiaobiu.github.io/assets
 baseurl: http://sunxiaobiu.github.io
@@ -23,7 +23,7 @@ baseurl: http://sunxiaobiu.github.io
 paginate: 10
 
 # Markdown Processors
-kramdown: redcarpet
+Markdown: redcarpet
 redcarpet:
   extensions:
     - hard_wrap
