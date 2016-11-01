@@ -4,7 +4,7 @@
  <title>程序化&amp;人生</title>
  <link href="" rel="self"/>
  <link href=""/>
- <updated>2016-11-01T07:58:44+08:00</updated>
+ <updated>2016-11-01T08:09:49+08:00</updated>
  <id></id>
  <author>
    <name>assassinlong</name>
@@ -98,47 +98,93 @@
  </entry>
  
  <entry>
-   <title>那些年踩过的坑——持续更新中...</title>
-   <link href="/java/2016/02/22/%E9%82%A3%E4%BA%9B%E5%B9%B4%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91"/>
+   <title>javaScript面向对象编程</title>
+   <link href="/javascript/2016/02/22/javaScript%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B"/>
    <updated>2016-02-22T00:00:00+08:00</updated>
-   <id>/java/2016/02/22/那些年踩过的坑</id>
-   <content type="html">&lt;p&gt;在JAVA web开发过程中，遇到的各类问题总结，包括JAVA语言，Spring，Spring mvc，ibatis框架等使用过程中遇到的一些常见的，或者不常见的问题。分条列举，附有问题详情以及解决方案。&lt;/p&gt;
+   <id>/javascript/2016/02/22/javaScript面向对象编程</id>
+   <content type="html">&lt;p&gt;JavaScript的所有数据都可以看成对象，那是不是我们已经在使用面向对象编程了呢？&lt;/p&gt;
+&lt;p&gt;当然不是。如果我们只使用&lt;code&gt;Number&lt;/code&gt;、&lt;code&gt;Array&lt;/code&gt;、&lt;code&gt;string&lt;/code&gt;以及基本的&lt;code&gt;{...}&lt;/code&gt;定义的对象，还无法发挥出面向对象编程的威力。&lt;/p&gt;
+&lt;p&gt;JavaScript的面向对象编程和大多数其他语言如Java、C#的面向对象编程都不太一样。如果你熟悉Java或C#，很好，你一定明白面向对象的两个基本概念：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;类：类是对象的类型模板，例如，定义&lt;code&gt;Student&lt;/code&gt;类来表示学生，类本身是一种类型，&lt;code&gt;Student&lt;/code&gt;表示学生类型，但不表示任何具体的某个学生；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实例：实例是根据类创建的对象，例如，根据&lt;code&gt;Student&lt;/code&gt;类可以创建出&lt;code&gt;xiaoming&lt;/code&gt;、&lt;code&gt;xiaohong&lt;/code&gt;、&lt;code&gt;xiaojun&lt;/code&gt;等多个实例，每个实例表示一个具体的学生，他们全都属于&lt;code&gt;Student&lt;/code&gt;类型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以，类和实例是大多数面向对象编程语言的基本概念。&lt;/p&gt;
+&lt;p&gt;不过，在JavaScript中，这个概念需要改一改。JavaScript不区分类和实例的概念，而是通过原型（prototype）来实现面向对象编程。&lt;/p&gt;
+&lt;p&gt;原型是指当我们想要创建&lt;code&gt;xiaoming&lt;/code&gt;这个具体的学生时，我们并没有一个&lt;code&gt;Student&lt;/code&gt;类型可用。那怎么办？恰好有这么一个现成的对象：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var robot = {
+    name: &amp;#39;Robot&amp;#39;,
+    height: 1.6,
+    run: function () {
+        console.log(this.name + &amp;#39; is running...&amp;#39;);
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们看这个&lt;code&gt;robot&lt;/code&gt;对象有名字，有身高，还会跑，有点像小明，干脆就根据它来“创建”小明得了！&lt;/p&gt;
+&lt;p&gt;于是我们把它改名为&lt;code&gt;Student&lt;/code&gt;，然后创建出&lt;code&gt;xiaoming&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var Student = {
+    name: &amp;#39;Robot&amp;#39;,
+    height: 1.2,
+    run: function () {
+        console.log(this.name + &amp;#39; is running...&amp;#39;);
+    }
+};
 
-&lt;!--more--&gt;
+var xiaoming = {
+    name: &amp;#39;小明&amp;#39;
+};
 
-&lt;h3 id=&quot;javaboolengetsetiseditable&quot;&gt;1.java定义的boolen数据类型的get，set函数（定义为isEditable）：&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEditable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//是否可以编辑&lt;/span&gt;
+xiaoming.__proto__ = Student;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意最后一行代码把&lt;code&gt;xiaoming&lt;/code&gt;的原型指向了对象&lt;code&gt;Student&lt;/code&gt;，看上去&lt;code&gt;xiaoming&lt;/code&gt;仿佛是从&lt;code&gt;Student&lt;/code&gt;继承下来的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xiaoming.name; // &amp;#39;小明&amp;#39;
+xiaoming.run(); // 小明 is running...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;xiaoming&lt;/code&gt;有自己的&lt;code&gt;name&lt;/code&gt;属性，但并没有定义&lt;code&gt;run()&lt;/code&gt;方法。不过，由于小明是从&lt;code&gt;Student&lt;/code&gt;继承而来，只要&lt;code&gt;Student&lt;/code&gt;有&lt;code&gt;run()&lt;/code&gt;方法，&lt;code&gt;xiaoming&lt;/code&gt;也可以调用：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/files/attachments/001435287613668a73ab76ccc85411282c1b1370be41636000/l&quot; alt=&quot;xiaoming-prototype&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;JavaScript的原型链和Java的Class区别就在，它没有“Class”的概念，所有对象都是实例，所谓继承关系不过是把一个对象的原型指向另一个对象而已。&lt;/p&gt;
+&lt;p&gt;如果你把&lt;code&gt;xiaoming&lt;/code&gt;的原型指向其他对象：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var Bird = {
+    fly: function () {
+        console.log(this.name + &amp;#39; is flying...&amp;#39;);
+    }
+};
 
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isEditable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEditable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+xiaoming.__proto__ = Bird;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;现在&lt;code&gt;xiaoming&lt;/code&gt;已经无法&lt;code&gt;run()&lt;/code&gt;了，他已经变成了一只鸟：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xiaoming.fly(); // 小明 is flying...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在JavaScrip代码运行时期，你可以把&lt;code&gt;xiaoming&lt;/code&gt;从&lt;code&gt;Student&lt;/code&gt;变成&lt;code&gt;Bird&lt;/code&gt;，或者变成任何对象。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;请注意&lt;/em&gt;，上述代码仅用于演示目的。在编写JavaScript代码时，不要直接用&lt;code&gt;obj.__proto__&lt;/code&gt;去改变一个对象的原型，并且，低版本的IE也无法使用&lt;code&gt;__proto__&lt;/code&gt;。&lt;code&gt;Object.create()&lt;/code&gt;方法可以传入一个原型对象，并创建一个基于该原型的新对象，但是新对象什么属性都没有，因此，我们可以编写一个函数来创建&lt;code&gt;xiaoming&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 原型对象:
+var Student = {
+    name: &amp;#39;Robot&amp;#39;,
+    height: 1.2,
+    run: function () {
+        console.log(this.name + &amp;#39; is running...&amp;#39;);
+    }
+};
 
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setEditable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEditable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isEditable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEditable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+function createStudent(name) {
+    // 基于Student原型创建一个新对象:
+    var s = Object.create(Student);
+    // 初始化新对象:
+    s.name = name;
+    return s;
+}
+
+var xiaoming = createStudent(&amp;#39;小明&amp;#39;);
+xiaoming.run(); // 小明 is running...
+xiaoming.__proto__ === Student; // true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这是创建原型继承的一种方法，JavaScript还有其他方法来创建对象，我们在后面会一一讲到。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;/div&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;现象&lt;/strong&gt;：IDEA自动生成的boolean类型与我们的预期有一定的差异，属性isEditable的getter访问器是isEditable(), 而不是getIsEditable()；setter访问器是setEditable(),而不是setIsEditable()。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;原因&lt;/strong&gt;：由于属性名isEditable的is没有去掉， 以致java bean类违背了java bean 的命名规范。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;JavaBean 的属性名和getter/setter存取方法规则小结：&lt;/code&gt;
-&amp;gt; * 对于常规属性propertyName ， 属性名称的第一个单词小写且字母个数大于1，第二个单词首字母大写。对应的getter/setter方法名为：get/set + PropertyName()， 即属性名称的第一个单词的首字母改成大写，前面再加上”get”或”set”前缀。
-&amp;gt; * 对于布尔类型propertyName,可以按常规属性的规则编写getter/setter方法外， getter方法可以使用 is + PropertyName()的形式来代替。
-&amp;gt; * 对于非常规属性pName，属性名称的第一个单词小写且字母个数等于1，第二个单词首字母大写,分一下三种情况：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;1.&lt;/code&gt;对应的getter/setter方法名可以为：get/set + PName()， 即第一个单词的首字母为改为大写，前面再加上”get”或”set”前缀。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;2.&lt;/code&gt;对应的getter/setter方法名也可以为：get/set + pName()， 即属性名称不变，第一个单词的首字母任然为小写，前面再加上”get”或”set”前缀。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;3.&lt;/code&gt;对于非常规属性PName， 属性名称的前两个字母都是大写  。即连续两个大写字母开头的属性名。对应的getter/setter方法名为： get/set+PName()&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;4.&lt;/code&gt;对于非常规属性&lt;property&gt;或&lt;propertyname&gt;， 属性名称第一个字母大写 。网上有帖子说这是不符合JSR规范的，会报 &quot;属性找不到&quot; 的错误。&lt;/propertyname&gt;&lt;/property&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;：
-&lt;strong&gt;1. javabean属性命名尽量使用常规的驼峰式命名规则&lt;/strong&gt;
-&lt;strong&gt;2. 属性名第一个单词尽量避免使用一个字母：如eBook， eMail&lt;/strong&gt;
-&lt;strong&gt;3. boolean属性名避免使用 “is” 开头的名称&lt;/strong&gt;
-&lt;strong&gt;4. 随着jdk， eclipse， spring 等软件版本的不断提高， 底版本的出现的问题可能在高版本中解决了， 低版本原来正常的代码可能在高版本环境下不再支持。&lt;/strong&gt;&lt;/p&gt;
 </content>
  </entry>
  
