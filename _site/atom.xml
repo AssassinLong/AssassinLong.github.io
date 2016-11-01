@@ -4,7 +4,7 @@
  <title>程序化&amp;人生</title>
  <link href="" rel="self"/>
  <link href=""/>
- <updated>2016-11-01T08:17:23+08:00</updated>
+ <updated>2016-11-01T13:56:09+08:00</updated>
  <id></id>
  <author>
    <name>assassinlong</name>
@@ -289,6 +289,222 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
 &lt;h3 id=&quot;jekyll-1&quot;&gt;为什么要是用 Jekyll&lt;/h3&gt;
 
 &lt;p&gt;使用了 Jekyll 你会发现如果你想使用多台电脑发博客都很方便，只要把远端 github 仓库里的博客 clone 下来，写文章后再提交就可以了&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PHP魔术方法和魔术常量介绍及使用</title>
+   <link href="/php/2016/03/14/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"/>
+   <updated>2016-03-14T00:00:00+08:00</updated>
+   <id>/php/2016/03/14/PHP魔术方法</id>
+   <content type="html">&lt;h2 id=&quot;mabov&quot;&gt;魔术方法(&lt;span class=&quot;wp_keywordlink&quot;&gt;&lt;a href=&quot;http://www.codeceo.com/article/magic-javascript-ui.html&quot; title=&quot;Magic&quot; target=&quot;_blank&quot;&gt;Magic&lt;/a&gt;&lt;/span&gt; methods)&lt;/h2&gt;
+&lt;p&gt;PHP中把以两个下划线&lt;code&gt;__&lt;/code&gt;开头的方法称为魔术方法，这些方法在PHP中充当了举足轻重的作用。 魔术方法包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;__construct()&lt;/code&gt;，类的构造函数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__destruct()&lt;/code&gt;，类的析构函数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__call()&lt;/code&gt;，在对象中调用一个不可访问方法时调用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__callStatic()&lt;/code&gt;，用静态方式中调用一个不可访问方法时调用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__get()&lt;/code&gt;，获得一个类的成员变量时调用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__set()&lt;/code&gt;，设置一个类的成员变量时调用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__isset()&lt;/code&gt;，当对不可访问属性调用&lt;code&gt;isset()&lt;/code&gt;或&lt;code&gt;empty()&lt;/code&gt;时调用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__unset()&lt;/code&gt;，当对不可访问属性调用&lt;code&gt;unset()&lt;/code&gt;时被调用。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__sleep()&lt;/code&gt;，执行&lt;code&gt;serialize()&lt;/code&gt;时，先会调用这个函数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__wakeup()&lt;/code&gt;，执行&lt;code&gt;unserialize()&lt;/code&gt;时，先会调用这个函数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__toString()&lt;/code&gt;，类被当成字符串时的回应方法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__invoke()&lt;/code&gt;，调用函数的方式调用一个对象时的回应方法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__set_state()&lt;/code&gt;，调用&lt;code&gt;var_export()&lt;/code&gt;导出类时，此静态方法会被调用。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__clone()&lt;/code&gt;，当对象复制完成时调用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;tezyp&quot;&gt;&lt;code&gt;__construct()&lt;/code&gt;和&lt;code&gt;__destruct()&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;构造函数和析构函数应该不陌生，他们在对象创建和消亡时被调用。例如我们需要打开一个文件，在对象创建时打开，对象消亡时关闭&lt;/p&gt;
+&lt;pre class=&quot;brush: php; gutter: false; first-line: 1 hljs xml&quot;&gt;&lt;span class=&quot;php&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;FileRead&lt;/span&gt;
+&lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;protected&lt;/span&gt; $handle = &lt;span class=&quot;hljs-keyword&quot;&gt;NULL&lt;/span&gt;;
+
+    &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;handle = fopen(...);
+    }
+
+    &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__destruct&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{
+        fclose(&lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;handle);
+    }
+}
+&lt;span class=&quot;hljs-meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;
+&lt;p&gt;这两个方法在继承时可以扩展，例如：&lt;/p&gt;
+&lt;pre class=&quot;brush: php; gutter: false; first-line: 1 hljs xml&quot;&gt;&lt;span class=&quot;php&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;TmpFileRead&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;FileRead&lt;/span&gt;
+&lt;/span&gt;{
+    &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;parent&lt;/span&gt;::__construct();
+    }
+
+    &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__destruct&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;parent&lt;/span&gt;::__destruct();
+    }
+}
+&lt;span class=&quot;hljs-meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;ozasa&quot;&gt;&lt;code&gt;__call()&lt;/code&gt;和&lt;code&gt;__callStatic()&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;在对象中调用一个不可访问方法时会调用这两个方法，后者为静态方法。这两个方法我们在可变方法（Variable functions）调用中可能会用到。&lt;/p&gt;
+&lt;pre class=&quot;brush: php; gutter: false; first-line: 1 hljs xml&quot;&gt;&lt;span class=&quot;php&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;MethodTest&lt;/span&gt;
+&lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__call&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;($name, $arguments)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&quot;Calling object method &#39;$name&#39; &quot;&lt;/span&gt;. implode(&lt;span class=&quot;hljs-string&quot;&gt;&#39;, &#39;&lt;/span&gt;, $arguments). &lt;span class=&quot;hljs-string&quot;&gt;&quot;\n&quot;&lt;/span&gt;;
+    }
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__callStatic&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;($name, $arguments)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&quot;Calling static method &#39;$name&#39; &quot;&lt;/span&gt;. implode(&lt;span class=&quot;hljs-string&quot;&gt;&#39;, &#39;&lt;/span&gt;, $arguments). &lt;span class=&quot;hljs-string&quot;&gt;&quot;\n&quot;&lt;/span&gt;;
+    }
+}
+
+$obj = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; MethodTest;
+$obj-&amp;gt;runTest(&lt;span class=&quot;hljs-string&quot;&gt;&#39;in object context&#39;&lt;/span&gt;);
+MethodTest::runTest(&lt;span class=&quot;hljs-string&quot;&gt;&#39;in static context&#39;&lt;/span&gt;);
+&lt;span class=&quot;hljs-meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;ejtvq&quot;&gt;&lt;code&gt;__get()&lt;/code&gt;，&lt;code&gt;__set()&lt;/code&gt;，&lt;code&gt;__isset()&lt;/code&gt;和&lt;code&gt;__unset()&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;当get/set一个类的成员变量时调用这两个函数。例如我们将对象变量保存在另外一个数组中，而不是对象本身的成员变量&lt;/p&gt;
+&lt;pre class=&quot;brush: php; gutter: false; first-line: 1 hljs xml&quot;&gt;&lt;span class=&quot;php&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;MethodTest&lt;/span&gt;
+&lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; $data = &lt;span class=&quot;hljs-keyword&quot;&gt;array&lt;/span&gt;();
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__set&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;($name, $value)&lt;/span&gt;&lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;data[$name] = $value;
+    }
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__get&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;($name)&lt;/span&gt;&lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(array_key_exists($name, &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;data))
+            &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;data[$name];
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;NULL&lt;/span&gt;;
+    }
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__isset&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;($name)&lt;/span&gt;&lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;isset&lt;/span&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;data[$name])
+    }
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;unset&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;($name)&lt;/span&gt;&lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;unset&lt;/span&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;data[$name]);
+    }
+}
+&lt;span class=&quot;hljs-meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;qukds&quot;&gt;&lt;code&gt;__sleep()&lt;/code&gt;和&lt;code&gt;__wakeup()&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;当我们在执行&lt;code&gt;serialize()&lt;/code&gt;和&lt;code&gt;unserialize()&lt;/code&gt;时，会先调用这两个函数。例如我们在序列化一个对象时，这个对象有一个数据库链接，想要在反序列化中恢复链接状态，则可以通过重构这两个函数来实现链接的恢复。例子如下：&lt;/p&gt;
+&lt;pre class=&quot;brush: php; gutter: false; first-line: 1 hljs xml&quot;&gt;&lt;span class=&quot;php&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Connection&lt;/span&gt;
+&lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;protected&lt;/span&gt; $link;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; $server, $username, $password, $db;
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;($server, $username, $password, $db)&lt;/span&gt;
+    &lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;server = $server;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;username = $username;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;password = $password;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;db = $db;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;connect();
+    }
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;
+    &lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;link = mysql_connect(&lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;server, &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;username, &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;password);
+        mysql_select_db(&lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;db, &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;link);
+    }
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__sleep&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;
+    &lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;array&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&#39;server&#39;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&#39;username&#39;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&#39;password&#39;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&#39;db&#39;&lt;/span&gt;);
+    }
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__wakeup&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;
+    &lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;$this&lt;/span&gt;-&amp;gt;connect();
+    }
+}
+&lt;span class=&quot;hljs-meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;vzees&quot;&gt;&lt;code&gt;__toString()&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;对象当成字符串时的回应方法。例如使用&lt;code&gt;echo $obj;&lt;/code&gt;来输出一个对象&lt;/p&gt;
+&lt;pre class=&quot;brush: php; gutter: false; first-line: 1 hljs xml&quot;&gt;&lt;span class=&quot;php&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;hljs-comment&quot;&gt;// Declare a simple class&lt;/span&gt;
+&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;TestClass&lt;/span&gt;
+&lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__toString&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&#39;this is a object&#39;&lt;/span&gt;;
+    }
+}
+
+$class = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; TestClass();
+&lt;span class=&quot;hljs-keyword&quot;&gt;echo&lt;/span&gt; $class;
+&lt;span class=&quot;hljs-meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;
+&lt;p&gt;这个方法只能返回字符串，而且不可以在这个方法中抛出异常，否则会出现致命错误。&lt;/p&gt;
+&lt;h3 id=&quot;jhhyi&quot;&gt;&lt;code&gt;__invoke()&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;调用函数的方式调用一个对象时的回应方法。如下&lt;/p&gt;
+&lt;pre class=&quot;brush: php; gutter: false; first-line: 1 hljs xml&quot;&gt;&lt;span class=&quot;php&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;CallableClass&lt;/span&gt;
+&lt;/span&gt;{
+    &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__invoke&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&#39;this is a object&#39;&lt;/span&gt;;
+    }
+}
+$obj = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; CallableClass;
+var_dump(is_callable($obj));
+&lt;span class=&quot;hljs-meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;lsmir&quot;&gt;&lt;code&gt;__set_state()&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;调用&lt;code&gt;var_export()&lt;/code&gt;导出类时，此静态方法会被调用。&lt;/p&gt;
+&lt;pre class=&quot;brush: php; gutter: false; first-line: 1 hljs xml&quot;&gt;&lt;span class=&quot;php&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;A&lt;/span&gt;
+&lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; $var1;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; $var2;
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__set_state&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;($an_array)&lt;/span&gt; &lt;/span&gt;{
+        $obj = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; A;
+        $obj-&amp;gt;var1 = $an_array[&lt;span class=&quot;hljs-string&quot;&gt;&#39;var1&#39;&lt;/span&gt;];
+        $obj-&amp;gt;var2 = $an_array[&lt;span class=&quot;hljs-string&quot;&gt;&#39;var2&#39;&lt;/span&gt;];
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; $obj;
+    }
+}
+
+$a = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; A;
+$a-&amp;gt;var1 = &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;;
+$a-&amp;gt;var2 = &lt;span class=&quot;hljs-string&quot;&gt;&#39;foo&#39;&lt;/span&gt;;
+var_dump(var_export($a));
+&lt;span class=&quot;hljs-meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;ycrcl&quot;&gt;&lt;code&gt;__clone()&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;当对象复制完成时调用。例如在&lt;span class=&quot;wp_keywordlink&quot;&gt;&lt;a href=&quot;http://www.codeceo.com/article/category/develop/design-patterns&quot; title=&quot;设计模式&quot; target=&quot;_blank&quot;&gt;设计模式&lt;/a&gt;&lt;/span&gt;详解及PHP实现：单例模式一文中提到的单例模式实现方式，利用这个函数来防止对象被克隆。&lt;/p&gt;
+&lt;pre class=&quot;brush: php; gutter: false; first-line: 1 hljs xml&quot;&gt;&lt;span class=&quot;php&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;Singleton&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; $_instance = &lt;span class=&quot;hljs-keyword&quot;&gt;NULL&lt;/span&gt;;
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// 私有构造方法 &lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{}
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (is_null(&lt;span class=&quot;hljs-keyword&quot;&gt;self&lt;/span&gt;::$_instance)) {
+            &lt;span class=&quot;hljs-keyword&quot;&gt;self&lt;/span&gt;::$_instance = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Singleton();
+        }
+        &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;self&lt;/span&gt;::$_instance;
+    }
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// 防止克隆实例&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;__clone&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{
+        &lt;span class=&quot;hljs-keyword&quot;&gt;die&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&#39;Clone is not allowed.&#39;&lt;/span&gt; . E_USER_ERROR);
+    }
+}
+&lt;span class=&quot;hljs-meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;rfjwk&quot;&gt;魔术常量(Magic constants)&lt;/h2&gt;
+&lt;p&gt;PHP中的常量大部分都是不变的，但是有8个常量会随着他们所在代码位置的变化而变化，这8个常量被称为魔术常量。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;__LINE__&lt;/code&gt;，文件中的当前行号&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__FILE__&lt;/code&gt;，文件的完整路径和文件名&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__DIR__&lt;/code&gt;，文件所在的目录&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__FUNCTION__&lt;/code&gt;，函数名称&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__CLASS__&lt;/code&gt;，类的名称&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__TRAIT__&lt;/code&gt;，Trait的名字&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__METHOD__&lt;/code&gt;，类的方法名&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__NAMESPACE__&lt;/code&gt;，当前命名空间的名称&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这些魔术常量常常被用于获得当前环境信息或者记录日志。&lt;span id=&quot;transmark&quot; style=&quot;display: none; width: 0px; height: 0px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 </content>
  </entry>
  
