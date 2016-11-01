@@ -13,7 +13,7 @@
 /sitemap.txt
 /page2/
 
-/java/2016/03/15/JAVA%E4%B8%AD-%E5%BC%BA%E5%BC%95%E7%94%A8-%E8%BD%AF%E5%BC%95%E7%94%A8-%E5%BC%B1%E5%BC%95%E7%94%A8-%E8%99%9A%E5%BC%95%E7%94%A8-%E6%A6%82%E5%BF%B5%E6%AF%94%E8%BE%83
+/jekyll/2016/10/15/github+jekyll
 /javascript/2016/02/22/javaScript%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B
 /js/2016/02/11/JavaScript
 /myslq/2016/01/23/mysql%E7%AE%80%E8%BF%B0
