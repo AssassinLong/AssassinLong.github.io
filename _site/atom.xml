@@ -4,7 +4,7 @@
  <title>程序化&amp;人生</title>
  <link href="" rel="self"/>
  <link href=""/>
- <updated>2016-11-01T16:01:15+08:00</updated>
+ <updated>2016-11-03T19:46:28+08:00</updated>
  <id></id>
  <author>
    <name>assassinlong</name>
@@ -289,6 +289,17 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
 &lt;h3 id=&quot;jekyll-1&quot;&gt;为什么要是用 Jekyll&lt;/h3&gt;
 
 &lt;p&gt;使用了 Jekyll 你会发现如果你想使用多台电脑发博客都很方便，只要把远端 github 仓库里的博客 clone 下来，写文章后再提交就可以了&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>linux介绍及Php环境搭建</title>
+   <link href="/linux/2016/04/11/linux"/>
+   <updated>2016-04-11T00:00:00+08:00</updated>
+   <id>/linux/2016/04/11/linux</id>
+   <content type="html">&lt;p&gt;  Linux操作系统诞生于1991 年10 月5 日（这是第一次正式向外公布时间）。Linux存在着许多不同的Linux版本，但它们都使用了Linux内核。Linux可安装在各种计算机硬件设备中，比如手机、平板电脑、路由器、视频游戏控制台、台式计算机、大型机和超级计算机。&lt;/p&gt;
+
+&lt;p&gt;  严格来讲，Linux这个词本身只表示Linux内核，但实际上人们已经习惯了用Linux来形容整个基于Linux内核，并且使用GNU 工程各种工具和数据库的操作系统。&lt;/p&gt;
 </content>
  </entry>
  

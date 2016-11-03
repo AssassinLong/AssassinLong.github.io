@@ -5,8 +5,8 @@
         <description>程序化&amp;人生 - assassinlong</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 01 Nov 2016 16:01:15 +0800</lastBuildDate>
-        <pubDate>Tue, 01 Nov 2016 16:01:15 +0800</pubDate>
+        <lastBuildDate>Thu, 03 Nov 2016 19:46:28 +0800</lastBuildDate>
+        <pubDate>Thu, 03 Nov 2016 19:46:28 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -288,6 +288,17 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
                 <link>/jekyll/2016/10/15/github+jekyll</link>
                 <guid>/jekyll/2016/10/15/github+jekyll</guid>
                 <pubDate>Sat, 15 Oct 2016 00:00:00 +0800</pubDate>
+        </item>
+
+        <item>
+                <title>linux介绍及Php环境搭建</title>
+                <description>&lt;p&gt;  Linux操作系统诞生于1991 年10 月5 日（这是第一次正式向外公布时间）。Linux存在着许多不同的Linux版本，但它们都使用了Linux内核。Linux可安装在各种计算机硬件设备中，比如手机、平板电脑、路由器、视频游戏控制台、台式计算机、大型机和超级计算机。&lt;/p&gt;
+
+&lt;p&gt;  严格来讲，Linux这个词本身只表示Linux内核，但实际上人们已经习惯了用Linux来形容整个基于Linux内核，并且使用GNU 工程各种工具和数据库的操作系统。&lt;/p&gt;
+</description>
+                <link>/linux/2016/04/11/linux</link>
+                <guid>/linux/2016/04/11/linux</guid>
+                <pubDate>Mon, 11 Apr 2016 00:00:00 +0800</pubDate>
         </item>
 
         <item>
