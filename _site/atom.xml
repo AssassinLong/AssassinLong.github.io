@@ -4,7 +4,7 @@
  <title>程序化&amp;人生</title>
  <link href="" rel="self"/>
  <link href=""/>
- <updated>2016-11-03T19:55:18+08:00</updated>
+ <updated>2016-11-03T19:59:50+08:00</updated>
  <id></id>
  <author>
    <name>assassinlong</name>
@@ -358,7 +358,7 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
 &amp;lt;p&amp;gt;reboot 就是重启，等同于 shutdown –r now&amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;halt 关闭系统，等同于shutdown –h now 和 poweroff&amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;最后总结一下，不管是重启系统还是关闭系统，首先要运行sync命令，把内存中的数据写到磁盘中。关机的命令有 shutdown –h now halt poweroff 和 init 0 , 重启系统的命令有 shutdown –r now reboot init 6.&amp;lt;span id=&quot;transmark&quot; style=&quot;display: none; width: 0px; height: 0px;&quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;最后总结一下，不管是重启系统还是关闭系统，首先要运行sync命令，把内存中的数据写到磁盘中。关机的命令有 shutdown –h now halt poweroff 和 init 0 , 重启系统的命令有 shutdown –r now reboot init 6.&amp;lt;/p&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </content>
