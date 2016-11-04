@@ -13,6 +13,7 @@
 /sitemap.txt
 /page2/
 
+/%E5%BE%AE%E4%BF%A1/2016/11/04/%E5%BE%AE%E4%BF%A1APP%E6%94%AF%E4%BB%98
 /jekyll/2016/10/15/github+jekyll
 /linux/2016/04/11/linux
 /php/2016/03/21/PHP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B

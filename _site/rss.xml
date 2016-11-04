@@ -5,10 +5,19 @@
         <description>程序化&amp;人生 - assassinlong</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Thu, 03 Nov 2016 19:59:50 +0800</lastBuildDate>
-        <pubDate>Thu, 03 Nov 2016 19:59:50 +0800</pubDate>
+        <lastBuildDate>Fri, 04 Nov 2016 20:14:08 +0800</lastBuildDate>
+        <pubDate>Fri, 04 Nov 2016 20:14:08 +0800</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>微信之APP支付</title>
+                <description>
+</description>
+                <link>/%E5%BE%AE%E4%BF%A1/2016/11/04/%E5%BE%AE%E4%BF%A1APP%E6%94%AF%E4%BB%98</link>
+                <guid>/%E5%BE%AE%E4%BF%A1/2016/11/04/微信APP支付</guid>
+                <pubDate>Fri, 04 Nov 2016 00:00:00 +0800</pubDate>
+        </item>
 
         <item>
                 <title>github+jekyll搭建博客</title>
