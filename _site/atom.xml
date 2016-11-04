@@ -4,7 +4,7 @@
  <title>程序化&amp;人生</title>
  <link href="" rel="self"/>
  <link href=""/>
- <updated>2016-11-04T20:17:32+08:00</updated>
+ <updated>2016-11-04T20:41:01+08:00</updated>
  <id></id>
  <author>
    <name>assassinlong</name>
@@ -52,6 +52,268 @@
     &lt;td&gt; AppSecret是APPID对应的接口密码，用于获取接口调用凭证access_token时使用。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;
+&lt;p&gt;商户接入微信支付，调用API必须遵循以下规则:&lt;/p&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;传输方式&lt;/td&gt;
+        &lt;td&gt;为保证交易安全性，采用HTTPS传输&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;提交方式&lt;/td&gt;
+        &lt;td&gt;采用POST方法提交&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;数据格式&lt;/td&gt;
+        &lt;td&gt;提交和返回数据都为XML格式，根节点名为xml&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;字符编码&lt;/td&gt;
+        &lt;td&gt;统一采用UTF-8字符编码&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;签名算法&lt;/td&gt;
+        &lt;td&gt;MD5，后续会兼容SHA1、SHA256、HMAC等。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;签名要求&lt;/td&gt;
+        &lt;td&gt;请求和接收数据均需要校验签名，详细方法请参考安全规范-签名算法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;证书要求&lt;/td&gt;
+        &lt;td&gt;调用申请退款、撤销订单接口需要商户证书&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;判断逻辑&lt;/td&gt;
+        &lt;td&gt;先判断协议字段返回，再判断业务返回，最后判断交易状态&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p class=&quot; mb10&quot;&gt;以下是交互时序图，统一下单API、支付结果通知API和查询订单API等都涉及签名过程，调用都必须在商户服务器端完成。如图8.6所示。&lt;/p&gt;
+&lt;p class=&quot;tc mb10&quot;&gt;
+    &lt;img src=&quot;https://pay.weixin.qq.com/wiki/doc/api/img/chapter8_3_1.png&quot; alt=&quot;APP支付时序图&quot; /&gt;&lt;/p&gt;
+&lt;center class=&quot;mb20&quot;&gt;图8.6 APP支付时序图&lt;/center&gt;
+&lt;p&gt;商户系统和微信支付系统主要交互说明：&lt;/p&gt;
+&lt;p&gt;步骤1：用户在商户APP中选择商品，提交订单，选择微信支付。&lt;/p&gt;
+&lt;p&gt;步骤2：商户后台收到用户支付单，调用微信支付统一下单接口。参见【&lt;a target=&quot;_blank&quot; href=&quot;https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_1&quot;&gt;统一下单API&lt;/a&gt;】。&lt;/p&gt;
+&lt;p&gt;
+    步骤3：统一下单接口返回正常的prepay_id，再按签名规范重新生成签名后，将数据传输给APP。参与签名的字段名为appId，partnerId，prepayId，nonceStr，timeStamp，package。注意：package的值格式为Sign=WXPay
+&lt;/p&gt;
+&lt;p&gt;步骤4：商户APP调起微信支付。api参见本章节【&lt;a target=&quot;_blank&quot; href=&quot;https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5&quot;&gt;app端开发步骤说明&lt;/a&gt;】&lt;/p&gt;
+&lt;p&gt;步骤5：商户后台接收支付通知。api参见【&lt;a target=&quot;_blank&quot; href=&quot;https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_7&quot;&gt;支付结果通知API&lt;/a&gt;】&lt;/p&gt;
+&lt;p&gt;步骤6：商户后台查询支付结果。，api参见【&lt;a target=&quot;_blank&quot; href=&quot;https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_2&quot;&gt;查询订单API&lt;/a&gt;】&lt;/p&gt;
+&lt;h1 id=&quot;具体步骤&quot;&gt;具体步骤&lt;/h1&gt;
+
+&lt;h2 id=&quot;1导入sdk文件&quot;&gt;1.导入SDK文件&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/292326/201601/292326-20160114172939553-995809901.png&quot; alt=&quot;这里写图片描述&quot; title=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2导入相关的系统库及文件不导入会报错&quot;&gt;2.导入相关的系统库及文件。不导入会报错。&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;1.SystemConfiguration.framework
+    2.libz.tbd
+    3.libsqlite3.0.tbd
+    4.CoreTelephony.framework
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;3配置infoplist&quot;&gt;3.配置info.plist&lt;/h2&gt;
+
+&lt;h3 id=&quot;a-schemes-注意item0-这里要修改成商户自己的appid&quot;&gt;a. schemes ，注意，item0 这里要修改成商户自己的APPID&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/292326/201601/292326-20160114173300350-150848608.png&quot; alt=&quot;这里写图片描述&quot; title=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;或者这样修改：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/292326/201601/292326-20160114173752257-1389211762.png&quot; alt=&quot;这里写图片描述&quot; title=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;b白名单&quot;&gt;b.白名单&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/292326/201601/292326-20160114173333382-2057079315.png&quot; alt=&quot;这里写图片描述&quot; title=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;c-安全配置支持http&quot;&gt;c. 安全配置支持Http&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/292326/201601/292326-20160114173401350-1230731678.png&quot; alt=&quot;这里写图片描述&quot; title=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;当然这部分的配置，也可以通过修改XML来实现。 &lt;br /&gt;
+    &lt;img src=&quot;http://images2015.cnblogs.com/blog/292326/201601/292326-20160114173527319-893757257.png&quot; alt=&quot;这里写图片描述&quot; title=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;4修改bitcode&quot;&gt;4.修改bitcode。&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/292326/201601/292326-20160120135711578-309257643.png&quot; alt=&quot;这里写图片描述&quot; title=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;修改：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/292326/201601/292326-20160120135805437-1293881831.png&quot; alt=&quot;这里写图片描述&quot; title=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;5在appdelegate-注册微信&quot;&gt;5.在AppDelegate 注册微信&lt;/h2&gt;
+
+&lt;p&gt;导入#import “WXApiManager.h”&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code class=&quot;hljs objectivec has-numbering&quot;&gt;- (&lt;span class=&quot;hljs-built_in&quot;&gt;BOOL&lt;/span&gt;)application:(&lt;span class=&quot;hljs-built_in&quot;&gt;UIApplication&lt;/span&gt; *)application didFinishLaunchingWithOptions:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSDictionary&lt;/span&gt; *)launchOptions {
+    &lt;span class=&quot;hljs-comment&quot;&gt;//向微信注册wxd930ea5d5a258f4f&lt;/span&gt;
+    [WXApi registerApp:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;wxb4ba3c02aa476ea1&quot;&lt;/span&gt; withDescription:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;demo 2.0&quot;&lt;/span&gt;];
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-literal&quot;&gt;YES&lt;/span&gt;;
+    }
+
+    - (&lt;span class=&quot;hljs-built_in&quot;&gt;BOOL&lt;/span&gt;)application:(&lt;span class=&quot;hljs-built_in&quot;&gt;UIApplication&lt;/span&gt; *)application handleOpenURL:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSURL&lt;/span&gt; *)url {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+    }
+
+    - (&lt;span class=&quot;hljs-built_in&quot;&gt;BOOL&lt;/span&gt;)application:(&lt;span class=&quot;hljs-built_in&quot;&gt;UIApplication&lt;/span&gt; *)application openURL:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSURL&lt;/span&gt; *)url sourceApplication:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; *)sourceApplication annotation:(&lt;span class=&quot;hljs-keyword&quot;&gt;id&lt;/span&gt;)annotation {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+    }&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;li&gt;5&lt;/li&gt;&lt;li&gt;6&lt;/li&gt;&lt;li&gt;7&lt;/li&gt;&lt;li&gt;8&lt;/li&gt;&lt;li&gt;9&lt;/li&gt;&lt;li&gt;10&lt;/li&gt;&lt;li&gt;11&lt;/li&gt;&lt;li&gt;12&lt;/li&gt;&lt;li&gt;13&lt;/li&gt;&lt;li&gt;14&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;6接下来就是发起请求支付了实现上核心代码只有几行&quot;&gt;6.接下来，就是发起请求支付了，实现上核心代码只有几行。&lt;/h3&gt;
+
+&lt;p&gt;这部分代码在demo的WXApiRequestHandler–》jumpToBizPay 里。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code class=&quot;hljs avrasm has-numbering&quot;&gt;
+    //调起微信支付
+    PayReq* req             = [[[PayReq alloc] init]autorelease]&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;
+    req&lt;span class=&quot;hljs-preprocessor&quot;&gt;.partnerId&lt;/span&gt;           = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;partnerid&quot;&lt;/span&gt;]&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;
+    req&lt;span class=&quot;hljs-preprocessor&quot;&gt;.prepayId&lt;/span&gt;            = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;prepayid&quot;&lt;/span&gt;]&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;
+    req&lt;span class=&quot;hljs-preprocessor&quot;&gt;.nonceStr&lt;/span&gt;            = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;noncestr&quot;&lt;/span&gt;]&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;
+    req&lt;span class=&quot;hljs-preprocessor&quot;&gt;.timeStamp&lt;/span&gt;           = stamp&lt;span class=&quot;hljs-preprocessor&quot;&gt;.intValue&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;
+    req&lt;span class=&quot;hljs-preprocessor&quot;&gt;.package&lt;/span&gt;             = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;package&quot;&lt;/span&gt;]&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;
+    req&lt;span class=&quot;hljs-preprocessor&quot;&gt;.sign&lt;/span&gt;                = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;sign&quot;&lt;/span&gt;]&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;
+    [WXApi sendReq:req]&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;li&gt;5&lt;/li&gt;&lt;li&gt;6&lt;/li&gt;&lt;li&gt;7&lt;/li&gt;&lt;li&gt;8&lt;/li&gt;&lt;li&gt;9&lt;/li&gt;&lt;li&gt;10&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;7不管支付成功还是失败结果会返回到wxapimanageronresp-方法下&quot;&gt;7.不管支付成功还是失败，结果会返回到WXApiManager–》onResp 方法下&lt;/h2&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code class=&quot;hljs objectivec has-numbering&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;switch&lt;/span&gt; (resp&lt;span class=&quot;hljs-variable&quot;&gt;.errCode&lt;/span&gt;) {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;case&lt;/span&gt; WXSuccess:
+    strMsg = @&lt;span class=&quot;hljs-string&quot;&gt;&quot;支付结果：成功！&quot;&lt;/span&gt;;
+    &lt;span class=&quot;hljs-built_in&quot;&gt;NSLog&lt;/span&gt;(@&lt;span class=&quot;hljs-string&quot;&gt;&quot;支付成功－PaySuccess，retcode = %d&quot;&lt;/span&gt;, resp&lt;span class=&quot;hljs-variable&quot;&gt;.errCode&lt;/span&gt;);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;default&lt;/span&gt;:
+    strMsg = [&lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; stringWithFormat:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;支付结果：失败！retcode = %d, retstr = %@&quot;&lt;/span&gt;, resp&lt;span class=&quot;hljs-variable&quot;&gt;.errCode&lt;/span&gt;,resp&lt;span class=&quot;hljs-variable&quot;&gt;.errStr&lt;/span&gt;];
+    &lt;span class=&quot;hljs-built_in&quot;&gt;NSLog&lt;/span&gt;(@&lt;span class=&quot;hljs-string&quot;&gt;&quot;错误，retcode = %d, retstr = %@&quot;&lt;/span&gt;, resp&lt;span class=&quot;hljs-variable&quot;&gt;.errCode&lt;/span&gt;,resp&lt;span class=&quot;hljs-variable&quot;&gt;.errStr&lt;/span&gt;);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;
+    }&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;li&gt;5&lt;/li&gt;&lt;li&gt;6&lt;/li&gt;&lt;li&gt;7&lt;/li&gt;&lt;li&gt;8&lt;/li&gt;&lt;li&gt;9&lt;/li&gt;&lt;li&gt;10&lt;/li&gt;&lt;li&gt;11&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;客户端进行签名&quot;&gt;客户端进行签名&lt;/h1&gt;
+
+&lt;h2 id=&quot;1导入文件官方已经不提供这个sdk的下载了我已经打包到源代码了2015年3月11号最新修改的版本&quot;&gt;1.导入文件。官方已经不提供这个SDK的下载了，我已经打包到源代码了，2015年3月11号最新修改的版本&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/292326/201601/292326-20160114183115100-851859195.png&quot; alt=&quot;这里写图片描述&quot; title=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2里面有两个文件是非arc的我们需要设置一下-fno-objc-arc&quot;&gt;2.里面有两个文件是非arc的，我们需要设置一下 -fno-objc-arc&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/292326/201601/292326-20160114183205210-1022682077.png&quot; alt=&quot;这里写图片描述&quot; title=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3导入系统库及infolist配置请参数上面服务端签名&quot;&gt;3.导入系统库及info.list配置，请参数上面服务端签名。&lt;/h2&gt;
+
+&lt;h2 id=&quot;4appdelegate配置&quot;&gt;4.AppDelegate配置&lt;/h2&gt;
+
+&lt;h3 id=&quot;1导入头文件&quot;&gt;1）导入头文件&lt;/h3&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code class=&quot;hljs ruleslanguage has-numbering&quot;&gt;&lt;span class=&quot;hljs-array&quot;&gt;#import &lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;WXApi.h&quot;&lt;/span&gt;
+    &lt;span class=&quot;hljs-array&quot;&gt;#import &lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;payRequsestHandler.h&quot;&lt;/span&gt;&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;2实现微信代理&quot;&gt;2）实现微信代理&lt;/h3&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code class=&quot;hljs objectivec has-numbering&quot;&gt;&lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;AppDelegate&lt;/span&gt; ()&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;WXApiDelegate&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;@end&lt;/span&gt;&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;3注册微信及微信支付回调&quot;&gt;3）注册微信，及微信支付回调&lt;/h3&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code class=&quot;hljs objectivec has-numbering&quot;&gt;- (&lt;span class=&quot;hljs-built_in&quot;&gt;BOOL&lt;/span&gt;)application:(&lt;span class=&quot;hljs-built_in&quot;&gt;UIApplication&lt;/span&gt; *)application didFinishLaunchingWithOptions:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSDictionary&lt;/span&gt; *)launchOptions {
+    &lt;span class=&quot;hljs-comment&quot;&gt;// Override point for customization after application launch.&lt;/span&gt;
+    &lt;span class=&quot;hljs-comment&quot;&gt;//向微信注册&lt;/span&gt;
+    [WXApi registerApp:APP_ID withDescription:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;demo 2.0&quot;&lt;/span&gt;];
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-literal&quot;&gt;YES&lt;/span&gt;;
+    }
+
+    - (&lt;span class=&quot;hljs-built_in&quot;&gt;BOOL&lt;/span&gt;)application:(&lt;span class=&quot;hljs-built_in&quot;&gt;UIApplication&lt;/span&gt; *)application handleOpenURL:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSURL&lt;/span&gt; *)url
+    {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;  [WXApi handleOpenURL:url delegate:&lt;span class=&quot;hljs-keyword&quot;&gt;self&lt;/span&gt;];
+    }
+
+    - (&lt;span class=&quot;hljs-built_in&quot;&gt;BOOL&lt;/span&gt;)application:(&lt;span class=&quot;hljs-built_in&quot;&gt;UIApplication&lt;/span&gt; *)application openURL:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSURL&lt;/span&gt; *)url sourceApplication:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; *)sourceApplication annotation:(&lt;span class=&quot;hljs-keyword&quot;&gt;id&lt;/span&gt;)annotation
+    {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;  [WXApi handleOpenURL:url delegate:&lt;span class=&quot;hljs-keyword&quot;&gt;self&lt;/span&gt;];
+    }
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// 微信支付成功或者失败回调&lt;/span&gt;
+    -(&lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt;) onResp:(BaseResp*)resp
+    {
+    &lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; *strMsg = [&lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; stringWithFormat:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;errcode:%d&quot;&lt;/span&gt;, resp&lt;span class=&quot;hljs-variable&quot;&gt;.errCode&lt;/span&gt;];
+    &lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; *strTitle;
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+    strTitle = [&lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; stringWithFormat:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;发送媒体消息结果&quot;&lt;/span&gt;];
+    }
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;([resp isKindOfClass:[PayResp class]]){
+    &lt;span class=&quot;hljs-comment&quot;&gt;//支付返回结果，实际支付结果需要去微信服务器端查询&lt;/span&gt;
+    strTitle = [&lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; stringWithFormat:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;支付结果&quot;&lt;/span&gt;];
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;switch&lt;/span&gt; (resp&lt;span class=&quot;hljs-variable&quot;&gt;.errCode&lt;/span&gt;) {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;case&lt;/span&gt; WXSuccess:
+    strMsg = @&lt;span class=&quot;hljs-string&quot;&gt;&quot;支付结果：成功！&quot;&lt;/span&gt;;
+    &lt;span class=&quot;hljs-built_in&quot;&gt;NSLog&lt;/span&gt;(@&lt;span class=&quot;hljs-string&quot;&gt;&quot;支付成功－PaySuccess，retcode = %d&quot;&lt;/span&gt;, resp&lt;span class=&quot;hljs-variable&quot;&gt;.errCode&lt;/span&gt;);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;default&lt;/span&gt;:
+    strMsg = [&lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; stringWithFormat:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;支付结果：失败！retcode = %d, retstr = %@&quot;&lt;/span&gt;, resp&lt;span class=&quot;hljs-variable&quot;&gt;.errCode&lt;/span&gt;,resp&lt;span class=&quot;hljs-variable&quot;&gt;.errStr&lt;/span&gt;];
+    &lt;span class=&quot;hljs-built_in&quot;&gt;NSLog&lt;/span&gt;(@&lt;span class=&quot;hljs-string&quot;&gt;&quot;错误，retcode = %d, retstr = %@&quot;&lt;/span&gt;, resp&lt;span class=&quot;hljs-variable&quot;&gt;.errCode&lt;/span&gt;,resp&lt;span class=&quot;hljs-variable&quot;&gt;.errStr&lt;/span&gt;);
+    &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;
+    }
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:&lt;span class=&quot;hljs-keyword&quot;&gt;self&lt;/span&gt; cancelButtonTitle:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;OK&quot;&lt;/span&gt; otherButtonTitles:&lt;span class=&quot;hljs-literal&quot;&gt;nil&lt;/span&gt;, &lt;span class=&quot;hljs-literal&quot;&gt;nil&lt;/span&gt;];
+    [alert show];
+    }&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;li&gt;5&lt;/li&gt;&lt;li&gt;6&lt;/li&gt;&lt;li&gt;7&lt;/li&gt;&lt;li&gt;8&lt;/li&gt;&lt;li&gt;9&lt;/li&gt;&lt;li&gt;10&lt;/li&gt;&lt;li&gt;11&lt;/li&gt;&lt;li&gt;12&lt;/li&gt;&lt;li&gt;13&lt;/li&gt;&lt;li&gt;14&lt;/li&gt;&lt;li&gt;15&lt;/li&gt;&lt;li&gt;16&lt;/li&gt;&lt;li&gt;17&lt;/li&gt;&lt;li&gt;18&lt;/li&gt;&lt;li&gt;19&lt;/li&gt;&lt;li&gt;20&lt;/li&gt;&lt;li&gt;21&lt;/li&gt;&lt;li&gt;22&lt;/li&gt;&lt;li&gt;23&lt;/li&gt;&lt;li&gt;24&lt;/li&gt;&lt;li&gt;25&lt;/li&gt;&lt;li&gt;26&lt;/li&gt;&lt;li&gt;27&lt;/li&gt;&lt;li&gt;28&lt;/li&gt;&lt;li&gt;29&lt;/li&gt;&lt;li&gt;30&lt;/li&gt;&lt;li&gt;31&lt;/li&gt;&lt;li&gt;32&lt;/li&gt;&lt;li&gt;33&lt;/li&gt;&lt;li&gt;34&lt;/li&gt;&lt;li&gt;35&lt;/li&gt;&lt;li&gt;36&lt;/li&gt;&lt;li&gt;37&lt;/li&gt;&lt;li&gt;38&lt;/li&gt;&lt;li&gt;39&lt;/li&gt;&lt;li&gt;40&lt;/li&gt;&lt;li&gt;41&lt;/li&gt;&lt;li&gt;42&lt;/li&gt;&lt;li&gt;43&lt;/li&gt;&lt;li&gt;44&lt;/li&gt;&lt;li&gt;45&lt;/li&gt;&lt;li&gt;46&lt;/li&gt;&lt;li&gt;47&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;5写方法直接在支付时调用&quot;&gt;5.写方法直接在支付时调用&lt;/h2&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code class=&quot;hljs objectivec has-numbering&quot;&gt;- (&lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt;)payForWechat
+    {
+    &lt;span class=&quot;hljs-comment&quot;&gt;//创建支付签名对象&lt;/span&gt;
+    payRequsestHandler *req = [[payRequsestHandler alloc] init];
+    &lt;span class=&quot;hljs-comment&quot;&gt;//初始化支付签名对象&lt;/span&gt;
+    [req init:APP_ID mch_id:MCH_ID];
+    &lt;span class=&quot;hljs-comment&quot;&gt;//设置密钥&lt;/span&gt;
+    [req setKey:PARTNER_ID];
+
+    &lt;span class=&quot;hljs-built_in&quot;&gt;NSMutableDictionary&lt;/span&gt; *dict = [req sendPay_demo];
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(dict != &lt;span class=&quot;hljs-literal&quot;&gt;nil&lt;/span&gt;){
+    &lt;span class=&quot;hljs-built_in&quot;&gt;NSMutableString&lt;/span&gt; *retcode = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;retcode&quot;&lt;/span&gt;];
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (retcode&lt;span class=&quot;hljs-variable&quot;&gt;.intValue&lt;/span&gt; == &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;){
+    &lt;span class=&quot;hljs-built_in&quot;&gt;NSMutableString&lt;/span&gt; *stamp  = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;timestamp&quot;&lt;/span&gt;];
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;//调起微信支付&lt;/span&gt;
+    PayReq* req             = [[PayReq alloc] init];
+    req&lt;span class=&quot;hljs-variable&quot;&gt;.openID&lt;/span&gt;              = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;appid&quot;&lt;/span&gt;];
+    req&lt;span class=&quot;hljs-variable&quot;&gt;.partnerId&lt;/span&gt;           = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;partnerid&quot;&lt;/span&gt;];
+    req&lt;span class=&quot;hljs-variable&quot;&gt;.prepayId&lt;/span&gt;            = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;prepayid&quot;&lt;/span&gt;];
+    req&lt;span class=&quot;hljs-variable&quot;&gt;.nonceStr&lt;/span&gt;            = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;noncestr&quot;&lt;/span&gt;];
+    req&lt;span class=&quot;hljs-variable&quot;&gt;.timeStamp&lt;/span&gt;           = stamp&lt;span class=&quot;hljs-variable&quot;&gt;.intValue&lt;/span&gt;;
+    req&lt;span class=&quot;hljs-variable&quot;&gt;.package&lt;/span&gt;             = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;package&quot;&lt;/span&gt;];
+    req&lt;span class=&quot;hljs-variable&quot;&gt;.sign&lt;/span&gt;                = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;sign&quot;&lt;/span&gt;];
+    [WXApi sendReq:req];
+    &lt;span class=&quot;hljs-comment&quot;&gt;//日志输出&lt;/span&gt;
+    &lt;span class=&quot;hljs-built_in&quot;&gt;NSLog&lt;/span&gt;(@&lt;span class=&quot;hljs-string&quot;&gt;&quot;appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@&quot;&lt;/span&gt;,req&lt;span class=&quot;hljs-variable&quot;&gt;.openID&lt;/span&gt;,req&lt;span class=&quot;hljs-variable&quot;&gt;.partnerId&lt;/span&gt;,req&lt;span class=&quot;hljs-variable&quot;&gt;.prepayId&lt;/span&gt;,req&lt;span class=&quot;hljs-variable&quot;&gt;.nonceStr&lt;/span&gt;,(&lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt;)req&lt;span class=&quot;hljs-variable&quot;&gt;.timeStamp&lt;/span&gt;,req&lt;span class=&quot;hljs-variable&quot;&gt;.package&lt;/span&gt;,req&lt;span class=&quot;hljs-variable&quot;&gt;.sign&lt;/span&gt; );
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+    [&lt;span class=&quot;hljs-keyword&quot;&gt;self&lt;/span&gt; alert:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;提示信息&quot;&lt;/span&gt; msg:[dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;retmsg&quot;&lt;/span&gt;]];
+    }
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+    [&lt;span class=&quot;hljs-keyword&quot;&gt;self&lt;/span&gt; alert:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;提示信息&quot;&lt;/span&gt; msg:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;服务器返回错误，未获取到json对象&quot;&lt;/span&gt;];
+    }
+    }
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;//客户端提示信息&lt;/span&gt;
+    - (&lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt;)alert:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; *)title msg:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; *)msg
+    {
+    UIAlertView *alter = [[UIAlertView alloc] initWithTitle:title message:msg delegate:&lt;span class=&quot;hljs-literal&quot;&gt;nil&lt;/span&gt; cancelButtonTitle:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;OK&quot;&lt;/span&gt; otherButtonTitles:&lt;span class=&quot;hljs-literal&quot;&gt;nil&lt;/span&gt;];
+
+    [alter show];
+    }&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;li&gt;5&lt;/li&gt;&lt;li&gt;6&lt;/li&gt;&lt;li&gt;7&lt;/li&gt;&lt;li&gt;8&lt;/li&gt;&lt;li&gt;9&lt;/li&gt;&lt;li&gt;10&lt;/li&gt;&lt;li&gt;11&lt;/li&gt;&lt;li&gt;12&lt;/li&gt;&lt;li&gt;13&lt;/li&gt;&lt;li&gt;14&lt;/li&gt;&lt;li&gt;15&lt;/li&gt;&lt;li&gt;16&lt;/li&gt;&lt;li&gt;17&lt;/li&gt;&lt;li&gt;18&lt;/li&gt;&lt;li&gt;19&lt;/li&gt;&lt;li&gt;20&lt;/li&gt;&lt;li&gt;21&lt;/li&gt;&lt;li&gt;22&lt;/li&gt;&lt;li&gt;23&lt;/li&gt;&lt;li&gt;24&lt;/li&gt;&lt;li&gt;25&lt;/li&gt;&lt;li&gt;26&lt;/li&gt;&lt;li&gt;27&lt;/li&gt;&lt;li&gt;28&lt;/li&gt;&lt;li&gt;29&lt;/li&gt;&lt;li&gt;30&lt;/li&gt;&lt;li&gt;31&lt;/li&gt;&lt;li&gt;32&lt;/li&gt;&lt;li&gt;33&lt;/li&gt;&lt;li&gt;34&lt;/li&gt;&lt;li&gt;35&lt;/li&gt;&lt;li&gt;36&lt;/li&gt;&lt;li&gt;37&lt;/li&gt;&lt;li&gt;38&lt;/li&gt;&lt;li&gt;39&lt;/li&gt;&lt;li&gt;40&lt;/li&gt;&lt;li&gt;41&lt;/li&gt;&lt;li&gt;42&lt;/li&gt;&lt;li&gt;43&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+
+&lt;p&gt;最后，修改payRequsestHandler.h文件里的APP_ID 和MCH_ID即可使用。 &lt;span id=&quot;transmark&quot; style=&quot;display: none; width: 0px; height: 0px;&quot;&gt;&lt;/span&gt;&lt;br /&gt;
+    &lt;/p&gt;
 
 </content>
  </entry>
