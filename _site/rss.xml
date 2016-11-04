@@ -5,8 +5,8 @@
         <description>程序化&amp;人生 - assassinlong</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Fri, 04 Nov 2016 20:41:01 +0800</lastBuildDate>
-        <pubDate>Fri, 04 Nov 2016 20:41:01 +0800</pubDate>
+        <lastBuildDate>Fri, 04 Nov 2016 20:45:10 +0800</lastBuildDate>
+        <pubDate>Fri, 04 Nov 2016 20:45:10 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -155,7 +155,7 @@
 
     - (&lt;span class=&quot;hljs-built_in&quot;&gt;BOOL&lt;/span&gt;)application:(&lt;span class=&quot;hljs-built_in&quot;&gt;UIApplication&lt;/span&gt; *)application openURL:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSURL&lt;/span&gt; *)url sourceApplication:(&lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; *)sourceApplication annotation:(&lt;span class=&quot;hljs-keyword&quot;&gt;id&lt;/span&gt;)annotation {
     &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
-    }&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;li&gt;5&lt;/li&gt;&lt;li&gt;6&lt;/li&gt;&lt;li&gt;7&lt;/li&gt;&lt;li&gt;8&lt;/li&gt;&lt;li&gt;9&lt;/li&gt;&lt;li&gt;10&lt;/li&gt;&lt;li&gt;11&lt;/li&gt;&lt;li&gt;12&lt;/li&gt;&lt;li&gt;13&lt;/li&gt;&lt;li&gt;14&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+    }&lt;/code&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;6接下来就是发起请求支付了实现上核心代码只有几行&quot;&gt;6.接下来，就是发起请求支付了，实现上核心代码只有几行。&lt;/h3&gt;
 
@@ -170,7 +170,7 @@
     req&lt;span class=&quot;hljs-preprocessor&quot;&gt;.timeStamp&lt;/span&gt;           = stamp&lt;span class=&quot;hljs-preprocessor&quot;&gt;.intValue&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;
     req&lt;span class=&quot;hljs-preprocessor&quot;&gt;.package&lt;/span&gt;             = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;package&quot;&lt;/span&gt;]&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;
     req&lt;span class=&quot;hljs-preprocessor&quot;&gt;.sign&lt;/span&gt;                = [dict objectForKey:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;sign&quot;&lt;/span&gt;]&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;
-    [WXApi sendReq:req]&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;li&gt;5&lt;/li&gt;&lt;li&gt;6&lt;/li&gt;&lt;li&gt;7&lt;/li&gt;&lt;li&gt;8&lt;/li&gt;&lt;li&gt;9&lt;/li&gt;&lt;li&gt;10&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+    [WXApi sendReq:req]&lt;span class=&quot;hljs-comment&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;7不管支付成功还是失败结果会返回到wxapimanageronresp-方法下&quot;&gt;7.不管支付成功还是失败，结果会返回到WXApiManager–》onResp 方法下&lt;/h2&gt;
 
@@ -184,7 +184,7 @@
     strMsg = [&lt;span class=&quot;hljs-built_in&quot;&gt;NSString&lt;/span&gt; stringWithFormat:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;支付结果：失败！retcode = %d, retstr = %@&quot;&lt;/span&gt;, resp&lt;span class=&quot;hljs-variable&quot;&gt;.errCode&lt;/span&gt;,resp&lt;span class=&quot;hljs-variable&quot;&gt;.errStr&lt;/span&gt;];
     &lt;span class=&quot;hljs-built_in&quot;&gt;NSLog&lt;/span&gt;(@&lt;span class=&quot;hljs-string&quot;&gt;&quot;错误，retcode = %d, retstr = %@&quot;&lt;/span&gt;, resp&lt;span class=&quot;hljs-variable&quot;&gt;.errCode&lt;/span&gt;,resp&lt;span class=&quot;hljs-variable&quot;&gt;.errStr&lt;/span&gt;);
     &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;
-    }&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;li&gt;5&lt;/li&gt;&lt;li&gt;6&lt;/li&gt;&lt;li&gt;7&lt;/li&gt;&lt;li&gt;8&lt;/li&gt;&lt;li&gt;9&lt;/li&gt;&lt;li&gt;10&lt;/li&gt;&lt;li&gt;11&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+    }&lt;/code&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
 
 &lt;h1 id=&quot;客户端进行签名&quot;&gt;客户端进行签名&lt;/h1&gt;
 
@@ -259,7 +259,7 @@
     }
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:&lt;span class=&quot;hljs-keyword&quot;&gt;self&lt;/span&gt; cancelButtonTitle:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;OK&quot;&lt;/span&gt; otherButtonTitles:&lt;span class=&quot;hljs-literal&quot;&gt;nil&lt;/span&gt;, &lt;span class=&quot;hljs-literal&quot;&gt;nil&lt;/span&gt;];
     [alert show];
-    }&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;li&gt;5&lt;/li&gt;&lt;li&gt;6&lt;/li&gt;&lt;li&gt;7&lt;/li&gt;&lt;li&gt;8&lt;/li&gt;&lt;li&gt;9&lt;/li&gt;&lt;li&gt;10&lt;/li&gt;&lt;li&gt;11&lt;/li&gt;&lt;li&gt;12&lt;/li&gt;&lt;li&gt;13&lt;/li&gt;&lt;li&gt;14&lt;/li&gt;&lt;li&gt;15&lt;/li&gt;&lt;li&gt;16&lt;/li&gt;&lt;li&gt;17&lt;/li&gt;&lt;li&gt;18&lt;/li&gt;&lt;li&gt;19&lt;/li&gt;&lt;li&gt;20&lt;/li&gt;&lt;li&gt;21&lt;/li&gt;&lt;li&gt;22&lt;/li&gt;&lt;li&gt;23&lt;/li&gt;&lt;li&gt;24&lt;/li&gt;&lt;li&gt;25&lt;/li&gt;&lt;li&gt;26&lt;/li&gt;&lt;li&gt;27&lt;/li&gt;&lt;li&gt;28&lt;/li&gt;&lt;li&gt;29&lt;/li&gt;&lt;li&gt;30&lt;/li&gt;&lt;li&gt;31&lt;/li&gt;&lt;li&gt;32&lt;/li&gt;&lt;li&gt;33&lt;/li&gt;&lt;li&gt;34&lt;/li&gt;&lt;li&gt;35&lt;/li&gt;&lt;li&gt;36&lt;/li&gt;&lt;li&gt;37&lt;/li&gt;&lt;li&gt;38&lt;/li&gt;&lt;li&gt;39&lt;/li&gt;&lt;li&gt;40&lt;/li&gt;&lt;li&gt;41&lt;/li&gt;&lt;li&gt;42&lt;/li&gt;&lt;li&gt;43&lt;/li&gt;&lt;li&gt;44&lt;/li&gt;&lt;li&gt;45&lt;/li&gt;&lt;li&gt;46&lt;/li&gt;&lt;li&gt;47&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+    }&lt;/code&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;5写方法直接在支付时调用&quot;&gt;5.写方法直接在支付时调用&lt;/h2&gt;
 
@@ -305,7 +305,7 @@
     UIAlertView *alter = [[UIAlertView alloc] initWithTitle:title message:msg delegate:&lt;span class=&quot;hljs-literal&quot;&gt;nil&lt;/span&gt; cancelButtonTitle:@&lt;span class=&quot;hljs-string&quot;&gt;&quot;OK&quot;&lt;/span&gt; otherButtonTitles:&lt;span class=&quot;hljs-literal&quot;&gt;nil&lt;/span&gt;];
 
     [alter show];
-    }&lt;/code&gt;&lt;ul class=&quot;pre-numbering&quot; style=&quot;&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;li&gt;5&lt;/li&gt;&lt;li&gt;6&lt;/li&gt;&lt;li&gt;7&lt;/li&gt;&lt;li&gt;8&lt;/li&gt;&lt;li&gt;9&lt;/li&gt;&lt;li&gt;10&lt;/li&gt;&lt;li&gt;11&lt;/li&gt;&lt;li&gt;12&lt;/li&gt;&lt;li&gt;13&lt;/li&gt;&lt;li&gt;14&lt;/li&gt;&lt;li&gt;15&lt;/li&gt;&lt;li&gt;16&lt;/li&gt;&lt;li&gt;17&lt;/li&gt;&lt;li&gt;18&lt;/li&gt;&lt;li&gt;19&lt;/li&gt;&lt;li&gt;20&lt;/li&gt;&lt;li&gt;21&lt;/li&gt;&lt;li&gt;22&lt;/li&gt;&lt;li&gt;23&lt;/li&gt;&lt;li&gt;24&lt;/li&gt;&lt;li&gt;25&lt;/li&gt;&lt;li&gt;26&lt;/li&gt;&lt;li&gt;27&lt;/li&gt;&lt;li&gt;28&lt;/li&gt;&lt;li&gt;29&lt;/li&gt;&lt;li&gt;30&lt;/li&gt;&lt;li&gt;31&lt;/li&gt;&lt;li&gt;32&lt;/li&gt;&lt;li&gt;33&lt;/li&gt;&lt;li&gt;34&lt;/li&gt;&lt;li&gt;35&lt;/li&gt;&lt;li&gt;36&lt;/li&gt;&lt;li&gt;37&lt;/li&gt;&lt;li&gt;38&lt;/li&gt;&lt;li&gt;39&lt;/li&gt;&lt;li&gt;40&lt;/li&gt;&lt;li&gt;41&lt;/li&gt;&lt;li&gt;42&lt;/li&gt;&lt;li&gt;43&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
+    }&lt;/code&gt;&lt;div class=&quot;save_code tracking-ad&quot; data-mod=&quot;popu_249&quot; style=&quot;display: none;&quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;img src=&quot;http://static.blog.csdn.net/images/save_snippets.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;&lt;/pre&gt;
 
 &lt;p&gt;最后，修改payRequsestHandler.h文件里的APP_ID 和MCH_ID即可使用。 &lt;span id=&quot;transmark&quot; style=&quot;display: none; width: 0px; height: 0px;&quot;&gt;&lt;/span&gt;&lt;br /&gt;
     &lt;/p&gt;
