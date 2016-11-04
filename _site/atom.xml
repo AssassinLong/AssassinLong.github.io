@@ -4,7 +4,7 @@
  <title>程序化&amp;人生</title>
  <link href="" rel="self"/>
  <link href=""/>
- <updated>2016-11-04T20:14:08+08:00</updated>
+ <updated>2016-11-04T20:17:32+08:00</updated>
  <id></id>
  <author>
    <name>assassinlong</name>
@@ -17,7 +17,42 @@
    <link href="/%E5%BE%AE%E4%BF%A1/2016/11/04/%E5%BE%AE%E4%BF%A1APP%E6%94%AF%E4%BB%98"/>
    <updated>2016-11-04T00:00:00+08:00</updated>
    <id>/%E5%BE%AE%E4%BF%A1/2016/11/04/微信APP支付</id>
-   <content type="html">
+   <content type="html">&lt;p&gt;用户在微信公众平台(申请扫码支付、公众号支付)或开放平台(申请APP支付)按照相应提示，申请相应微信支付模式。微信支付工作人
+员审核资料无误后开通相应的微信支付权限。微信支付申请审核通过后，商户在申请资料填写的邮箱中收取到由微信支付小助手发送的
+邮件，此邮件包含开发时需要使用的支付账户信息。&lt;/p&gt;
+&lt;p&gt;邮件中的账户参数与接口API参数对应关系见下表格&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;
+    &lt;th&gt;邮件中参数&lt;/th&gt;
+    &lt;th&gt;API参数名&lt;/th&gt;
+    &lt;th&gt;详细说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;APPID&lt;/td&gt;
+    &lt;td&gt;appid&lt;/td&gt;
+    &lt;td&gt;appid是微信公众账号或开放平台APP的唯一标识，在公众平台申请公众账号或者在开放平台申请APP账号后，微信会自动分配对
+        应的appid，用于标识该应用。可在微信公众平台--&amp;gt;开发者中心查看，商户的微信支付审核通过邮件中也会包含该字段值。
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;微信支付商户号&lt;/td&gt;
+    &lt;td&gt;mch_id&lt;/td&gt;
+    &lt;td&gt; 商户申请微信支付后，由微信支付分配的商户收款账号。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;API密钥&lt;/td&gt;
+    &lt;td&gt;key&lt;/td&gt;
+    &lt;td&gt;交易过程生成签名的密钥，仅保留在商户系统和微信支付后台，不会在网络中传播。商户妥善保管该Key，切勿在网络中传输，
+        不能在其他客户端中存储，保证key不会被泄漏。商户可根据邮件提示登录微信商户平台进行设置。也可按一下路径设置：微信
+        商户平台(pay.weixin.qq.com)--&amp;gt;账户设置--&amp;gt;API安全--&amp;gt;密钥设置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;Appsecret&lt;/td&gt;
+    &lt;td&gt;secret&lt;/td&gt;
+    &lt;td&gt; AppSecret是APPID对应的接口密码，用于获取接口调用凭证access_token时使用。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
 </content>
  </entry>
  
