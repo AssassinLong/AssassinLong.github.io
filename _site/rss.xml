@@ -5,8 +5,8 @@
         <description>程序化&amp;人生 - assassinlong</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 16 Nov 2016 21:23:00 +0800</lastBuildDate>
-        <pubDate>Wed, 16 Nov 2016 21:23:00 +0800</pubDate>
+        <lastBuildDate>Thu, 17 Nov 2016 07:25:43 +0800</lastBuildDate>
+        <pubDate>Thu, 17 Nov 2016 07:25:43 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -585,6 +585,142 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
                 <link>/jekyll/2016/10/15/github+jekyll</link>
                 <guid>/jekyll/2016/10/15/github+jekyll</guid>
                 <pubDate>Sat, 15 Oct 2016 00:00:00 +0800</pubDate>
+        </item>
+
+        <item>
+                <title>php+swoole即时聊天</title>
+                <description>&lt;div class=&quot;repository-meta js-details-container &quot;&gt;
+&lt;div class=&quot;repository-description&quot;&gt;
+&lt;p&gt;使用PHP+Swoole实现的网页即时聊天工具&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul class=&quot; list-paddingleft-2&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;全异步非阻塞Server，可以同时支持数百万TCP连接在线&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;同时支持websocket+comet2种兼容协议，可用于所有种类的浏览器包括IE&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;拥有完整的UI界面&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;支持单聊/群聊/组聊等功能&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;支持发送表情&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;支持永久保存聊天记录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基于Server PUSH的即时内容更新，登录/登出/状态变更/消息等会内容即时更新&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;最新的版本已经可以原生支持IE系列浏览器了，基于Http长连接&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;articleHeader0&quot;&gt;&lt;a aria-hidden=&quot;true&quot; id=&quot;user-content-安装&quot; class=&quot;anchor&quot; href=&quot;https://github.com/matyhtf/PHPWebIM#%E5%AE%89%E8%A3%85&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;
+&lt;p&gt;swoole扩展&lt;/p&gt;
+&lt;div class=&quot;highlight highlight-shell&quot;&gt;&lt;pre&gt;pecl install swoole&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;swoole框架&lt;/p&gt;
+&lt;div class=&quot;highlight highlight-shell&quot;&gt;&lt;pre&gt;composer install&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;articleHeader1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; id=&quot;user-content-运行&quot; class=&quot;anchor&quot; href=&quot;https://github.com/matyhtf/PHPWebIM#%E8%BF%90%E8%A1%8C&quot;&gt;&lt;/a&gt;运行&lt;/h2&gt;
+&lt;p&gt;将client目录配置到Nginx/Apache的虚拟主机目录中，使client/index.html可访问。修改client/config.js中，IP和端口为对应的配置。&lt;/p&gt;
+&lt;div class=&quot;highlight highlight-shell&quot;&gt;&lt;pre&gt;php webim_server.php&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;articleHeader2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; id=&quot;user-content-详细部署说明&quot; class=&quot;anchor&quot; href=&quot;https://github.com/matyhtf/PHPWebIM#%E8%AF%A6%E7%BB%86%E9%83%A8%E7%BD%B2%E8%AF%B4%E6%98%8E&quot;&gt;&lt;/a&gt;详细部署说明&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.安装composer(php依赖包工具)&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight highlight-shell&quot;&gt;&lt;pre&gt;curl -sS https://getcomposer.org/installer &lt;span class=&quot;pl-k&quot;&gt;|&lt;/span&gt; php
+mv composer.phar /usr/local/bin/composer&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意：如果未将php解释器程序设置为环境变量PATH中，需要设置。因为composer文件第一行为#!/usr/bin/env php，并不能修改。更加详细的对composer说明：&lt;a href=&quot;http://blog.csdn.net/zzulp/article/details/18981029&quot;&gt;http://blog.csdn.net/zzulp/article/details/18981029&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.composer install&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;切换到PHPWebIM项目目录，执行指令composer install，如很慢则&lt;/p&gt;
+&lt;div class=&quot;highlight highlight-shell&quot;&gt;&lt;pre&gt;composer install --prefer-dist&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;3.Ningx/Apache配置（这里未使用swoole_framework提供的Web AppServer）&lt;/p&gt;
+&lt;p&gt;nginx&lt;/p&gt;&lt;pre class=&quot;brush:shell; toolbar: true; auto-links: false;&quot;&gt;server
+{
+    listen       80;
+    server_name  im.swoole.com;
+    index index.shtml index.html index.htm index.php;
+    root  /path/to/PHPWebIM/client;
+    location ~ .*\.(php|php5)?$
+    {
+        fastcgi_pass  127.0.0.1:9000;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+    }
+    access_log  /Library/WebServer/nginx/logs/im.swoole.com  access;
+}&lt;/pre&gt; &lt;p&gt;&lt;/p&gt;
+&lt;p&gt;apache&lt;/p&gt;&lt;pre class=&quot;brush:shell; toolbar: true; auto-links: false;&quot;&gt;&amp;lt;VirtualHost *:80&amp;gt;
+    DocumentRoot &quot;path/to/PHPWebIM/client&quot;
+    ServerName im.swoole.com
+    AddType application/x-httpd-php .php
+    &amp;lt;Directory /&amp;gt;
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+        DirectoryIndex index.php
+    &amp;lt;/Directory&amp;gt;
+&amp;lt;/VirtualHost&amp;gt;&lt;/pre&gt; &lt;p&gt;&lt;/p&gt;
+&lt;p&gt;4.修改配置PHPWebIM/config.php&lt;/p&gt;&lt;pre class=&quot;brush:php; toolbar: true; auto-links: false;&quot;&gt;$config[&#39;server&#39;] = array(
+    //监听的HOST
+    &#39;host&#39; =&amp;gt; &#39;0.0.0.0&#39;,
+    //监听的端口
+    &#39;port&#39; =&amp;gt; &#39;9503&#39;,
+    //WebSocket的URL地址，供浏览器使用的
+    &#39;url&#39; =&amp;gt; &#39;ws://127.0.0.1:9503&#39;,
+);&lt;/pre&gt; &lt;p&gt;&lt;/p&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li&gt;server.host server.port 项为WebIM服务器即WebSocket服务器的IP与端口，其他选择项根据具体情况修改&lt;/li&gt;
+&lt;li&gt;server.url对应的就是服务器IP或域名以及websocket服务的端口，这个就是提供给浏览器的WebSocket地址&lt;/li&gt;
+&lt;li&gt;webim.data_dir用于修改聊天记录存储的目录，必须有可写权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;5.启动WebSocket服务器&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight highlight-shell&quot;&gt;&lt;pre&gt;php PHPWebIM/webim_server.php&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;IE浏览器不支持WebSocket，需要使用FlashWebSocket模拟，请修改flash_policy.php中对应的端口，然后启动flash_policy.php。&lt;/p&gt;
+&lt;div class=&quot;highlight highlight-shell&quot;&gt;&lt;pre&gt;php PHPWebIM/flash_policy.php&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;6.绑定host与访问聊天窗口（可选）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果URL直接使用IP:PORT，这里不需要设置。&lt;/p&gt;
+&lt;div class=&quot;highlight highlight-shell&quot;&gt;&lt;pre&gt;vi /etc/hosts&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;增加&lt;/p&gt;
+&lt;div class=&quot;highlight highlight-shell&quot;&gt;&lt;pre&gt;127.0.0.1 im.swoole.com&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;用浏览器打开：&lt;a href=&quot;http://im.swoole.com/&quot;&gt;http://im.swoole.com&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;articleHeader3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; id=&quot;user-content-快速了解项目架构&quot; class=&quot;anchor&quot; href=&quot;https://github.com/matyhtf/PHPWebIM#%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84&quot;&gt;&lt;/a&gt;快速了解项目架构&lt;/h2&gt;
+&lt;p&gt;1.目录结构&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs cpp&quot;&gt;+ PHPWebIM
+  |- webim_server.php &lt;span class=&quot;hljs-comment&quot;&gt;//WebSocket协议服务器&lt;/span&gt;
+  |- config.php &lt;span class=&quot;hljs-comment&quot;&gt;// swoole运行配置&lt;/span&gt;
+  |+ swoole.ini &lt;span class=&quot;hljs-comment&quot;&gt;// WebSocket协议实现配置&lt;/span&gt;
+  |+ client
+    |+ &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt;
+    |- config.js &lt;span class=&quot;hljs-comment&quot;&gt;// WebSocket client配置&lt;/span&gt;
+    |- index.html &lt;span class=&quot;hljs-comment&quot;&gt;// 登录界面&lt;/span&gt;
+    |- main.html &lt;span class=&quot;hljs-comment&quot;&gt;// 聊天室主界面&lt;/span&gt;
+  |+ data &lt;span class=&quot;hljs-comment&quot;&gt;// 运行数据&lt;/span&gt;
+  |+ &lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;// swoole日志及WebIM日志&lt;/span&gt;
+  |+ src &lt;span class=&quot;hljs-comment&quot;&gt;// WebIM 类文件储存目录&lt;/span&gt;
+    |+ Store
+      |- File.php &lt;span class=&quot;hljs-comment&quot;&gt;// 默认用内存tmpfs文件系统(linux /dev/shm)存放天着数据，如果不是linux请手动修改$shm_dir&lt;/span&gt;
+      |- Redis.php &lt;span class=&quot;hljs-comment&quot;&gt;// 将聊天数据存放到Redis&lt;/span&gt;
+    |- Server.php &lt;span class=&quot;hljs-comment&quot;&gt;// 继承实现WebSocket的类，完成某些业务功能&lt;/span&gt;
+  |+ vendor &lt;span class=&quot;hljs-comment&quot;&gt;// 依赖包目录&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt; &lt;p&gt;2.Socket Server与Socket Client通信数据格式&lt;/p&gt;
+&lt;p&gt;如：登录&lt;/p&gt;
+&lt;p&gt;Client发送数据&lt;/p&gt;
+&lt;div class=&quot;highlight highlight-js&quot;&gt;&lt;pre&gt;{&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;cmd&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;login&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;name&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;xdy&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;avatar&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;http://tp3.sinaimg.cn/1586005914/50/5649388281/1&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;}&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Server响应登录&lt;/p&gt;
+&lt;div class=&quot;highlight highlight-js&quot;&gt;&lt;pre&gt;{&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;cmd&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;login&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;fd&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;31&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;name&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;xdy&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;avatar&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;http://tp3.sinaimg.cn/1586005914/50/5649388281/1&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;}&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可以看到cmd属性，client与server发送时数据都有指定，主要是用于client或者server的回调处理函数。&lt;/p&gt;
+&lt;p&gt;3.需要理清的几种协议或者服务的关系&lt;/p&gt;
+&lt;p&gt;http协议：超文本传输协议。单工通信，等着客户端请求之后响应。&lt;/p&gt;
+&lt;p&gt;WebSocket协议：是HTML5一种新的协议，它是实现了浏览器与服务器全双工通信。服务器端口与客户端都可以推拉数据。&lt;/p&gt;
+&lt;p&gt;Web服务器：此项目中可以用基于Swoole的App Server充当Web服务器，也可以用传统的nginx/apache作为web服务器&lt;/p&gt;
+&lt;p&gt;Socket服务器：此项目中浏览器的WebSocket客户端连接的服务器，swoole_framework中有实现WebSocket协议PHP版本的服务器。&lt;/p&gt;
+&lt;p&gt;WebSocket Client：实现html5的浏览器都支持WebSocket对象，如不支持此项目中有提供flash版本的实现。&lt;span id=&quot;transmark&quot; style=&quot;display: none; width: 0px; height: 0px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <link>/swoole/2016/10/14/php+swoole%E5%8D%B3%E6%97%B6%E8%81%8A%E5%A4%A9</link>
+                <guid>/swoole/2016/10/14/php+swoole即时聊天</guid>
+                <pubDate>Fri, 14 Oct 2016 00:00:00 +0800</pubDate>
         </item>
 
         <item>
@@ -2433,89 +2569,6 @@ C11 C10 C9 C8 C7 C6 C5 C4  B15 B14 B13 B12 C3 C2 C1 C0  B11 B10 B9 B8 B7 B6 B5 B
                 <link>/program/2015/09/23/bit-endian-little-endian-bit-field</link>
                 <guid>/program/2015/09/23/bit-endian-little-endian-bit-field</guid>
                 <pubDate>Wed, 23 Sep 2015 00:00:00 +0800</pubDate>
-        </item>
-
-        <item>
-                <title>TCP 和 UDP 的区别</title>
-                <description>&lt;ul&gt;
-  &lt;li&gt;TCP(Transmission Control Protocol)：传输控制协议&lt;/li&gt;
-  &lt;li&gt;UDP(User Datagram Protocol)：用户数据报协议&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;主要从连接性(Connectivity)、可靠性(Reliability)、有序性(Ordering)、有界性(Boundary)、拥塞控制(Congestion or Flow control)、传输速度(Speed)、量级(Heavy/Light weight)、头部大小(Header size)等8个方面来讲。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;&lt;strong&gt;1. TCP是面向连接(Connection oriented)的协议，UDP是无连接(Connection less)协议；&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;TCP用三次握手建立连接：1) Client向server发送SYN；2) Server接收到SYN，回复Client一个SYN-ACK；3) Client接收到SYN_ACK，回复Server一个ACK。到此，连接建成。UDP发送数据前不需要建立连接。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;2. TCP可靠，UDP不可靠；&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;TCP丢包会自动重传，UDP不会。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;3. TCP有序，UDP无序；&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;消息在传输过程中可能会乱序，后发送的消息可能会先到达，TCP会对其进行重排序，UDP不会。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;4. TCP无界，UDP有界；&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;TCP通过字节流传输，UDP中每一个包都是单独的。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;5. TCP有流量控制（拥塞控制），UDP没有；&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;主要靠三次握手实现。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;6. TCP传输慢，UDP传输快；&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;因为TCP需要建立连接、保证可靠性和有序性，所以比较耗时。这就是为什么视频流、广播电视、在线多媒体游戏等选择使用UDP。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;7. TCP是重量级的，UDP是轻量级的；&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;TCP要建立连接、保证可靠性和有序性，就会传输更多的信息，如TCP的包头比较大。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;8. TCP的头部比UDP大；TCP Packet Format Diagram UDP Packet format&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;TCP是面向连接的、可靠的、有序的、速度慢的协议；UDP是无连接的、不可靠的、无序的、速度快的协议。&lt;/li&gt;
-    &lt;li&gt;TCP开销比UDP大，TCP头部需要20字节，UDP头部只要8个字节。&lt;/li&gt;
-    &lt;li&gt;TCP无界有拥塞控制，TCP有界无拥塞控制。&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;补充：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;基于TCP的协议有：HTTP/HTTPS，Telnet，FTP，SMTP。&lt;/li&gt;
-    &lt;li&gt;基于UDP的协议有：DHCP，DNS，SNMP，TFTP，BOOTP。&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;em&gt;本文转自：&lt;a href=&quot;http://liangjiabin.com/blog/2015/03/difference-between-tcp-vs-udp-protocol.html&quot;&gt;http://liangjiabin.com/blog/2015/03/difference-between-tcp-vs-udp-protocol.html&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-</description>
-                <link>/network/2015/09/22/difference-between-tcp-vs-udp-protocol</link>
-                <guid>/network/2015/09/22/difference-between-tcp-vs-udp-protocol</guid>
-                <pubDate>Tue, 22 Sep 2015 00:00:00 +0800</pubDate>
         </item>
 
 
