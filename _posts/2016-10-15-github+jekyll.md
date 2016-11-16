@@ -217,16 +217,16 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 
 <p>bundler安装完成，后再次启动本地服务</p>
 
- <code>$ jekyll server
-
-</code>  
+<code>$ jekyll server</code>
 
 
 <p>继续报错</p>
 <pre>
 <code>
 Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
-  Dependency Error: Yikes! It looks like you don't have jekyll-sitemap or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-sitemap' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/!
+Dependency Error: Yikes! It looks like you don't have jekyll-sitemap or one of its dependencies installed. In order to use
+Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file
+-- jekyll-sitemap' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/!
 jekyll 3.1.1 | Error:  jekyll-sitemap
 </code>
 </pre>
@@ -245,9 +245,7 @@ jekyll 3.1.1 | Error:  jekyll-sitemap
 
 <p>修改完成后保存配置，再次执行</p>
 
- <code>$ jekyll server
-
-</code>  
+<code>$ jekyll server</code>
 
 <p>提示</p>
 <pre>

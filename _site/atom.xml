@@ -4,7 +4,7 @@
  <title>程序化&amp;人生</title>
  <link href="" rel="self"/>
  <link href=""/>
- <updated>2016-11-16T09:43:06+08:00</updated>
+ <updated>2016-11-16T09:49:33+08:00</updated>
  <id></id>
  <author>
    <name>assassinlong</name>
@@ -525,13 +525,13 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 
 &lt;p&gt;&lt;code&gt;$ jekyll server&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
-
 &lt;p&gt;继续报错&lt;/p&gt;
 &lt;pre&gt;
 &lt;code&gt;
 Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
-  Dependency Error: Yikes! It looks like you don&#39;t have jekyll-sitemap or one of its dependencies installed. In order to use Jekyll as currently configured, you&#39;ll need to install this gem. The full error message from Ruby is: &#39;cannot load such file -- jekyll-sitemap&#39; If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/!
+Dependency Error: Yikes! It looks like you don&#39;t have jekyll-sitemap or one of its dependencies installed. In order to use
+Jekyll as currently configured, you&#39;ll need to install this gem. The full error message from Ruby is: &#39;cannot load such file
+-- jekyll-sitemap&#39; If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/!
 jekyll 3.1.1 | Error:  jekyll-sitemap
 &lt;/code&gt;
 &lt;/pre&gt;
@@ -551,8 +551,6 @@ jekyll 3.1.1 | Error:  jekyll-sitemap
 &lt;p&gt;修改完成后保存配置，再次执行&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;$ jekyll server&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;提示&lt;/p&gt;
 &lt;pre&gt;

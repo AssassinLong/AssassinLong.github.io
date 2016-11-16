@@ -12,6 +12,7 @@
 /rss.xml
 /sitemap.txt
 /page2/
+/page3/
 
 /%E5%BE%AE%E4%BF%A1/2016/11/04/%E5%BE%AE%E4%BF%A1APP%E6%94%AF%E4%BB%98
 /jekyll/2016/10/15/github+jekyll
@@ -33,3 +34,4 @@
 /network/2015/09/22/difference-between-tcp-vs-udp-protocol
 /program/2015/09/22/PHP%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F
 /jekyll/2015/09/21/tools-for-jekyll
+/jekyll/2014/02/26/mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5l
