@@ -132,46 +132,51 @@ categories: tag标签的分类，如：categories: 随笔</p>
 
 <h3>如果你本机没配置过任何jekyll的环境，可能会报错</h3>
 
- <pre><code>/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- bundler (LoadError)
-	from /Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
-	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/lib/jekyll/plugin_manager.rb:34:in `require_from_bundler'
+ <pre><code>
+ /Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in
+  `require': cannot load such file -- bundler (LoadError)
+from /Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in
+`require'
+from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/lib/jekyll/plugin_manager.rb:34:in
+`require_from_bundler'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/exe/jekyll:9:in `&lt;top (required)&gt;'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/jekyll:23:in `load'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/jekyll:23:in `&lt;main&gt;'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `eval'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `&lt;main&gt;'
 
-</code></pre>
+</code>
+</pre>
 
 
 <p>原因： 没有安装 bundler ，执行安装 bundler 命令</p>
-
- <code>
+<pre>
+<code>
 $ gem install bundler
-
 </code>  
-
+</pre>
 
 <p>提示：</p>
 
- <code>Fetching: bundler-1.13.5.gem (100%)
+<pre>
+<code>
+ Fetching: bundler-1.13.5.gem (100%)
 Successfully installed bundler-1.13.5
 Parsing documentation for bundler-1.13.5
 Installing ri documentation for bundler-1.13.5
 Done installing documentation for bundler after 5 seconds
 1 gem installed
-
 </code>  
-
+</pre>
 
 <p>再次执行 $ jekyll server  ，提示</p>
 
- <code>
+<pre>
+<code>
 Could not find proper version of jekyll (3.1.1) in any of the sources
 Run `bundle install` to install missing gems.
-
 </code>  
-
+</pre>
 
 <p>跟着提示运行命令</p>
 
@@ -183,19 +188,22 @@ Run `bundle install` to install missing gems.
 
 <p>如果很长时间都没任何提示的话，你可以尝试修改 gem 的 source</p>
 
- <code>$ gem sources --remove https://rubygems.org/
+<pre>
+<code>
+$ gem sources --remove https://rubygems.org/
 $ gem sources -a http://gems.ruby-china.org/
 $ gem sources -l
 *** CURRENT SOURCES ***
-
 http://gems.ruby-china.org/
-
-</code>  
+</code>
+</pre>
 
 
 <p>再次执行命令 $ bundle install，发现开始有动静了</p>
 
- <code>Fetching gem metadata from http://gems.ruby-china.org/...........
+<pre>
+<code>
+Fetching gem metadata from http://gems.ruby-china.org/...........
 Fetching version metadata from http://gems.ruby-china.org/..
 Fetching dependency metadata from http://gems.ruby-china.org/.
 。。。
@@ -203,8 +211,8 @@ Installing jekyll-watch 1.3.1
 Installing jekyll 3.1.1
 Bundle complete! 3 Gemfile dependencies, 17 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
-
-</code>  
+</code>
+</pre>
 
 
 <p>bundler安装完成，后再次启动本地服务</p>
@@ -215,12 +223,13 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 
 
 <p>继续报错</p>
-
- <code>Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
+<pre>
+<code>
+Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
   Dependency Error: Yikes! It looks like you don't have jekyll-sitemap or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-sitemap' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/!
 jekyll 3.1.1 | Error:  jekyll-sitemap
-
-</code>  
+</code>
+</pre>
 
 <p>表示 当前的 jekyll 版本是 3.1.1 ，无法使用 jekyll-sitemap</p>
 
@@ -241,19 +250,20 @@ jekyll 3.1.1 | Error:  jekyll-sitemap
 </code>  
 
 <p>提示</p>
-
- <code>Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
+<pre>
+<code>
+Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
             Source: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github
        Destination: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_site
  Incremental build: disabled. Enable with --incremental
       Generating...
                     done in 0.901 seconds.
- Auto-regeneration: enabled for '/Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github'
+Auto-regeneration: enabled for '/Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github'
 Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
     Server address: http://127.0.0.1:4000/
   Server running... press ctrl-c to stop.
-
-</code>  
+</code>
+</pre>
 
 
 <p>表示本地服务部署成功。</p>
