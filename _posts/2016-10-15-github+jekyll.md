@@ -60,8 +60,8 @@ excerpt: 如何利用Github和Jekyll搭建一个博客.
 
 <p>一个基本的 Jekyll 网站的目录结构一般是像这样的：</p>
 
+<pre>
 <code>
-<p>
 ├── _config.yml
 ├── _includes
 |   ├── footer.html
@@ -81,9 +81,8 @@ excerpt: 如何利用Github和Jekyll搭建一个博客.
 |   └── main.scss
 ├── feed.xml
 └── index.html
-</p>
 </code>
-
+</pre>
 <p>这些目录结构以及具体的作用可以参考 <a href="http://jekyll.com.cn/docs/structure/">官网文档</a></p>
 
 <p>进入 _config.yml 里面，修改成你想看到的信息，重新 jekyll server ，刷新浏览器就可以看到你刚刚修改的信息了。</p>
@@ -142,7 +141,7 @@ categories: tag标签的分类，如：categories: 随笔</p>
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `eval'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `&lt;main&gt;'
 
-</pre></code>
+</code></pre>
 
 
 <p>原因： 没有安装 bundler ，执行安装 bundler 命令</p>
