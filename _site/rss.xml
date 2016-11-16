@@ -5,8 +5,8 @@
         <description>程序化&amp;人生 - assassinlong</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 16 Nov 2016 20:27:40 +0800</lastBuildDate>
-        <pubDate>Wed, 16 Nov 2016 20:27:40 +0800</pubDate>
+        <lastBuildDate>Wed, 16 Nov 2016 21:00:22 +0800</lastBuildDate>
+        <pubDate>Wed, 16 Nov 2016 21:00:22 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -1094,6 +1094,73 @@ var_dump(var_export($a));
                 <link>/php/2016/03/14/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95</link>
                 <guid>/php/2016/03/14/PHP魔术方法</guid>
                 <pubDate>Mon, 14 Mar 2016 00:00:00 +0800</pubDate>
+        </item>
+
+        <item>
+                <title>LNMP 开发环境搭建</title>
+                <description>&lt;h1 id=&quot;nginx&quot;&gt;安装nginx&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;    &lt;span class=&quot;n&quot;&gt;yum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;priorities&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;wget&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;packages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;centos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;noarch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RPMS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;release&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;centos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;el7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ngx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;noarch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rpm&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;rpm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ivh&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;release&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;centos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;el7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ngx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;noarch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rpm&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;yum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nginx&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;    &lt;span class=&quot;n&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#启动nginx&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stop&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#停止&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;restart&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#重启&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#设置开机启动&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;nginx-lamplnmp&quot;&gt;更改nginx端口号（根据自己需求 例如：LAMP&amp;amp;&amp;amp;LNMP双环境同时存在）&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;    &lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/etc/n&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ginx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vim&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;conf&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;把&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;改成&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;81&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;    &lt;span class=&quot;n&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;restart&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#重启nginx&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;访问http://ip:81即可看到nginx首页&lt;/p&gt;
+
+&lt;h3 id=&quot;php-fpm&quot;&gt;安装php-fpm&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt; &lt;span class=&quot;n&quot;&gt;yum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;php&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fpm&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;    &lt;span class=&quot;n&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;php&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fpm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#启动php-fpm&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;systemctl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;php&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fpm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#设置开机启动&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;nginxphp&quot;&gt;更改nginx配置文件识别php&lt;/h3&gt;
+
+&lt;p&gt;vi /etc/nginx/conf.d/default.conf，把之前的#给去掉就可以了，顺手改一下fastcgi_param&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;    &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;php&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;           &lt;span class=&quot;n&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fastcgi_pass&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;127&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fastcgi_index&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;php&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fastcgi_param&lt;/span&gt;  &lt;span class=&quot;no&quot;&gt;SCRIPT_FILENAME&lt;/span&gt;  &lt;span class=&quot;sr&quot;&gt;/usr/s&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hare&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;vg&quot;&gt;$fastcgi_script_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;fastcgi_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;负载配置&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;    &lt;span class=&quot;n&quot;&gt;upstream&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;172&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;170&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;138&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;172&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;170&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;139&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt;       &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;server_name&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;localhost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;#charset koi8-r;&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;#access_log  /var/log/nginx/log/host.access.log  main;&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;   &lt;span class=&quot;sr&quot;&gt;/usr/s&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hare&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nginx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;htm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;proxy_pass&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+                <link>/git/2016/03/08/lnmp%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA</link>
+                <guid>/git/2016/03/08/lnmp环境搭建</guid>
+                <pubDate>Tue, 08 Mar 2016 00:00:00 +0800</pubDate>
         </item>
 
         <item>
@@ -2419,59 +2486,6 @@ print_r(insertSort($array));&lt;/p&gt;
                 <link>/program/2015/09/22/PHP%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F</link>
                 <guid>/program/2015/09/22/PHP常见的排序方式</guid>
                 <pubDate>Tue, 22 Sep 2015 00:00:00 +0800</pubDate>
-        </item>
-
-        <item>
-                <title>写 Jekyll 博客的正确姿势</title>
-                <description>&lt;p&gt;用 Jekyll 写博客有个麻烦的地方，就是你可能需要把博客&lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt;下来，修改完成&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;后，再&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;上 GitHub；或者使用 GitHub 的在线编辑器编辑，无论哪种都非常麻烦。幸好找到了几个第三方的写博客和图床工具。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;写博客工具&lt;/h2&gt;
-
-&lt;p&gt;有两个工具，分别是&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyller&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;prose.io&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;jekyller&quot;&gt;Jekyller&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyller&lt;/code&gt;是 Chrome 上的应用，它可以管理你的所有博客，实时&lt;code class=&quot;highlighter-rouge&quot;&gt;markdown&lt;/code&gt;渲染。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://simpleyyt.qiniudn.com/15-9-21/21644919.jpg&quot; alt=&quot;Jekyller&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;但是它的 UI 比较难看，而且对&lt;code class=&quot;highlighter-rouge&quot;&gt;markdown&lt;/code&gt;的支持也不是很好。&lt;/p&gt;
-
-&lt;h3 id=&quot;proseio&quot;&gt;Prose.io&lt;/h3&gt;
-
-&lt;p&gt;非常好的一个工具，它的编辑器非常强大，可以上传图片、文件等，可以在&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;文件中配置&lt;code class=&quot;highlighter-rouge&quot;&gt;prose.io&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://simpleyyt.qiniudn.com/15-9-21/82332870.jpg&quot; alt=&quot;Prose.io&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;缺点就是不支持实时预览，而且也不会自己保存。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;图床&lt;/h2&gt;
-
-&lt;p&gt;图床的话强烈推荐&lt;strong&gt;七牛&lt;/strong&gt;，其缺点就是操作不人性化，但是 chrome 上面有好多相关的插件解决这个问题，比如&lt;a href=&quot;http://yotuku.cn/&quot;&gt;极简图床&lt;/a&gt; 便是基于七牛的图床网站。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;图表工具&lt;/h2&gt;
-
-&lt;p&gt;写博客难免会需要用画一些图表，有两类图表，一类是 &lt;a href=&quot;http://yuml.me/diagram/scruffy/class/draw&quot;&gt;yUML&lt;/a&gt;、&lt;a href=&quot;http://plantuml.com/&quot;&gt;plantUML&lt;/a&gt;, 另一类是 &lt;a href=&quot;http://draw.io&quot;&gt;draw.io&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;yuml--plantuml&quot;&gt;yUML 和 plantUML&lt;/h3&gt;
-
-&lt;p&gt;这类图表只需要按格式输入代码，便会自动产生图表，生成图片链接，省去了上传到图床，后期也可以修改。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://simpleyyt.qiniudn.com/15-9-21/46889912.jpg&quot; alt=&quot;yUML&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://simpleyyt.qiniudn.com/15-9-21/34152859.jpg&quot; alt=&quot;plantUML&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;drawio&quot;&gt;draw.io&lt;/h3&gt;
-
-&lt;p&gt;这个是在线手动绘图的工具，chrome 应用商店里面也下载得到离线应用，绘图完成之后需要上传到图床中。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://simpleyyt.qiniudn.com/15-9-21/68984484.jpg&quot; alt=&quot;draw.io&quot; /&gt;&lt;/p&gt;
-</description>
-                <link>/jekyll/2015/09/21/tools-for-jekyll</link>
-                <guid>/jekyll/2015/09/21/tools-for-jekyll</guid>
-                <pubDate>Mon, 21 Sep 2015 00:00:00 +0800</pubDate>
         </item>
 
 

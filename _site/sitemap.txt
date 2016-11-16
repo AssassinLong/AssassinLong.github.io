@@ -19,6 +19,7 @@
 /linux/2016/04/11/linux
 /php/2016/03/21/PHP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B
 /php/2016/03/14/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95
+/git/2016/03/08/lnmp%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA
 /javascript/2016/02/22/javaScript%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B
 /javascript/2016/02/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F
 /js/2016/02/11/JavaScript
@@ -36,4 +37,5 @@
 /jekyll/2015/09/21/tools-for-jekyll
 /mysql/2015/02/26/mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5l
 /php/2015/01/12/php%E6%8A%80%E5%B7%A7
+/php/2015/01/08/php%E4%B8%ADrequire%E5%92%8Cinclude%E7%9A%84%E5%8C%BA%E5%88%AB
 /git/2015/01/05/git%E5%9F%BA%E7%A1%80%E7%AF%87
