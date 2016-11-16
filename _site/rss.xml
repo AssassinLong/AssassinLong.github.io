@@ -5,8 +5,8 @@
         <description>程序化&amp;人生 - assassinlong</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 16 Nov 2016 09:03:23 +0800</lastBuildDate>
-        <pubDate>Wed, 16 Nov 2016 09:03:23 +0800</pubDate>
+        <lastBuildDate>Wed, 16 Nov 2016 09:27:23 +0800</lastBuildDate>
+        <pubDate>Wed, 16 Nov 2016 09:27:23 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -367,7 +367,8 @@
 
 &lt;p&gt;一个基本的 Jekyll 网站的目录结构一般是像这样的：&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;.
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;
 ├── _config.yml
 ├── _includes
 |   ├── footer.html
@@ -386,8 +387,8 @@
 ├── css
 |   └── main.scss
 ├── feed.xml
-└── index.html&lt;/code&gt;&lt;/p&gt;
-
+└── index.html
+&lt;/p&gt;
 &lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;这些目录结构以及具体的作用可以参考 &lt;a href=&quot;http://jekyll.com.cn/docs/structure/&quot;&gt;官网文档&lt;/a&gt;&lt;/p&gt;
@@ -404,7 +405,7 @@
 
 &lt;p&gt;　　所有的文章都是 _posts 目录下面，文章格式为 mardown 格式，文章文件名可以是 .mardown 或者 .md。&lt;/p&gt;
 
-&lt;p&gt;　　编写一篇新文章很简单，你可以直接从 _posts/ 目录下复制一份出来 &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-10-16-welcome-to-jekyll副本.markdown&lt;/code&gt; ，修改名字为 2016-10-16-article1.markdown ，注意：文章名的格式前面必须为 2016-10-16- ，日期可以修改，但必须为 年-月-日- 格式，后面的 article1 是整个文章的连接 URL，如果文章名为中文，那么文章的连接URL就会变成这样的：http://baixin.io/2015/08/%E6%90%AD%E5/ ， 所以建议文章名最好是英文的或者阿拉伯数字。 双击 2016-10-16-article1.markdown 打开&lt;/p&gt;
+&lt;p&gt;　　编写一篇新文章很简单，你可以直接从 _posts/ 目录下复制一份出来 &lt;code&gt;2016-10-16-welcome-to-jekyll副本.markdown&lt;/code&gt; ，修改名字为 2016-10-16-article1.markdown ，注意：文章名的格式前面必须为 2016-10-16- ，日期可以修改，但必须为 年-月-日- 格式，后面的 article1 是整个文章的连接 URL，如果文章名为中文，那么文章的连接URL就会变成这样的：http://baixin.io/2015/08/%E6%90%AD%E5/ ， 所以建议文章名最好是英文的或者阿拉伯数字。 双击 2016-10-16-article1.markdown 打开&lt;/p&gt;
 
 &lt;h2 id=&quot;code&quot;&gt;&lt;code&gt;&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;layout: post
@@ -430,94 +431,102 @@ categories: tag标签的分类，如：categories: 随笔&lt;/p&gt;
 
 &lt;p&gt;虽然博客部署完成了，你会发现博客太简单不是你想要的，如果你喜欢我的模板的话，可以使用我的模板。&lt;/p&gt;
 
-&lt;p&gt;首先你要获取的我博客，&lt;a href=&quot;https://github.com/leezhiy/leezhiy.github.io.git&quot;&gt;Github项目地址&lt;/a&gt;，你可以直接&lt;a href=&quot;https://github.com/leezhiy/leezhiy.github.io/archive/master.zip&quot;&gt;点击下载博客&lt;/a&gt;，进去leezhiy.github.io/ 目录下， 使用命令部署本地服务&lt;/p&gt;
+&lt;p&gt;首先你要获取的我博客，&lt;a href=&quot;https://github.com/AssassinLong/AssassinLong.github.io&quot;&gt;Github项目地址&lt;/a&gt;，你可以直接&lt;a href=&quot;https://github.com/AssassinLong/AssassinLong.github.io.git/archive/master.zip&quot;&gt;点击下载博客&lt;/a&gt;，进去AssassinLong.github.io/ 目录下， 使用命令部署本地服务&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;$ jekyll server
 &lt;/code&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;jekyll&quot;&gt;如果你本机没配置过任何jekyll的环境，可能会报错&lt;/h3&gt;
+&lt;h3&gt;如果你本机没配置过任何jekyll的环境，可能会报错&lt;/h3&gt;
 
-&lt;p&gt;&lt;code&gt;/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require&#39;: cannot load such file -- bundler (LoadError)
+&lt;pre&gt;&lt;code&gt;/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require&#39;: cannot load such file -- bundler (LoadError)
 	from /Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/lib/jekyll/plugin_manager.rb:34:in `require_from_bundler&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/exe/jekyll:9:in `&amp;lt;top (required)&amp;gt;&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/jekyll:23:in `load&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/jekyll:23:in `&amp;lt;main&amp;gt;&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `eval&#39;
-	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `&amp;lt;main&amp;gt;&#39;&lt;/code&gt;&lt;/p&gt;
+	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `&amp;lt;main&amp;gt;&#39;
 
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
+&lt;/code&gt;
+
 
 &lt;p&gt;原因： 没有安装 bundler ，执行安装 bundler 命令&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;
-$ gem install bundler&lt;/code&gt;&lt;/p&gt;
+ &lt;code&gt;
+$ gem install bundler
 
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
+&lt;/code&gt;  
+
 
 &lt;p&gt;提示：&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;Fetching: bundler-1.13.5.gem (100%)
+ &lt;code&gt;Fetching: bundler-1.13.5.gem (100%)
 Successfully installed bundler-1.13.5
 Parsing documentation for bundler-1.13.5
 Installing ri documentation for bundler-1.13.5
 Done installing documentation for bundler after 5 seconds
-1 gem installed&lt;/code&gt;&lt;/p&gt;
+1 gem installed
 
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
+&lt;/code&gt;  
+
 
 &lt;p&gt;再次执行 $ jekyll server  ，提示&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;
+ &lt;code&gt;
 Could not find proper version of jekyll (3.1.1) in any of the sources
-Run `bundle install` to install missing gems.&lt;/code&gt;&lt;/p&gt;
+Run `bundle install` to install missing gems.
 
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
+&lt;/code&gt;  
+
 
 &lt;p&gt;跟着提示运行命令&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;$ bundle install
-&lt;/code&gt;&lt;/p&gt;
+ &lt;code&gt;$ bundle install
+&lt;/code&gt;  
+
 
 &lt;p&gt;这个时候你可能会发现 bundle install 运行卡主不动了。&lt;/p&gt;
 
 &lt;p&gt;如果很长时间都没任何提示的话，你可以尝试修改 gem 的 source&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;$ gem sources --remove https://rubygems.org/
+ &lt;code&gt;$ gem sources --remove https://rubygems.org/
 $ gem sources -a http://gems.ruby-china.org/
 $ gem sources -l
-*** CURRENT SOURCES ***&lt;/code&gt;&lt;/p&gt;
+*** CURRENT SOURCES ***
 
-&lt;p&gt;http://gems.ruby-china.org/&lt;/p&gt;
+http://gems.ruby-china.org/
 
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
+&lt;/code&gt;  
+
 
 &lt;p&gt;再次执行命令 $ bundle install，发现开始有动静了&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;Fetching gem metadata from http://gems.ruby-china.org/...........
+ &lt;code&gt;Fetching gem metadata from http://gems.ruby-china.org/...........
 Fetching version metadata from http://gems.ruby-china.org/..
 Fetching dependency metadata from http://gems.ruby-china.org/.
 。。。
 Installing jekyll-watch 1.3.1
 Installing jekyll 3.1.1
 Bundle complete! 3 Gemfile dependencies, 17 gems now installed.
-Use `bundle show [gemname]` to see where a bundled gem is installed.&lt;/code&gt;&lt;/p&gt;
+Use `bundle show [gemname]` to see where a bundled gem is installed.
 
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
+&lt;/code&gt;  
+
 
 &lt;p&gt;bundler安装完成，后再次启动本地服务&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;$ jekyll server&lt;/code&gt;&lt;/p&gt;
+ &lt;code&gt;$ jekyll server
 
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
+&lt;/code&gt;  
+
 
 &lt;p&gt;继续报错&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
+ &lt;code&gt;Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
   Dependency Error: Yikes! It looks like you don&#39;t have jekyll-sitemap or one of its dependencies installed. In order to use Jekyll as currently configured, you&#39;ll need to install this gem. The full error message from Ruby is: &#39;cannot load such file -- jekyll-sitemap&#39; If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/!
-jekyll 3.1.1 | Error:  jekyll-sitemap&lt;/code&gt;&lt;/p&gt;
+jekyll 3.1.1 | Error:  jekyll-sitemap
 
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
+&lt;/code&gt;  
 
 &lt;p&gt;表示 当前的 jekyll 版本是 3.1.1 ，无法使用 jekyll-sitemap&lt;/p&gt;
 
@@ -533,13 +542,13 @@ jekyll 3.1.1 | Error:  jekyll-sitemap&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;修改完成后保存配置，再次执行&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;$ jekyll server&lt;/code&gt;&lt;/p&gt;
+ &lt;code&gt;$ jekyll server
 
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
+&lt;/code&gt;  
 
 &lt;p&gt;提示&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
+ &lt;code&gt;Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
             Source: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github
        Destination: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_site
  Incremental build: disabled. Enable with --incremental
@@ -548,9 +557,10 @@ jekyll 3.1.1 | Error:  jekyll-sitemap&lt;/code&gt;&lt;/p&gt;
  Auto-regeneration: enabled for &#39;/Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github&#39;
 Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
     Server address: http://127.0.0.1:4000/
-  Server running... press ctrl-c to stop.&lt;/code&gt;&lt;/p&gt;
+  Server running... press ctrl-c to stop.
 
-&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
+&lt;/code&gt;  
+
 
 &lt;p&gt;表示本地服务部署成功。&lt;/p&gt;
 
@@ -570,6 +580,7 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
 &lt;h3 id=&quot;jekyll-1&quot;&gt;为什么要是用 Jekyll&lt;/h3&gt;
 
 &lt;p&gt;使用了 Jekyll 你会发现如果你想使用多台电脑发博客都很方便，只要把远端 github 仓库里的博客 clone 下来，写文章后再提交就可以了&lt;/p&gt;
+&lt;/pre&gt;
 </description>
                 <link>/jekyll/2016/10/15/github+jekyll</link>
                 <guid>/jekyll/2016/10/15/github+jekyll</guid>

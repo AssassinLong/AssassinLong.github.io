@@ -60,7 +60,8 @@ excerpt: 如何利用Github和Jekyll搭建一个博客.
 
 <p>一个基本的 Jekyll 网站的目录结构一般是像这样的：</p>
 
- <code>.
+<code>
+<p>
 ├── _config.yml
 ├── _includes
 |   ├── footer.html
@@ -80,8 +81,8 @@ excerpt: 如何利用Github和Jekyll搭建一个博客.
 |   └── main.scss
 ├── feed.xml
 └── index.html
-
-</code>  
+</p>
+</code>
 
 <p>这些目录结构以及具体的作用可以参考 <a href="http://jekyll.com.cn/docs/structure/">官网文档</a></p>
 
@@ -97,9 +98,9 @@ excerpt: 如何利用Github和Jekyll搭建一个博客.
 
 <p>　　所有的文章都是 _posts 目录下面，文章格式为 mardown 格式，文章文件名可以是 .mardown 或者 .md。</p>
 
-<p>　　编写一篇新文章很简单，你可以直接从 _posts/ 目录下复制一份出来 <code class="highlighter-rouge">2016-10-16-welcome-to-jekyll副本.markdown</code> ，修改名字为 2016-10-16-article1.markdown ，注意：文章名的格式前面必须为 2016-10-16- ，日期可以修改，但必须为 年-月-日- 格式，后面的 article1 是整个文章的连接 URL，如果文章名为中文，那么文章的连接URL就会变成这样的：http://baixin.io/2015/08/%E6%90%AD%E5/ ， 所以建议文章名最好是英文的或者阿拉伯数字。 双击 2016-10-16-article1.markdown 打开</p>
+<p>　　编写一篇新文章很简单，你可以直接从 _posts/ 目录下复制一份出来 <code>2016-10-16-welcome-to-jekyll副本.markdown</code> ，修改名字为 2016-10-16-article1.markdown ，注意：文章名的格式前面必须为 2016-10-16- ，日期可以修改，但必须为 年-月-日- 格式，后面的 article1 是整个文章的连接 URL，如果文章名为中文，那么文章的连接URL就会变成这样的：http://baixin.io/2015/08/%E6%90%AD%E5/ ， 所以建议文章名最好是英文的或者阿拉伯数字。 双击 2016-10-16-article1.markdown 打开</p>
 
- <code>
+<code>
 ---
 layout: post
 title:  "Welcome to Jekyll!"
@@ -124,15 +125,15 @@ categories: tag标签的分类，如：categories: 随笔</p>
 
 <p>虽然博客部署完成了，你会发现博客太简单不是你想要的，如果你喜欢我的模板的话，可以使用我的模板。</p>
 
-<p>首先你要获取的我博客，<a href="https://github.com/leezhiy/leezhiy.github.io.git">Github项目地址</a>，你可以直接<a href="https://github.com/leezhiy/leezhiy.github.io/archive/master.zip">点击下载博客</a>，进去leezhiy.github.io/ 目录下， 使用命令部署本地服务</p>
+<p>首先你要获取的我博客，<a href="https://github.com/AssassinLong/AssassinLong.github.io">Github项目地址</a>，你可以直接<a href="https://github.com/AssassinLong/AssassinLong.github.io.git/archive/master.zip">点击下载博客</a>，进去AssassinLong.github.io/ 目录下， 使用命令部署本地服务</p>
 
  <code>$ jekyll server
 </code>  
 
 
-<h3 id="jekyll">如果你本机没配置过任何jekyll的环境，可能会报错</h3>
+<h3>如果你本机没配置过任何jekyll的环境，可能会报错</h3>
 
- <code>/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- bundler (LoadError)
+ <pre><code>/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- bundler (LoadError)
 	from /Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/lib/jekyll/plugin_manager.rb:34:in `require_from_bundler'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/exe/jekyll:9:in `&lt;top (required)&gt;'
@@ -141,7 +142,7 @@ categories: tag标签的分类，如：categories: 随笔</p>
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `eval'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `&lt;main&gt;'
 
-</code>  
+</pre></code>
 
 
 <p>原因： 没有安装 bundler ，执行安装 bundler 命令</p>
