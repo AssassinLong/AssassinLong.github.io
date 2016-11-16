@@ -35,4 +35,5 @@
 /program/2015/09/22/PHP%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E5%BC%8F
 /jekyll/2015/09/21/tools-for-jekyll
 /mysql/2015/02/26/mysql%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5l
+/php/2015/01/12/php%E6%8A%80%E5%B7%A7
 /git/2015/01/05/git%E5%9F%BA%E7%A1%80%E7%AF%87
