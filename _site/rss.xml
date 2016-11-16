@@ -5,8 +5,8 @@
         <description>程序化&amp;人生 - assassinlong</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Fri, 04 Nov 2016 20:45:10 +0800</lastBuildDate>
-        <pubDate>Fri, 04 Nov 2016 20:45:10 +0800</pubDate>
+        <lastBuildDate>Wed, 16 Nov 2016 08:57:12 +0800</lastBuildDate>
+        <pubDate>Wed, 16 Nov 2016 08:57:12 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -319,14 +319,14 @@
         <item>
                 <title>github+jekyll搭建博客</title>
                 <description>&lt;p&gt;喜欢写博客的人，会经历三个阶段：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;p&amp;gt;第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。&amp;lt;/p&amp;gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。
+第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。
+第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;大多数人都停留在第一和第二个阶段，但是现在越来越多的人，主要是程序员喜欢在Github上写博客，一切都任由你左右，一个commit就能提交一篇文章，还有着无限流量免费的空间，想想就惬意不止。&lt;/p&gt;
 &lt;p&gt;进入正题，如何利用Github和Jekyll搭建一个博客：&lt;/p&gt;
-&lt;h3 id=&quot;section&quot;&gt;介绍&lt;/h3&gt;
+&lt;h3&gt;介绍&lt;/h3&gt;
 
 &lt;p&gt;　Jekyll 是一个简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown （或者 Textile） 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub 的服务来搭建你的项目页面、博客或者网站，而且是完全免费的&lt;/p&gt;
 
@@ -339,27 +339,23 @@
 
 &lt;p&gt;安装 jekyll&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem install jekyll
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem install jekyll
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;创建博客&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll new myBlog
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll new myBlog
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;进入博客目录&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd myBlog
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd myBlog
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;启动本地服务&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll serve
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll serve
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;在浏览器里输入： &lt;a href=&quot;http://localhost:4000&quot;&gt;http://localhost:4000&lt;/a&gt;，就可以看到你的博客效果了。&lt;/p&gt;
 
@@ -373,7 +369,7 @@
 
 &lt;p&gt;一个基本的 Jekyll 网站的目录结构一般是像这样的：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
 ├── _config.yml
 ├── _includes
 |   ├── footer.html
@@ -395,7 +391,6 @@
 └── index.html
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;这些目录结构以及具体的作用可以参考 &lt;a href=&quot;http://jekyll.com.cn/docs/structure/&quot;&gt;官网文档&lt;/a&gt;&lt;/p&gt;
 
@@ -413,7 +408,7 @@
 
 &lt;p&gt;　　编写一篇新文章很简单，你可以直接从 _posts/ 目录下复制一份出来 &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-10-16-welcome-to-jekyll副本.markdown&lt;/code&gt; ，修改名字为 2016-10-16-article1.markdown ，注意：文章名的格式前面必须为 2016-10-16- ，日期可以修改，但必须为 年-月-日- 格式，后面的 article1 是整个文章的连接 URL，如果文章名为中文，那么文章的连接URL就会变成这样的：http://baixin.io/2015/08/%E6%90%AD%E5/ ， 所以建议文章名最好是英文的或者阿拉伯数字。 双击 2016-10-16-article1.markdown 打开&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 ---
 layout: post
 title:  &quot;Welcome to Jekyll!&quot;
@@ -424,7 +419,7 @@ categories: jekyll update
 正文...
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;title: 显示的文章名， 如：title: 我的第一篇文章                  &lt;br /&gt;
 date:  显示的文章发布日期，如：date: 2016-10-16                        &lt;br /&gt;
@@ -440,13 +435,12 @@ categories: tag标签的分类，如：categories: 随笔&lt;/p&gt;
 
 &lt;p&gt;首先你要获取的我博客，&lt;a href=&quot;https://github.com/leezhiy/leezhiy.github.io.git&quot;&gt;Github项目地址&lt;/a&gt;，你可以直接&lt;a href=&quot;https://github.com/leezhiy/leezhiy.github.io/archive/master.zip&quot;&gt;点击下载博客&lt;/a&gt;，进去leezhiy.github.io/ 目录下， 使用命令部署本地服务&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;jekyll&quot;&gt;如果你本机没配置过任何jekyll的环境，可能会报错&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require&#39;: cannot load such file -- bundler (LoadError)
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require&#39;: cannot load such file -- bundler (LoadError)
 	from /Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/lib/jekyll/plugin_manager.rb:34:in `require_from_bundler&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/exe/jekyll:9:in `&amp;lt;top (required)&amp;gt;&#39;
@@ -456,19 +450,17 @@ categories: tag标签的分类，如：categories: 随笔&lt;/p&gt;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `&amp;lt;main&amp;gt;&#39;
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;原因： 没有安装 bundler ，执行安装 bundler 命令&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 $ gem install bundler
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;提示：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching: bundler-1.13.5.gem (100%)
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching: bundler-1.13.5.gem (100%)
 Successfully installed bundler-1.13.5
 Parsing documentation for bundler-1.13.5
 Installing ri documentation for bundler-1.13.5
@@ -476,28 +468,25 @@ Done installing documentation for bundler after 5 seconds
 1 gem installed
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;再次执行 $ jekyll server  ，提示&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 Could not find proper version of jekyll (3.1.1) in any of the sources
 Run `bundle install` to install missing gems.
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;跟着提示运行命令&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle install
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle install
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;这个时候你可能会发现 bundle install 运行卡主不动了。&lt;/p&gt;
 
 &lt;p&gt;如果很长时间都没任何提示的话，你可以尝试修改 gem 的 source&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem sources --remove https://rubygems.org/
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem sources --remove https://rubygems.org/
 $ gem sources -a http://gems.ruby-china.org/
 $ gem sources -l
 *** CURRENT SOURCES ***
@@ -505,11 +494,10 @@ $ gem sources -l
 http://gems.ruby-china.org/
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;再次执行命令 $ bundle install，发现开始有动静了&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching gem metadata from http://gems.ruby-china.org/...........
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching gem metadata from http://gems.ruby-china.org/...........
 Fetching version metadata from http://gems.ruby-china.org/..
 Fetching dependency metadata from http://gems.ruby-china.org/.
 。。。
@@ -519,23 +507,21 @@ Bundle complete! 3 Gemfile dependencies, 17 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;bundler安装完成，后再次启动本地服务&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;继续报错&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
   Dependency Error: Yikes! It looks like you don&#39;t have jekyll-sitemap or one of its dependencies installed. In order to use Jekyll as currently configured, you&#39;ll need to install this gem. The full error message from Ruby is: &#39;cannot load such file -- jekyll-sitemap&#39; If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/!
 jekyll 3.1.1 | Error:  jekyll-sitemap
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
 &lt;p&gt;表示 当前的 jekyll 版本是 3.1.1 ，无法使用 jekyll-sitemap&lt;/p&gt;
 
 &lt;p&gt;解决方法有两个&lt;/p&gt;
@@ -550,13 +536,13 @@ jekyll 3.1.1 | Error:  jekyll-sitemap
 
 &lt;p&gt;修改完成后保存配置，再次执行&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
 &lt;p&gt;提示&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
             Source: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github
        Destination: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_site
  Incremental build: disabled. Enable with --incremental
@@ -568,7 +554,6 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
   Server running... press ctrl-c to stop.
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;表示本地服务部署成功。&lt;/p&gt;
 
@@ -583,9 +568,7 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
   &lt;/ul&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;然后使用 git push 到你自己的仓库里面去，检查你远端仓库，在浏览器输入 username.github.io 就会发现，你有一个漂亮的主题模板了。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-6&quot;&gt;【 如果想修改博客样式却不知道怎么修改，可以直接在评论里给我提问 】&lt;/h4&gt;
+&lt;p&gt;然后使用 git push 到你自己的仓库里面去，检查你远端仓库，就会发现，你有一个漂亮的主题模板了。&lt;/p&gt;
 
 &lt;h3 id=&quot;jekyll-1&quot;&gt;为什么要是用 Jekyll&lt;/h3&gt;
 
@@ -600,68 +583,6 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
                 <title>linux介绍及Php环境搭建</title>
                 <description>&lt;p&gt;  Linux操作系统诞生于1991 年10 月5 日（这是第一次正式向外公布时间）。Linux存在着许多不同的Linux版本，但它们都使用了Linux内核。Linux可安装在各种计算机硬件设备中，比如手机、平板电脑、路由器、视频游戏控制台、台式计算机、大型机和超级计算机。&lt;/p&gt;
 
-&lt;p&gt;  严格来讲，Linux这个词本身只表示Linux内核，但实际上人们已经习惯了用Linux来形容整个基于Linux内核，并且使用GNU 工程各种工具和数据库的操作系统。&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;【图形模式与文字模式的切换方式】&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;Linux预设提供了六个命令窗口终端机让我们来登录。默认我们登录的就是第一个窗口，也就是tty1，这个六个窗口分别为tty1,tty2 … tty6，你可以按下Ctrl + Alt + F1 ~ F6 来切换它们。如果你安装了图形界面，默认情况下是进入图形界面的，此时你就可以按Ctrl + Alt + F1 ~ F6来进入其中一个命令窗口界面。当你进入命令窗口界面后再返回图形界面只要按下Ctrl + Alt + F7 就回来了。如果你用的vmware 虚拟机，命令窗口切换的快捷键为 Alt + Space + F1~F6. 如果你在图形界面下请按Alt + Shift + Ctrl + F1~F6 切换至命令窗口。 &amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;【学会使用快捷键】&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;Ctrl + C：这个是用来终止当前命令的快捷键，当然你也可以输入一大串字符，不想让它运行直接Ctrl + C，光标就会跳入下一行。 &amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;Tab： 这个键是最有用的键了，也是笔者敲击概率最高的一个键。因为当你打一个命令打一半时，它会帮你补全的。不光是命令，当你打一个目录时，同样可以补全，不信你试试。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;Ctrl + D： 退出当前终端，同样你也可以输入exit。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;Ctrl + Z： 暂停当前进程，比如你正运行一个命令，突然觉得有点问题想暂停一下，就可以使用这个快捷键。暂停后，可以使用fg 恢复它。&amp;lt;br&amp;gt;输入 man ls 其实格式为 man + 命令&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;你就会看到相关的帮助文档了。从命令的介绍到命令的参数以及用法介绍的都非常详细的。不错吧。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;【Linux系统目录结构】&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;登录系统后，在当前命令窗口下输入 ls / 你会看到&amp;lt;br&amp;gt;&amp;lt;img alt=&quot;2015623163215087.png (640×382)&quot; src=&quot;http://files.jb51.net/file_images/article/201506/2015623163215087.png?2015523163229&quot;&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;Ctrl + L： 清屏，使光标移动到第一行。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;【学会查询帮助文档 — man】&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;这个man 通常是用来看一个命令的帮助文档的。例如：&amp;lt;br&amp;gt;&amp;lt;img alt=&quot;2015623163239180.png (507×52)&quot; src=&quot;http://files.jb51.net/file_images/article/201506/2015623163239180.png?2015523163256&quot;&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;以下是对这些目录的解释：&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/bin bin是Binary的缩写。这个目录存放着最经常使用的命令。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/boot这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/dev dev是Device(设备)的缩写。该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/etc这个目录用来存放所有的系统管理所需要的配置文件和子目录。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/home用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/lib这个目录里存放着系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。几乎所有的应用程序都需要用到这些共享库。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/lost+found这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/media linux系统会自动识别一些设备，例如U盘、光驱等等，当识别后，linux会把识别的设备挂载到这个目录下。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/mnt系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在/mnt/上，然后进入该目录就可以查看光驱里的内容了。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/opt 这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/proc这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;echo 1 &amp;amp;gt; /proc/sys/net/ipv4/icmp_echo_ignore_all。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/root该目录为系统管理员，也称作超级权限者的用户主目录。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/sbin s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/selinux 这个目录是Redhat/CentOS所特有的目录，Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/srv 该目录存放一些服务启动之后需要提取的数据。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/sys 这是linux2.6内核的一个很大的变化。该目录下安装了2.6内核中新出现的一个文件系统 sysfs ，sysfs文件系统集成了下面3种文件系统的信息：针对进程信息的proc文件系统、针对设备的devfs文件系统以及针对伪终端的devpts文件系统。该文件系统是内核设备树的一个直观反映。当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统种被创建。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/tmp这个目录是用来存放一些临时文件的。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/usr 这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似与windows下的program files目录。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/usr/bin：系统用户使用的应用程序。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/usr/sbin：超级用户使用的比较高级的管理程序和系统守护程序。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/usr/src：内核源代码默认的放置目录。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;/var这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;在linux系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。/etc： 上边也提到了，这个是系统中的配置文件，如果你更改了该目录下的某个文件可能会导致系统不能启动。/bin, /sbin, /usr/bin, /usr/sbin: 这是系统预设的执行文件的放置目录，比如 ls 就是在/bin/ls 目录下的。值得提出的是，/bin, /usr/bin 是给系统用户使用的指令（除root外的通用户），而/sbin, /usr/sbin 则是给root使用的指令。 /var： 这是一个非常重要的目录，系统上跑了很多程序，那么每个程序都会有相应的日志产生，而这些日志就被记录到这个目录下，具体在/var/log 目录下，另外mail的预设放置也是在这里。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;【如何正确关机】&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;其实，在linux领域内大多用在服务器上，很少遇到关机的操作。毕竟服务器上跑一个服务是永无止境的，除非特殊情况下，不得已才会关机。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;linux和windows不同，在 Linux 底下，由于每个程序（或者说是服务）都是在在背景下执行的，因此，在你看不到的屏幕背后其实可能有相当多人同时在你的主机上面工作，例如浏览网页啦、传送信件啦以 FTP 传送档案啦等等的，如果你直接按下电源开关来关机时，则其它人的数据可能就此中断！那可就伤脑筋了！此外，最大的问题是，若不正常关机，则可能造成文件系统的毁损（因为来不及将数据回写到档案中，所以有些服务的档案会有问题！）。&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;如果你要关机，必须要保证当前系统中没有其他用户在线。可以下达 who 这个指令，而如果要看网络的联机状态，可以下达 netstat -a 这个指令，而要看背景执行的程序可以执行 ps -aux 这个指令。使用这些指令可以让你稍微了解主机目前的使用状态！（这些命令在以后的章节中会提及，现在只要了解即可！）&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;正确的关机流程为：sysnc ? shutdown ? reboot ? halt&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div class=&quot;msgheader&quot;&amp;gt;&amp;lt;div class=&quot;right&quot;&amp;gt;&amp;lt;span style=&quot;CURSOR: pointer&quot; onclick=&quot;copycode(getid(&#39;phpcode16&#39;));&quot;&amp;gt;&amp;lt;u&amp;gt;复制代码&amp;lt;/u&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;代码如下:&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;msgborder&quot; id=&quot;phpcode16&quot;&amp;gt;sync&amp;lt;/div&amp;gt;将数据由内存同步到硬盘中。&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div class=&quot;msgheader&quot;&amp;gt;&amp;lt;div class=&quot;right&quot;&amp;gt;&amp;lt;span style=&quot;CURSOR: pointer&quot; onclick=&quot;copycode(getid(&#39;phpcode17&#39;));&quot;&amp;gt;&amp;lt;u&amp;gt;复制代码&amp;lt;/u&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;代码如下:&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;msgborder&quot; id=&quot;phpcode17&quot;&amp;gt;shutdown&amp;lt;/div&amp;gt;关机指令，你可以man shutdown 来看一下帮助文档。例如你可以运行如下命令关机：&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div class=&quot;msgheader&quot;&amp;gt;&amp;lt;div class=&quot;right&quot;&amp;gt;&amp;lt;span style=&quot;CURSOR: pointer&quot; onclick=&quot;copycode(getid(&#39;phpcode18&#39;));&quot;&amp;gt;&amp;lt;u&amp;gt;复制代码&amp;lt;/u&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;代码如下:&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;msgborder&quot; id=&quot;phpcode18&quot;&amp;gt;shutdown –h 10&amp;lt;/div&amp;gt;‘This server will shutdown after 10 mins’ 这个命令告诉大家，计算机将在10分钟后关机，并且会显示在登陆用户的当前屏幕中。&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div class=&quot;msgheader&quot;&amp;gt;&amp;lt;div class=&quot;right&quot;&amp;gt;&amp;lt;span style=&quot;CURSOR: pointer&quot; onclick=&quot;copycode(getid(&#39;phpcode19&#39;));&quot;&amp;gt;&amp;lt;u&amp;gt;复制代码&amp;lt;/u&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;代码如下:&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;msgborder&quot; id=&quot;phpcode19&quot;&amp;gt;Shutdown –h now&amp;lt;/div&amp;gt;立马关机&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div class=&quot;msgheader&quot;&amp;gt;&amp;lt;div class=&quot;right&quot;&amp;gt;&amp;lt;span style=&quot;CURSOR: pointer&quot; onclick=&quot;copycode(getid(&#39;phpcode20&#39;));&quot;&amp;gt;&amp;lt;u&amp;gt;复制代码&amp;lt;/u&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;代码如下:&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;msgborder&quot; id=&quot;phpcode20&quot;&amp;gt;Shutdown –h 20:25&amp;lt;/div&amp;gt;系统会在今天20:25关机&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div class=&quot;msgheader&quot;&amp;gt;&amp;lt;div class=&quot;right&quot;&amp;gt;&amp;lt;span style=&quot;CURSOR: pointer&quot; onclick=&quot;copycode(getid(&#39;phpcode21&#39;));&quot;&amp;gt;&amp;lt;u&amp;gt;复制代码&amp;lt;/u&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;代码如下:&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;msgborder&quot; id=&quot;phpcode21&quot;&amp;gt;Shutdown –h +10&amp;lt;/div&amp;gt;十分钟后关机&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div class=&quot;msgheader&quot;&amp;gt;&amp;lt;div class=&quot;right&quot;&amp;gt;&amp;lt;span style=&quot;CURSOR: pointer&quot; onclick=&quot;copycode(getid(&#39;phpcode22&#39;));&quot;&amp;gt;&amp;lt;u&amp;gt;复制代码&amp;lt;/u&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;代码如下:&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;msgborder&quot; id=&quot;phpcode22&quot;&amp;gt;Shutdown –r now&amp;lt;/div&amp;gt;系统立马重启&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;div class=&quot;msgheader&quot;&amp;gt;&amp;lt;div class=&quot;right&quot;&amp;gt;&amp;lt;span style=&quot;CURSOR: pointer&quot; onclick=&quot;copycode(getid(&#39;phpcode23&#39;));&quot;&amp;gt;&amp;lt;u&amp;gt;复制代码&amp;lt;/u&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;代码如下:&amp;lt;/div&amp;gt;&amp;lt;div class=&quot;msgborder&quot; id=&quot;phpcode23&quot;&amp;gt;Shutdown –r +10&amp;lt;/div&amp;gt;系统十分钟后重启&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;reboot 就是重启，等同于 shutdown –r now&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;halt 关闭系统，等同于shutdown –h now 和 poweroff&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;最后总结一下，不管是重启系统还是关闭系统，首先要运行sync命令，把内存中的数据写到磁盘中。关机的命令有 shutdown –h now halt poweroff 和 init 0 , 重启系统的命令有 shutdown –r now reboot init 6.&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 </description>
                 <link>/linux/2016/04/11/linux</link>
                 <guid>/linux/2016/04/11/linux</guid>

@@ -10,12 +10,12 @@ time: 2016.10.15 15:50:00
 excerpt: 如何利用Github和Jekyll搭建一个博客.
 ---
 <p>喜欢写博客的人，会经历三个阶段：</p>
-    <p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-    <p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-    <p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
+    第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。
+    第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。
+    第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。
 <p>大多数人都停留在第一和第二个阶段，但是现在越来越多的人，主要是程序员喜欢在Github上写博客，一切都任由你左右，一个commit就能提交一篇文章，还有着无限流量免费的空间，想想就惬意不止。</p>
 <p>进入正题，如何利用Github和Jekyll搭建一个博客：</p>
-<h3 id="section">介绍</h3>
+<h3>介绍</h3>
 
 <p>　Jekyll 是一个简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown （或者 Textile） 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub 的服务来搭建你的项目页面、博客或者网站，而且是完全免费的</p>
 
@@ -28,27 +28,25 @@ excerpt: 如何利用Github和Jekyll搭建一个博客.
 
 <p>安装 jekyll</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ gem install jekyll
+<pre class="highlight"><code>$ gem install jekyll
 </code></pre>
-</div>
 
 <p>创建博客</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ jekyll new myBlog
+<pre class="highlight"><code>$ jekyll new myBlog
 </code></pre>
-</div>
 
 <p>进入博客目录</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd myBlog
+<pre class="highlight"><code>$ cd myBlog
 </code></pre>
-</div>
+
 
 <p>启动本地服务</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ jekyll serve
+<pre class="highlight"><code>$ jekyll serve
 </code></pre>
-</div>
+
 
 <p>在浏览器里输入： <a href="http://localhost:4000">http://localhost:4000</a>，就可以看到你的博客效果了。</p>
 
@@ -62,7 +60,7 @@ excerpt: 如何利用Github和Jekyll搭建一个博客.
 
 <p>一个基本的 Jekyll 网站的目录结构一般是像这样的：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>.
+<pre class="highlight"><code>.
 ├── _config.yml
 ├── _includes
 |   ├── footer.html
@@ -84,7 +82,6 @@ excerpt: 如何利用Github和Jekyll搭建一个博客.
 └── index.html
 
 </code></pre>
-</div>
 
 <p>这些目录结构以及具体的作用可以参考 <a href="http://jekyll.com.cn/docs/structure/">官网文档</a></p>
 
@@ -102,7 +99,7 @@ excerpt: 如何利用Github和Jekyll搭建一个博客.
 
 <p>　　编写一篇新文章很简单，你可以直接从 _posts/ 目录下复制一份出来 <code class="highlighter-rouge">2016-10-16-welcome-to-jekyll副本.markdown</code> ，修改名字为 2016-10-16-article1.markdown ，注意：文章名的格式前面必须为 2016-10-16- ，日期可以修改，但必须为 年-月-日- 格式，后面的 article1 是整个文章的连接 URL，如果文章名为中文，那么文章的连接URL就会变成这样的：http://baixin.io/2015/08/%E6%90%AD%E5/ ， 所以建议文章名最好是英文的或者阿拉伯数字。 双击 2016-10-16-article1.markdown 打开</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<pre class="highlight"><code>
 ---
 layout: post
 title:  "Welcome to Jekyll!"
@@ -129,13 +126,13 @@ categories: tag标签的分类，如：categories: 随笔</p>
 
 <p>首先你要获取的我博客，<a href="https://github.com/leezhiy/leezhiy.github.io.git">Github项目地址</a>，你可以直接<a href="https://github.com/leezhiy/leezhiy.github.io/archive/master.zip">点击下载博客</a>，进去leezhiy.github.io/ 目录下， 使用命令部署本地服务</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ jekyll server
+<pre class="highlight"><code>$ jekyll server
 </code></pre>
-</div>
+
 
 <h3 id="jekyll">如果你本机没配置过任何jekyll的环境，可能会报错</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- bundler (LoadError)
+<pre class="highlight"><code>/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- bundler (LoadError)
 	from /Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/lib/jekyll/plugin_manager.rb:34:in `require_from_bundler'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/exe/jekyll:9:in `&lt;top (required)&gt;'
@@ -145,19 +142,19 @@ categories: tag标签的分类，如：categories: 随笔</p>
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `&lt;main&gt;'
 
 </code></pre>
-</div>
+
 
 <p>原因： 没有安装 bundler ，执行安装 bundler 命令</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<pre class="highlight"><code>
 $ gem install bundler
 
 </code></pre>
-</div>
+
 
 <p>提示：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Fetching: bundler-1.13.5.gem (100%)
+<pre class="highlight"><code>Fetching: bundler-1.13.5.gem (100%)
 Successfully installed bundler-1.13.5
 Parsing documentation for bundler-1.13.5
 Installing ri documentation for bundler-1.13.5
@@ -165,28 +162,28 @@ Done installing documentation for bundler after 5 seconds
 1 gem installed
 
 </code></pre>
-</div>
+
 
 <p>再次执行 $ jekyll server  ，提示</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<pre class="highlight"><code>
 Could not find proper version of jekyll (3.1.1) in any of the sources
 Run `bundle install` to install missing gems.
 
 </code></pre>
-</div>
+
 
 <p>跟着提示运行命令</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ bundle install
+<pre class="highlight"><code>$ bundle install
 </code></pre>
-</div>
+
 
 <p>这个时候你可能会发现 bundle install 运行卡主不动了。</p>
 
 <p>如果很长时间都没任何提示的话，你可以尝试修改 gem 的 source</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ gem sources --remove https://rubygems.org/
+<pre class="highlight"><code>$ gem sources --remove https://rubygems.org/
 $ gem sources -a http://gems.ruby-china.org/
 $ gem sources -l
 *** CURRENT SOURCES ***
@@ -194,11 +191,11 @@ $ gem sources -l
 http://gems.ruby-china.org/
 
 </code></pre>
-</div>
+
 
 <p>再次执行命令 $ bundle install，发现开始有动静了</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Fetching gem metadata from http://gems.ruby-china.org/...........
+<pre class="highlight"><code>Fetching gem metadata from http://gems.ruby-china.org/...........
 Fetching version metadata from http://gems.ruby-china.org/..
 Fetching dependency metadata from http://gems.ruby-china.org/.
 。。。
@@ -208,23 +205,23 @@ Bundle complete! 3 Gemfile dependencies, 17 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
 
 </code></pre>
-</div>
+
 
 <p>bundler安装完成，后再次启动本地服务</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ jekyll server
+<pre class="highlight"><code>$ jekyll server
 
 </code></pre>
-</div>
+
 
 <p>继续报错</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
+<pre class="highlight"><code>Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
   Dependency Error: Yikes! It looks like you don't have jekyll-sitemap or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-sitemap' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/!
 jekyll 3.1.1 | Error:  jekyll-sitemap
 
 </code></pre>
-</div>
+
 <p>表示 当前的 jekyll 版本是 3.1.1 ，无法使用 jekyll-sitemap</p>
 
 <p>解决方法有两个</p>
@@ -239,13 +236,13 @@ jekyll 3.1.1 | Error:  jekyll-sitemap
 
 <p>修改完成后保存配置，再次执行</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ jekyll server
+<pre class="highlight"><code>$ jekyll server
 
 </code></pre>
-</div>
+
 <p>提示</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
+<pre class="highlight"><code>Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
             Source: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github
        Destination: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_site
  Incremental build: disabled. Enable with --incremental
@@ -257,7 +254,7 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
   Server running... press ctrl-c to stop.
 
 </code></pre>
-</div>
+
 
 <p>表示本地服务部署成功。</p>
 
@@ -272,9 +269,7 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
   </ul>
 </blockquote>
 
-<p>然后使用 git push 到你自己的仓库里面去，检查你远端仓库，在浏览器输入 username.github.io 就会发现，你有一个漂亮的主题模板了。</p>
-
-<h4 id="section-6">【 如果想修改博客样式却不知道怎么修改，可以直接在评论里给我提问 】</h4>
+<p>然后使用 git push 到你自己的仓库里面去，检查你远端仓库，就会发现，你有一个漂亮的主题模板了。</p>
 
 <h3 id="jekyll-1">为什么要是用 Jekyll</h3>
 
