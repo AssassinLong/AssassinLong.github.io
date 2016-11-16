@@ -4,7 +4,7 @@
  <title>程序化&amp;人生</title>
  <link href="" rel="self"/>
  <link href=""/>
- <updated>2016-11-16T08:57:12+08:00</updated>
+ <updated>2016-11-16T09:03:23+08:00</updated>
  <id></id>
  <author>
    <name>assassinlong</name>
@@ -324,12 +324,10 @@
    <updated>2016-10-15T00:00:00+08:00</updated>
    <id>/jekyll/2016/10/15/github+jekyll</id>
    <content type="html">&lt;p&gt;喜欢写博客的人，会经历三个阶段：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。
-第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。
-第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 &lt;p&gt;大多数人都停留在第一和第二个阶段，但是现在越来越多的人，主要是程序员喜欢在Github上写博客，一切都任由你左右，一个commit就能提交一篇文章，还有着无限流量免费的空间，想想就惬意不止。&lt;/p&gt;
+&lt;p&gt;第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。
+   第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。
+   第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。&lt;/p&gt;
 &lt;p&gt;进入正题，如何利用Github和Jekyll搭建一个博客：&lt;/p&gt;
 &lt;h3&gt;介绍&lt;/h3&gt;
 
@@ -344,23 +342,23 @@
 
 &lt;p&gt;安装 jekyll&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem install jekyll
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;$ gem install jekyll
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;创建博客&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll new myBlog
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;$ jekyll new myBlog
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;进入博客目录&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd myBlog
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;$ cd myBlog
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;启动本地服务&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll serve
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;$ jekyll serve
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;在浏览器里输入： &lt;a href=&quot;http://localhost:4000&quot;&gt;http://localhost:4000&lt;/a&gt;，就可以看到你的博客效果了。&lt;/p&gt;
 
@@ -374,7 +372,7 @@
 
 &lt;p&gt;一个基本的 Jekyll 网站的目录结构一般是像这样的：&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
+&lt;p&gt;&lt;code&gt;.
 ├── _config.yml
 ├── _includes
 |   ├── footer.html
@@ -393,9 +391,9 @@
 ├── css
 |   └── main.scss
 ├── feed.xml
-└── index.html
+└── index.html&lt;/code&gt;&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;这些目录结构以及具体的作用可以参考 &lt;a href=&quot;http://jekyll.com.cn/docs/structure/&quot;&gt;官网文档&lt;/a&gt;&lt;/p&gt;
 
@@ -413,18 +411,17 @@
 
 &lt;p&gt;　　编写一篇新文章很简单，你可以直接从 _posts/ 目录下复制一份出来 &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-10-16-welcome-to-jekyll副本.markdown&lt;/code&gt; ，修改名字为 2016-10-16-article1.markdown ，注意：文章名的格式前面必须为 2016-10-16- ，日期可以修改，但必须为 年-月-日- 格式，后面的 article1 是整个文章的连接 URL，如果文章名为中文，那么文章的连接URL就会变成这样的：http://baixin.io/2015/08/%E6%90%AD%E5/ ， 所以建议文章名最好是英文的或者阿拉伯数字。 双击 2016-10-16-article1.markdown 打开&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
----
-layout: post
-title:  &quot;Welcome to Jekyll!&quot;
+&lt;h2 id=&quot;code&quot;&gt;&lt;code&gt;&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;layout: post
+title:  “Welcome to Jekyll!”
 date:   2015-7-14 10:29:08 +0800
 categories: jekyll update
----
+—&lt;/p&gt;
 
-正文...
+&lt;p&gt;正文…&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;title: 显示的文章名， 如：title: 我的第一篇文章                  &lt;br /&gt;
 date:  显示的文章发布日期，如：date: 2016-10-16                        &lt;br /&gt;
@@ -440,92 +437,92 @@ categories: tag标签的分类，如：categories: 随笔&lt;/p&gt;
 
 &lt;p&gt;首先你要获取的我博客，&lt;a href=&quot;https://github.com/leezhiy/leezhiy.github.io.git&quot;&gt;Github项目地址&lt;/a&gt;，你可以直接&lt;a href=&quot;https://github.com/leezhiy/leezhiy.github.io/archive/master.zip&quot;&gt;点击下载博客&lt;/a&gt;，进去leezhiy.github.io/ 目录下， 使用命令部署本地服务&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;$ jekyll server
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;jekyll&quot;&gt;如果你本机没配置过任何jekyll的环境，可能会报错&lt;/h3&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require&#39;: cannot load such file -- bundler (LoadError)
+&lt;p&gt;&lt;code&gt;/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require&#39;: cannot load such file -- bundler (LoadError)
 	from /Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/lib/jekyll/plugin_manager.rb:34:in `require_from_bundler&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/exe/jekyll:9:in `&amp;lt;top (required)&amp;gt;&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/jekyll:23:in `load&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/jekyll:23:in `&amp;lt;main&amp;gt;&#39;
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `eval&#39;
-	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `&amp;lt;main&amp;gt;&#39;
+	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `&amp;lt;main&amp;gt;&#39;&lt;/code&gt;&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;原因： 没有安装 bundler ，执行安装 bundler 命令&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-$ gem install bundler
+&lt;p&gt;&lt;code&gt;
+$ gem install bundler&lt;/code&gt;&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;提示：&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching: bundler-1.13.5.gem (100%)
+&lt;p&gt;&lt;code&gt;Fetching: bundler-1.13.5.gem (100%)
 Successfully installed bundler-1.13.5
 Parsing documentation for bundler-1.13.5
 Installing ri documentation for bundler-1.13.5
 Done installing documentation for bundler after 5 seconds
-1 gem installed
+1 gem installed&lt;/code&gt;&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;再次执行 $ jekyll server  ，提示&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;p&gt;&lt;code&gt;
 Could not find proper version of jekyll (3.1.1) in any of the sources
-Run `bundle install` to install missing gems.
+Run `bundle install` to install missing gems.&lt;/code&gt;&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;跟着提示运行命令&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle install
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;$ bundle install
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;这个时候你可能会发现 bundle install 运行卡主不动了。&lt;/p&gt;
 
 &lt;p&gt;如果很长时间都没任何提示的话，你可以尝试修改 gem 的 source&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem sources --remove https://rubygems.org/
+&lt;p&gt;&lt;code&gt;$ gem sources --remove https://rubygems.org/
 $ gem sources -a http://gems.ruby-china.org/
 $ gem sources -l
-*** CURRENT SOURCES ***
+*** CURRENT SOURCES ***&lt;/code&gt;&lt;/p&gt;
 
-http://gems.ruby-china.org/
+&lt;p&gt;http://gems.ruby-china.org/&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;再次执行命令 $ bundle install，发现开始有动静了&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching gem metadata from http://gems.ruby-china.org/...........
+&lt;p&gt;&lt;code&gt;Fetching gem metadata from http://gems.ruby-china.org/...........
 Fetching version metadata from http://gems.ruby-china.org/..
 Fetching dependency metadata from http://gems.ruby-china.org/.
 。。。
 Installing jekyll-watch 1.3.1
 Installing jekyll 3.1.1
 Bundle complete! 3 Gemfile dependencies, 17 gems now installed.
-Use `bundle show [gemname]` to see where a bundled gem is installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.&lt;/code&gt;&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;bundler安装完成，后再次启动本地服务&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
+&lt;p&gt;&lt;code&gt;$ jekyll server&lt;/code&gt;&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;继续报错&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
+&lt;p&gt;&lt;code&gt;Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
   Dependency Error: Yikes! It looks like you don&#39;t have jekyll-sitemap or one of its dependencies installed. In order to use Jekyll as currently configured, you&#39;ll need to install this gem. The full error message from Ruby is: &#39;cannot load such file -- jekyll-sitemap&#39; If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/!
-jekyll 3.1.1 | Error:  jekyll-sitemap
+jekyll 3.1.1 | Error:  jekyll-sitemap&lt;/code&gt;&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;表示 当前的 jekyll 版本是 3.1.1 ，无法使用 jekyll-sitemap&lt;/p&gt;
 
@@ -541,13 +538,13 @@ jekyll 3.1.1 | Error:  jekyll-sitemap
 
 &lt;p&gt;修改完成后保存配置，再次执行&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
+&lt;p&gt;&lt;code&gt;$ jekyll server&lt;/code&gt;&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;提示&lt;/p&gt;
 
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
+&lt;p&gt;&lt;code&gt;Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
             Source: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github
        Destination: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_site
  Incremental build: disabled. Enable with --incremental
@@ -556,9 +553,9 @@ jekyll 3.1.1 | Error:  jekyll-sitemap
  Auto-regeneration: enabled for &#39;/Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github&#39;
 Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
     Server address: http://127.0.0.1:4000/
-  Server running... press ctrl-c to stop.
+  Server running... press ctrl-c to stop.&lt;/code&gt;&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 
 &lt;p&gt;表示本地服务部署成功。&lt;/p&gt;
 
