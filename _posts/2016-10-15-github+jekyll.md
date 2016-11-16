@@ -124,7 +124,7 @@ categories: tag标签的分类，如：categories: 随笔</p>
 
 <p>虽然博客部署完成了，你会发现博客太简单不是你想要的，如果你喜欢我的模板的话，可以使用我的模板。</p>
 
-<p>首先你要获取的我博客，<a href="https://github.com/AssassinLong/AssassinLong.github.io">Github项目地址</a>，你可以直接<a href="https://github.com/AssassinLong/AssassinLong.github.io.git/archive/master.zip">点击下载博客</a>，进去AssassinLong.github.io/ 目录下， 使用命令部署本地服务</p>
+<p>首先你要获取的我博客，<a href="https://AssassinLong.github.io">Github项目地址</a>，你可以直接<a href="https://github.com/AssassinLong/AssassinLong.github.io/archive/master.zip">点击下载博客</a>，进去AssassinLong.github.io/ 目录下， 使用命令部署本地服务</p>
 
  <code>$ jekyll server
 </code>  
