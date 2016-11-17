@@ -4,7 +4,7 @@
  <title>程序化&amp;人生</title>
  <link href="" rel="self"/>
  <link href=""/>
- <updated>2016-11-17T08:09:02+08:00</updated>
+ <updated>2016-11-17T08:22:17+08:00</updated>
  <id></id>
  <author>
    <name>assassinlong</name>
@@ -824,6 +824,169 @@ centos发布7.0版本，新版本带来很多特性，除了内核更新到3.10�
 	测试一下：vi /var/www/html/index.php &amp;nbsp;输入&amp;lt;?php phpinfo(); ?&amp;gt; &amp;nbsp;wq保存退出。打开http://192.168.1.108 如果能看到PHP配置信息页，说明PHP服务器正常。&lt;/p&gt;
 &lt;p style=&quot;margin: 10px 0px; padding: 0px; border: 0px; outline: 0px; font-size: 14px; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &#39;Microsoft YaHei&#39;, &#39;Lucida Grande&#39;, Arial, Tahoma, sans-serif; letter-spacing: 0.266666680574417px; line-height: 19.6000003814697px; word-spacing: 1.46666669845581px; text-indent: 2em; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;&quot;&gt;
 	至此，LAMP平台就搭建好了，您可以在上面搭建Worldpress网站了，当然，如果你觉得数据库管理起来比较麻烦的话，也可以用yum install phpMyAdmin安装图形化管理工具。&lt;span id=&quot;transmark&quot; style=&quot;display: none; width: 0px; height: 0px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Linux下配置 Keepalived（心跳检测部署） !</title>
+   <link href="/linux/2016/04/02/Linux%E4%B8%8B%E9%85%8D%E7%BD%AE-Keepalived-%E5%BF%83%E8%B7%B3%E6%A3%80%E6%B5%8B%E9%83%A8%E7%BD%B2-!"/>
+   <updated>2016-04-02T00:00:00+08:00</updated>
+   <id>/linux/2016/04/02/Linux下配置 Keepalived（心跳检测部署） !</id>
+   <content type="html">&lt;h5&gt;&lt;a id=&quot;user-content-首先呢我想先给大家简单介绍一下什么是keepalived&quot; class=&quot;anchor&quot; href=&quot;#首先呢我想先给大家简单介绍一下什么是keepalived&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; class=&quot;octicon octicon-link&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewbox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;首先呢，我想先给大家简单介绍一下什么是keepalived：&lt;/h5&gt;
+
+&lt;p&gt;Keepalived的作用是检测服务器的状态，如果有一台web服务器死机，或工作出现故障，Keepalived将检测到，并将有故障的服务器从系统中剔除，同时使用其他服务器代替该服务器的工作，当服务器工作正常后Keepalived自动将服务器加入到服务器群中，这些工作全部自动完成，不需要人工干涉，需要人工做的只是修复故障的服务器。&lt;/p&gt;
+
+&lt;p&gt;1.准备两台服务器&lt;/p&gt;
+
+&lt;p&gt;主服务器：192.168.1.111&lt;/p&gt;
+
+&lt;p&gt;从服务器：192.168.1.199&lt;/p&gt;
+
+&lt;p&gt;虚拟ip:192.168.1.223&lt;/p&gt;
+
+&lt;p&gt;两台机器安装&lt;/p&gt;
+
+&lt;p&gt;2.安装keepalived需要的依赖包&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+yum install openssl-devel
+yum install popt-devel
+yum install ipvsadm
+yum install libnl*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.下载keepalived&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+yum install keepalived
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.修改主服务器配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+vim /etc/keepalived/keepalived.conf
+! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     #acassen@firewall.loc没有服务器配置邮箱可将其注释掉
+     #failover@firewall.loc
+     #sysadmin@firewall.loc
+   }
+   #notification_email_from Alexandre.Cassen@firewall.loc
+   #smtp_server 192.168.200.1
+   #smtp_connect_timeout 30
+   router_id LVS_DEVEL
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface eno16777736 #绑定虚拟IP的网络接口
+    virtual_router_id 51#和slave一样
+    priority 100#主机高于slave
+    advert_int 1#检测服务器状态间隔时间
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    virtual_ipaddress {
+       &amp;nbsp;192.168.1.223#虚拟IP地址，可以为多个
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;开启服务&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+systemctl start keepalived
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;5.修改slave配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+vim /etc/keepalived/keepalived.conf
+! Configuration File for keepalived
+
+global_defs {
+  #notification_email {
+  #  644856452@qq.com
+  #}
+  #notification_email_from Alexandre.Cassen@firewall.loc
+  #smtp_server 127.0.0.1
+  #smtp_connect_timeout 30
+  router_id LVS_DEVEL
+}
+
+vrrp_instance VI_1 {
+   state SLAVE
+   interface eno16777736
+   virtual_router_id 51
+   priority 80#低于主服务器100
+   advert_int 1
+   authentication {
+       auth_type PASS
+       auth_pass 1111#验证密码，两台机器保持一致
+   }
+
+  &amp;nbsp;virtual_ipaddress {
+       192.168.1.223
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;开启服务&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+systemctl start keepalived
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1.启动两台机器上的nginx&lt;/p&gt;
+
+&lt;p&gt;2.启动两台机器上的keepalived&lt;/p&gt;
+
+&lt;p&gt;此时使用命令 ip addr 查看虚拟IP绑定 可以看到主 有，从没有，将主机的keepalived关掉，可以看到vip绑定到了从的上面。&lt;/p&gt;
+
+&lt;p&gt;那么如何根据服务某个端口的开与关来进行虚拟Ip的绑定呢？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+Vim /usr/share/doc/keepalived-1.2.13/samples/keepalived.conf.vrrp.localcheck
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参考提供的例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+Configuration File for keepalived
+vrrp_script chk_http_port {
+       script &quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;将将以上信息复制到两台服务器的/etc/keepalived/keepalived.conf文件里
+变成如下，参考，注意从机不一样，为了讲清楚上面的信息放入的位置。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+global_defs {
+   notification_email {
+     acassen@firewall.loc
+     failover@firewall.loc
+     sysadmin@firewall.loc
+   }
+   notification_email_from Alexandre.Cassen@firewall.loc
+   smtp_server 192.168.200.1
+   smtp_connect_timeout 30
+   router_id LVS_DEVEL
+}
+vrrp_script chk_http_port {
+       script &quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;此时再重启两台机器的keepalived服务&lt;/p&gt;
+
+&lt;p&gt;Systemctl restart keepalived&lt;/p&gt;
+
+&lt;p&gt;此时分别关闭主机80和3306端口服务&lt;/p&gt;
+
+&lt;p&gt;可以发现虚拟Ip绑定到了从机上。&lt;span id=&quot;transmark&quot; style=&quot;display: none; width: 0px; height: 0px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;/code&amp;gt;&amp;lt;/code&amp;gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -2512,64 +2675,6 @@ struct C{
 &lt;hr /&gt;
 
 &lt;p&gt;&lt;em&gt;本文参考：&lt;a href=&quot;http://www.cnblogs.com/clover-toeic/p/3853132.html&quot;&gt;http://www.cnblogs.com/clover-toeic/p/3853132.html&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>位域的大小端问题</title>
-   <link href="/program/2015/09/23/bit-endian-little-endian-bit-field"/>
-   <updated>2015-09-23T00:00:00+08:00</updated>
-   <id>/program/2015/09/23/bit-endian-little-endian-bit-field</id>
-   <content type="html">&lt;p&gt;有如下位域结构体：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;&lt;strong&gt;小端：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;在寄存器中分布如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C11 C10 C9 C8 C7 C6 C5 C4 C3 C2 C1 C0 B15 B14 B13 B12 B11 B10 B9 B8 B7 B6 B5 B4 B3 B2 B1 B0 A3 A2 A1 A0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;在内存中存放格式为：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0xXXXX0020: B3 B2 B1 B0 A3 A2 A1 A0
-0xXXXX0021: B11 B10 B9 B8 B7 B6 B5 B4
-0xXXXX0022: C3 C2 C1 C0 B15 B14 B13 B12
-0xXXXX0023: C11 C10 C9 C8 C7 C6 C5 C4
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;大端：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;在寄存器中分布如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A3 A2 A1 A0 B15 B14 B13 B12 B11 B10 B9 B8 B7 B6 B5 B4 B3 B2 B1 B0 C11 C10 C9 C8 C7 C6 C5 C4 C3 C2 C1 C0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;在内存中存放如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0xXXXX0020: A3 A2 A1 A0 B15 B14 B13
-0xXXXX0021: B11 B10 B9 B8 B7 B6 B5 B4
-0xXXXX0022: B3 B2 B1 B0 C11 C10 C9 C8
-0xXXXX0023: C7 C6 C5 C4 C3 C2 C1 C0
-C11 C10 C9 C8 C7 C6 C5 C4  B15 B14 B13 B12 C3 C2 C1 C0  B11 B10 B9 B8 B7 B6 B5 B4  A3 A2 A1 A0 B3 B2 B1 B0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;本文转自：&lt;a href=&quot;http://blog.sina.com.cn/s/blog_6f611c300102uznw.html&quot;&gt;http://blog.sina.com.cn/s/blog_6f611c300102uznw.html&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
