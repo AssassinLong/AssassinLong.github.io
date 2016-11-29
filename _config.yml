@@ -84,18 +84,18 @@ author:
   name: assassinlong      ## e.g. wuchong Author name
   intro_line1:  "Hello ,I'm Sunxiaoyu in Shanghai."    ## your introduction on the bottom of the page
   intro_line2:  "Too simple, sometimes naive."  ## the 2nd line
-  weibo: 5729765191     ## e.g. wuchong1014 or 2176287895 for http://weibo.com/2176287895
+  weibo: 3084330164     ## e.g. wuchong1014 or 2176287895 for http://weibo.com/2176287895
   weibo_verifier: 9d4bc461 ## e.g. b3593ceb Your weibo-show widget verifier ,if you use weibo-show it is needed.
   tsina: 9d4bc461     ## e.g. 2176287895  Your weibo ID,It will be used in share button.
-  douban: 74961542    ## e.g. wuchong1014 or your id for https://www.douban.com/people/wuchong1014
-  zhihu: assassinlong     ## e.g. jark  for http://www.zhihu.com/people/jark
+  ##douban: 74961542    ## e.g. wuchong1014 or your id for https://www.douban.com/people/wuchong1014
+  zhihu: ha-ha-83-14-97     ## e.g. jark  for http://www.zhihu.com/people/jark
   email: 1099587627@qq.com     ## e.g. imjark@gmail.com
   twitter:    ## e.g. jarkwu for https://twitter.com/jarkwu
   github: assassinlong    ## e.g. wuchong for https://github.com/wuchong
-  facebook: xiaobiu.sun  ## e.g. imjark for https://facebook.com/imjark
+  facebook:   ## e.g. imjark for https://facebook.com/imjark
   linkedin:   ## e.g. wuchong1014 for https://www.linkedin.com/in/wuchong1014
   google_plus:    ## e.g. "111190881341800841449" for https://plus.google.com/u/0/111190881341800841449, the "" is needed!
-  stackoverflow: 5633124 ## e.g. 3222790 for http://stackoverflow.com/users/3222790/jark
+  stackoverflow:  ## e.g. 3222790 for http://stackoverflow.com/users/3222790/jark
 ## if you set them, the corresponding  share button will show on the footer
 
 #### Toc
