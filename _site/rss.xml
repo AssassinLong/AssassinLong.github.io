@@ -5,8 +5,8 @@
         <description>程序化&amp;人生 - assassinlong</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Thu, 17 Nov 2016 08:22:17 +0800</lastBuildDate>
-        <pubDate>Thu, 17 Nov 2016 08:22:17 +0800</pubDate>
+        <lastBuildDate>Tue, 29 Nov 2016 11:57:24 +0800</lastBuildDate>
+        <pubDate>Tue, 29 Nov 2016 11:57:24 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -721,6 +721,130 @@ mv composer.phar /usr/local/bin/composer&lt;/pre&gt;&lt;/div&gt;
                 <link>/swoole/2016/10/14/php+swoole%E5%8D%B3%E6%97%B6%E8%81%8A%E5%A4%A9</link>
                 <guid>/swoole/2016/10/14/php+swoole即时聊天</guid>
                 <pubDate>Fri, 14 Oct 2016 00:00:00 +0800</pubDate>
+        </item>
+
+        <item>
+                <title>QQ群红包的算法实现探讨（基于PHP demo)</title>
+                <description>&lt;p&gt;这个算法需要满足以下几点要求：&lt;/p&gt;
+
+&lt;p&gt;1、每个人都要能够领取到红包；&lt;/p&gt;
+
+&lt;p&gt;2、每个人领取到的红包金额总和=总金额；&lt;/p&gt;
+
+&lt;p&gt;3、每个人领取到的红包金额不等，但也不能差的太离谱，不然就没趣味；&lt;/p&gt;
+
+&lt;p&gt;4、算法一定要简单，不然对不起腾讯这个招牌；&lt;/p&gt;
+
+&lt;p&gt;正式编码之前，先搭建一个递进的模型来分析规律
+[php] &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;设定总金额为10元，有N个人随机领取：
+N=1
+则红包金额=X元；
+
+N=2
+为保证第二个红包可以正常发出，第一个红包金额=0.01至9.99之间的某个随机数
+第二个红包=10-第一个红包金额；
+
+N=3
+红包1=0.01至0.98之间的某个随机数
+红包2=0.01至(10-红包1-0.01)的某个随机数
+红包3=10-红包1-红包2
+
+……
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;至此，规律出现啦！开始编码！
+[php] &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;header(&quot;Content-Type: text/html;charset=utf-8&quot;);//输出不乱码，你懂的
+$total=10;//红包总额
+$num=8;// 分成8个红包，支持8人随机领取
+$min=0.01;//每个人最少能收到0.01元
+
+for ($i=1;$i&amp;lt;$num;$i++)
+  {
+      $safe_total=$total-($num-$i)*$min;//随机安全上限
+      $money=mt_rand($min*100,$safe_total*100)/100;
+      $total=$total-$money;
+      echo &#39;第&#39;.$i.&#39;个红包：&#39;.$money.&#39; 元，余额：&#39;.$total.&#39; 元 &amp;lt;br/&amp;gt;&#39;;
+  }
+ echo &#39;第&#39;.$num.&#39;个红包：&#39;.$total.&#39; 元，余额：0 元&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;输入一看，波动太大，这数据太无趣了！
+[php] &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;第1个红包：7.48 元，余额：2.52 元
+第2个红包：1.9 元，余额：0.62 元
+第3个红包：0.49 元，余额：0.13 元
+第4个红包：0.04 元，余额：0.09 元
+第5个红包：0.03 元，余额：0.06 元
+第6个红包：0.03 元，余额：0.03 元
+第7个红包：0.01 元，余额：0.02 元
+第8个红包：0.02 元，余额：0 元
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;改良一下，将平均值作为随机安全上限来控制波动差&lt;/p&gt;
+
+&lt;p&gt;[php] &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;header(&quot;Content-Type: text/html;charset=utf-8&quot;);//输出不乱码，你懂的
+$total=10;//红包总额
+$num=8;// 分成8个红包，支持8人随机领取
+$min=0.01;//每个人最少能收到0.01元
+
+for ($i=1;$i&amp;lt;$num;$i++)
+{
+    $safe_total=($total-($num-$i)*$min)/($num-$i);//随机安全上限
+    $money=mt_rand($min*100,$safe_total*100)/100;
+    $total=$total-$money;
+    echo &#39;第&#39;.$i.&#39;个红包：&#39;.$money.&#39; 元，余额：&#39;.$total.&#39; 元 &amp;lt;br/&amp;gt;&#39;;
+}
+  echo &#39;第&#39;.$num.&#39;个红包：&#39;.$total.&#39; 元，余额：0 元&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;输出结果见下图
+[php] &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;第1个红包：0.06 元，余额：9.94 元
+第2个红包：1.55 元，余额：8.39 元
+第3个红包：0.25 元，余额：8.14 元
+第4个红包：0.98 元，余额：7.16 元
+第5个红包：1.88 元，余额：5.28 元
+第6个红包：1.92 元，余额：3.36 元
+第7个红包：2.98 元，余额：0.38 元
+第8个红包：0.38 元，余额：0 元  &lt;span id=&quot;transmark&quot; style=&quot;display: none; width: 0px; height: 0px;&quot;&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+                <link>/qq/2016/08/12/qq%E7%BA%A2%E5%8C%85</link>
+                <guid>/qq/2016/08/12/qq红包</guid>
+                <pubDate>Fri, 12 Aug 2016 00:00:00 +0800</pubDate>
+        </item>
+
+        <item>
+                <title>php的4中开源框架（TP，CI，Laravel，Yii）</title>
+                <description>&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;ThinkPHP简称TP，TP借鉴了&lt;a href=&quot;http://lib.csdn.net/base/javaee&quot; class=&quot;replace_word&quot; title=&quot;Java EE知识库&quot; target=&quot;_blank&quot; style=&quot;color:#df3434; font-weight:bold;&quot;&gt;Java&lt;/a&gt;思想，基于PHP5，充分利用了PHP5的特性，部署简单只需要一个入口文件，一起搞定，简单高效。中文文档齐全，入门超级简单。自带模板引擎，具有独特的数据验证和自动填充功能，框架更新速度比较速度。&lt;/p&gt;
+
+&lt;p&gt;优点：这个框架易使用 易学 安全 对bae sae支持很好提供的工具也很强大 可以支持比较大的项目开发 易扩展 全中文文档 总的来说这款框架适合非常适合国人使用 性能 上比CI还要强一些&lt;/p&gt;
+
+&lt;p&gt;缺点：配置对有些人来说有些复杂（其实是因为没有认真的读过其框架源码）文档有些滞后 有些组件未有文档说明。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CodeIgniter简称CI 简单配置，上手很快，全部的配置使用&lt;a href=&quot;http://lib.csdn.net/base/php&quot; class=&quot;replace_word&quot; title=&quot;PHP知识库&quot; target=&quot;_blank&quot; style=&quot;color:#df3434; font-weight:bold;&quot;&gt;PHP&lt;/a&gt;脚本来配置，没有使用很多太复杂的设计模式，（MVC设计模式）执行性能和代码可读性上都不错。执行效率较高，具有基本的MVC功能，快速简洁，代码量少，框架容易上手，自带了很多简单好用的library。 框架适合中小型项目，大型项目也可以，只是扩展能力差。优点：这个框架的入门槛很底 极易学 极易用 框架很小 静态化非常容易 框架易扩展 文档比较详尽&lt;/p&gt;
+
+&lt;p&gt;缺点：在极易用的极小下隐藏的缺点即是不安全 功能不是太全 缺少非常多的东西 比如你想使用&lt;a href=&quot;http://lib.csdn.net/base/mongodb&quot; class=&quot;replace_word&quot; title=&quot;MongoDB知识库&quot; target=&quot;_blank&quot; style=&quot;color:#df3434; font-weight:bold;&quot;&gt;MongoDB&lt;/a&gt;你就得自己实现接口… 对数据的操作亦不是太安全 比如对update和delete操作等不够安全 暂不支持sae bae等（毕竟是欧洲）对大型项目的支持不行 小型项目会非常好。&lt;/p&gt;
+
+&lt;p&gt;CI和TP的对比（&lt;a href=&quot;http://www.jcodecraeer.com/a/phpjiaocheng/2012/0711/309.html&quot;&gt;http://www.jcodecraeer.com/a/phpjiaocheng/2012/0711/309.html&lt;/a&gt;）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Laravel的设计思想是很先进的，非常适合应用各种开发模式TDD, DDD和BDD（&lt;a href=&quot;http://blog.csdn.net/bennes/article/details/47973129&quot;&gt;http://blog.csdn.net/bennes/article/details/47973129&lt;/a&gt; TDD DDD BDD解释 ），作为一个框架，它为你准备好了一切，composer是个php的未来，没有composer，PHP肯定要走向没落。laravel最大的特点和处优秀之就是集合了php比较新的特性，以及各种各样的设计模式，Ioc容器，依赖注入等。因此laravel是一个适合学习的框架，他和其他的框架思想有着极大的不同，这也要求你非常熟练php，基础扎实。 &lt;/p&gt;
+
+&lt;p&gt;优点：&lt;a href=&quot;http://www.codeceo.com/article/why-laravel-best-php-framework.html&quot;&gt;http://www.codeceo.com/article/why-laravel-best-php-framework.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Yii是一个基于组件的高性能的PHP的框架，用于开发大规模Web应用。Yii采用严格的OOP编写，并有着完善的库引用以及全面的教程。从MVC，DAO/ActiveRecord，widgets，caching，等级式RBAC，Web服务，到主体化，I18N和L10N，Yii提供了今日Web 2.0应用开发所需要的几乎一切功能。而且这个框架的价格也并不太高。事实上，Yii是最有效率的PHP框架之一。&lt;span id=&quot;transmark&quot; style=&quot;display: none; width: 0px; height: 0px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                <link>/tp%EF%BC%8Cci%EF%BC%8Claravel%EF%BC%8Cyii/2016/08/06/%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8Ephp%E7%9A%844%E4%B8%AD%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6</link>
+                <guid>/tp%EF%BC%8Cci%EF%BC%8Claravel%EF%BC%8Cyii/2016/08/06/ 详细说明php的4中开源框架</guid>
+                <pubDate>Sat, 06 Aug 2016 00:00:00 +0800</pubDate>
         </item>
 
         <item>
@@ -2531,149 +2655,6 @@ make install
                 <link>/daily/2015/10/09/tool-for-jekyll-blog</link>
                 <guid>/daily/2015/10/09/tool-for-jekyll-blog</guid>
                 <pubDate>Fri, 09 Oct 2015 00:00:00 +0800</pubDate>
-        </item>
-
-        <item>
-                <title>TCP 之保活计时器</title>
-                <description>&lt;p&gt;保活计时器并不是 TCP 规范中的一部分，是一个有争论的功能。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;如果一个给定的连接在两个小时之内没有任何动作，则服务器就向客户发送一个探查报文段，客户机有如下状态：&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;客户机仍正常运行，回复响应。服务器在两小时以后将保活定时器复位。&lt;/li&gt;
-    &lt;li&gt;客户机已崩溃，TCP 都没有响应，75秒后超时。服务器总共发10个这样的探查，每个间隔75秒。&lt;/li&gt;
-    &lt;li&gt;客户机已重新启动，客户机回复 RST。&lt;/li&gt;
-    &lt;li&gt;客户机正常运行，但是服务不可到达，与状态2相同。&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-</description>
-                <link>/network/2015/09/23/tcp-keepalive-timer</link>
-                <guid>/network/2015/09/23/tcp-keepalive-timer</guid>
-                <pubDate>Wed, 23 Sep 2015 00:00:00 +0800</pubDate>
-        </item>
-
-        <item>
-                <title>字节对齐</title>
-                <description>&lt;p&gt;Linux 沿用的对齐策略是，2字节数据类型（例如&lt;code class=&quot;highlighter-rouge&quot;&gt;short&lt;/code&gt;）的地址是2的倍数，而较大的数据类型（例如&lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;int*&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;float&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;double&lt;/code&gt;）的地址必须是4的倍数。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;Windows 要求任何 K 字节基本对象的址址必须是 K 的倍数，K = 2, 4 或者 8。特别的，它要求一个&lt;code class=&quot;highlighter-rouge&quot;&gt;double&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;long long&lt;/code&gt;类型数据的地址应该是8的倍数。&lt;/p&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;对齐准则&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;四个重要的基本概念：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;数据类型自身的对齐值：char型数据自身对齐值为1字节，short型数据为2字节，int/float型为4字节，double型为8字节。&lt;/li&gt;
-    &lt;li&gt;结构体或类的自身对齐值：其成员中自身对齐值最大的那个值。&lt;/li&gt;
-    &lt;li&gt;指定对齐值：#pragma pack (value)时的指定对齐值value。&lt;/li&gt;
-    &lt;li&gt;数据成员、结构体和类的有效对齐值：自身对齐值和指定对齐值中较小者，即有效对齐值=min{自身对齐值，当前指定的pack值}。&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;其中，有效对齐值&lt;code class=&quot;highlighter-rouge&quot;&gt;N&lt;/code&gt;是最终用来决定数据存放地址方式的值。有效对齐&lt;code class=&quot;highlighter-rouge&quot;&gt;N&lt;/code&gt;表示&lt;strong&gt;“对齐在&lt;code class=&quot;highlighter-rouge&quot;&gt;N&lt;/code&gt;上”&lt;/strong&gt;，即该数据的&lt;strong&gt;“存放起始地址 % N = 0”&lt;/strong&gt;。而数据结构中的数据变量都是按定义的先后顺序存放。第一个数据变量的起始地址就是数据结构的起始地址。结构体的成员变量要对齐存放，结构体本身也要根据自身的有效对齐值圆整(即结构体成员变量占用总长度为结构体有效对齐值的整数倍)。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;例1：&lt;/strong&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;cpp
-struct A{
-    int    a;
-    char   b;
-    short  c;
-};
-struct B{
-    char   b;
-    int    a;
-    short  c;
-};
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;结果：&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sizeof(strcut A)&lt;/code&gt;值为8；&lt;code class=&quot;highlighter-rouge&quot;&gt;sizeof(struct B)&lt;/code&gt;的值却是12。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;例2：&lt;/strong&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;cpp
-#pragma pack(2)  //指定按2字节对齐
-struct C{
-    char  b;
-    int   a;
-    short c;
-};
-#pragma pack()   //取消指定对齐，恢复缺省对齐
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;结果：&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sizeof(struct C) = 8&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;section-1&quot;&gt;栈内存对齐&lt;/h2&gt;
-
-&lt;p&gt;在VC/C++中，栈的对齐方式不受结构体成员对齐选项的影响。总是保持对齐且对齐在4字节边界上。（并未考证64位）&lt;/p&gt;
-
-&lt;h2 id=&quot;section-2&quot;&gt;位域对齐&lt;/h2&gt;
-
-&lt;p&gt;位域成员不能单独被取&lt;code class=&quot;highlighter-rouge&quot;&gt;sizeof&lt;/code&gt;值。下面主要讨论含有位域的结构体的&lt;code class=&quot;highlighter-rouge&quot;&gt;sizeof&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;C99 规定&lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;unsigned int&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;bool&lt;/code&gt;可以作为位域类型，但编译器几乎都对此作了扩展，允许其它类型的存在。位域作为嵌入式系统中非常常见的一种编程工具，优点在于压缩程序的存储空间。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;其对齐规则大致为：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;如果相邻位域字段的类型相同，且其位宽之和小于类型的&lt;code class=&quot;highlighter-rouge&quot;&gt;sizeof&lt;/code&gt;大小，则后面的字段将紧邻前一个字段存储，直到不能容纳为止；&lt;/li&gt;
-    &lt;li&gt;如果相邻位域字段的类型相同，但其位宽之和大于类型的&lt;code class=&quot;highlighter-rouge&quot;&gt;sizeof&lt;/code&gt;大小，则后面的字段将从新的存储单元开始，其偏移量为其类型大小的整数倍；&lt;/li&gt;
-    &lt;li&gt;如果相邻的位域字段的类型不同，则各编译器的具体实现有差异，VC6 采取不压缩方式，Dev-C++ 和 GCC 采取压缩方式；&lt;/li&gt;
-    &lt;li&gt;如果位域字段之间穿插着非位域字段，则不进行压缩；&lt;/li&gt;
-    &lt;li&gt;整个结构体的总大小为最宽基本类型成员大小的整数倍，而位域则按照其最宽类型字节数对齐。&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;例3：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BitField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element1&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element2&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element3&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;位域类型为&lt;code class=&quot;highlighter-rouge&quot;&gt;char&lt;/code&gt;，第1个字节仅能容纳下&lt;code class=&quot;highlighter-rouge&quot;&gt;element1&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;element2&lt;/code&gt;，所以&lt;code class=&quot;highlighter-rouge&quot;&gt;element1&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;element2&lt;/code&gt;被压缩到第1个字节中，而&lt;code class=&quot;highlighter-rouge&quot;&gt;element3&lt;/code&gt;只能从下一个字节开始。因此&lt;code class=&quot;highlighter-rouge&quot;&gt;sizeof(BitField)&lt;/code&gt;的结果为2。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;例4：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StructBitField&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element1&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element2&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element3&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element4&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element5&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stelement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;//在含位域的结构或联合中也可同时说明普通成员
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;位域中最宽类型&lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;的字节数为4，因此结构体按4字节对齐，在 VC6 中其&lt;code class=&quot;highlighter-rouge&quot;&gt;sizeof&lt;/code&gt;为16。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;例5：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BitField4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element1&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element3&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;长度为0的位域告诉编译器将下一个位域放在一个存储单元的起始位置。如上，编译器会给成员&lt;code class=&quot;highlighter-rouge&quot;&gt;element1&lt;/code&gt;分配3位，接着跳过余下的4位到下一个存储单元，然后给成员&lt;code class=&quot;highlighter-rouge&quot;&gt;element3&lt;/code&gt;分配5位。故上面的结构体大小为2。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;em&gt;本文参考：&lt;a href=&quot;http://www.cnblogs.com/clover-toeic/p/3853132.html&quot;&gt;http://www.cnblogs.com/clover-toeic/p/3853132.html&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-</description>
-                <link>/program/2015/09/23/data-structure-alignmen</link>
-                <guid>/program/2015/09/23/data-structure-alignmen</guid>
-                <pubDate>Wed, 23 Sep 2015 00:00:00 +0800</pubDate>
         </item>
 
 
