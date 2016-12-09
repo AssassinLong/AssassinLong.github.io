@@ -5,10 +5,37 @@
         <description>程序化&amp;人生 - assassinlong</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Fri, 09 Dec 2016 20:38:33 +0800</lastBuildDate>
-        <pubDate>Fri, 09 Dec 2016 20:38:33 +0800</pubDate>
+        <lastBuildDate>Fri, 09 Dec 2016 21:17:09 +0800</lastBuildDate>
+        <pubDate>Fri, 09 Dec 2016 21:17:09 +0800</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>项目流程</title>
+                <description>&lt;p&gt;1.项目测试版网址:http://www.liujinlong.site/htjk/public/&lt;/p&gt;
+&lt;p&gt;2.测试后台(PC端):http://www.liujinlong.site/htjk/public/admin.php/index/login/login.html&lt;/p&gt;
+&lt;p&gt;如果需要后台可以提供用户名和密码&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;3.项目流程图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../img/开发流程.png&quot; /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;4.项目表结构:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../img/表结构.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;5.微信文档&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/wiki/home/&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;6.微信接口对接快速开源产品&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.we7.cc/&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;比如菜单设置如下:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../img/菜单设置.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;7.上线beta版公众号,可以微信支付了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../img/二维码.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;8.以上是我现在完成的项目,功能挺多的,目前web2.0哪有不用ajax的,比如登录验证就是ajax验证&lt;/p&gt;
+
+</description>
+                <link>/%E9%A1%B9%E7%9B%AE/2016/12/09/%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B</link>
+                <guid>/%E9%A1%B9%E7%9B%AE/2016/12/09/项目流程</guid>
+                <pubDate>Fri, 09 Dec 2016 00:00:00 +0800</pubDate>
+        </item>
 
         <item>
                 <title>个人简历</title>
@@ -2709,23 +2736,6 @@ make install
 </description>
                 <link>/daily/2015/10/11/jekyll-editor-tutorial</link>
                 <guid>/daily/2015/10/11/jekyll-editor-tutorial</guid>
-                <pubDate>Sun, 11 Oct 2015 00:00:00 +0800</pubDate>
-        </item>
-
-        <item>
-                <title>Jekyll Editor 应用上线</title>
-                <description>&lt;p&gt;Jekyll Editor 的 Chrome App 版本终于发布，具体地址为：&lt;a href=&quot;https://chrome.google.com/webstore/detail/jekyll-editor/dfdkgbhjmllemfblfoohhehdigokocme?hl=zh-CN&quot;&gt;Jekyll Editor&lt;/a&gt;。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;为了发布这个应用我真是费了好多心思，因为本人并没有 VISA 卡，也没有信用卡。我想到了一个神奇的网站，不是58，而是淘宝，搜了好久之后，发现有一种叫 VISA 虚拟卡，但是好像不能用，可能会被禁:flushed:。&lt;/p&gt;
-
-&lt;p&gt;当然，还有一种是在线帮忙开，费用非常贵，要200多块，我还是咬咬牙就拍了:sob:。说多了都是泪，哎。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Chrome App 地址为：https://chrome.google.com/webstore/detail/jekyll-editor/dfdkgbhjmllemfblfoohhehdigokocme?hl=zh-CN&lt;/strong&gt;&lt;/p&gt;
-</description>
-                <link>/daily/2015/10/11/jekyll-editor-online</link>
-                <guid>/daily/2015/10/11/jekyll-editor-online</guid>
                 <pubDate>Sun, 11 Oct 2015 00:00:00 +0800</pubDate>
         </item>
 
