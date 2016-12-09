@@ -5,8 +5,8 @@
         <description>程序化&amp;人生 - assassinlong</description>
         <link></link>
         <atom:link href="" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Fri, 09 Dec 2016 21:17:09 +0800</lastBuildDate>
-        <pubDate>Fri, 09 Dec 2016 21:17:09 +0800</pubDate>
+        <lastBuildDate>Fri, 09 Dec 2016 21:34:13 +0800</lastBuildDate>
+        <pubDate>Fri, 09 Dec 2016 21:34:13 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -17,18 +17,18 @@
 &lt;p&gt;如果需要后台可以提供用户名和密码&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p&gt;3.项目流程图:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../img/开发流程.png&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;https://assassinlong.github.io/img/开发流程.png&quot; /&gt;
 &lt;br /&gt;&lt;/p&gt;
 &lt;p&gt;4.项目表结构:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../img/表结构.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://assassinlong.github.io/img/表结构.png&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;5.微信文档&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/wiki/home/&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/wiki/home/&quot;&gt;微信文档&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;6.微信接口对接快速开源产品&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.we7.cc/&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.we7.cc/&quot;&gt;微信文档&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;比如菜单设置如下:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../img/菜单设置.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://assassinlong.github.io/img/菜单设置.png&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;7.上线beta版公众号,可以微信支付了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../img/二维码.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://assassinlong.github.io/img/二维码.png&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;8.以上是我现在完成的项目,功能挺多的,目前web2.0哪有不用ajax的,比如登录验证就是ajax验证&lt;/p&gt;
 
 </description>
